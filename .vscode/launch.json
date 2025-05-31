@@ -1,0 +1,27 @@
+{
+	// 使用 IntelliSense 了解相关属性。
+	// 悬停以查看现有属性的描述。
+	// 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "C#:Ngaq.Test-Debug",
+			"type": "dotnet",
+			"request": "launch",
+			"projectPath": "${workspaceFolder}/Ngaq.Test/Ngaq.Test.csproj"
+		},
+		{
+			"name": "C#:Ngaq.Windows-Debug",
+			"type": "dotnet",
+			"request": "launch",
+			"projectPath": "${workspaceFolder}/Ngaq.Frontend/proj/Ngaq.Windows/Ngaq.Windows.csproj"
+		},
+		{
+			"name": "C#:Ngaq.Web-Debug",
+			"type": "dotnet",
+			"request": "launch",
+			"projectPath": "${workspaceFolder}/Ngaq.Server/proj/Ngaq.Web/Ngaq.Web.csproj"
+		}
+
+	]
+}
