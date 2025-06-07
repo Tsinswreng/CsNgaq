@@ -1,3 +1,34 @@
 [submodule "Ngaq.Core"]
 	path = Ngaq.Core
 	url = https://github.com/Tsinswreng/Ngaq.Core.git
+
+[submodule "Ngaq.Local"]
+	path = Ngaq.Local
+	url = https://github.com/Tsinswreng/Ngaq.Local.git
+
+[submodule "Ngaq.Frontend"]
+	path = Ngaq.Frontend
+	url = https://github.com/Tsinswreng/Ngaq.Frontend.git
+
+[submodule "Ngaq.Server"]
+	path = Ngaq.Server
+	url = https://github.com/Tsinswreng/Ngaq.Server.git
+
+
+[submodule "Tsinswreng.CsTypeAlias"]
+	path = Tsinswreng.CsTypeAlias
+	url = https://github.com/Tsinswreng/CsTypeAlias.git
+
+[submodule "Tsinswreng.CsCore"]
+	path = Tsinswreng.CsCore
+	url = https://github.com/Tsinswreng/CsCore.git
+
+[submodule "Tsinswreng.CsSrcGen"]
+	path = Tsinswreng.CsSrcGen
+	url = https://github.com/Tsinswreng/CsSrcGen.git
+
+[submodule "Tsinswreng.CsSqlHelper"]
+	path = Tsinswreng.CsSqlHelper
+	url = https://github.com/Tsinswreng/CsSqlHelper.git
+
+
