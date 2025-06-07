@@ -1,0 +1,3 @@
+[submodule "Ngaq.Core"]
+	path = Ngaq.Core
+	url = https://github.com/Tsinswreng/Ngaq.Core.git
