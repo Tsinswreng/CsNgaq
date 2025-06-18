@@ -1,0 +1,14 @@
+{
+	"SqlitePath": "./Ngaq.dev.sqlite"
+	// ,"GalleryDirs": ["", "f:/"]
+	,"Background": {
+		//"GalleryDirs": ["E:/_/視聽/圖"]
+		"GalleryDirs": [
+			"E:/_/視聽/圖"
+		]
+		,"Order": "Random"
+		,"Stretch": "UniformToFill"
+		,"Brightness": 1.0
+	}
+}
+

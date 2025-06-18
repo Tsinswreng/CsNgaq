@@ -5,6 +5,6 @@ git submodule add  https://github.com/Tsinswreng/Ngaq.Server.git  Ngaq.Server
 
 git submodule add  https://github.com/Tsinswreng/CsTypeAlias.git  Tsinswreng.CsTypeAlias
 git submodule add  https://github.com/Tsinswreng/CsCore.git  Tsinswreng.CsCore
-git submodule add  https://github.com/Tsinswreng/CsSrcGen.git  Tsinswreng.CsSrcGen
+git submodule add  https://github.com/Tsinswreng/CsDictMapper.git  Tsinswreng.CsDictMapper
 git submodule add  https://github.com/Tsinswreng/CsSqlHelper.git  Tsinswreng.CsSqlHelper
 
