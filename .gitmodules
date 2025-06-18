@@ -14,6 +14,10 @@
 	path = Ngaq.Server
 	url = https://github.com/Tsinswreng/Ngaq.Server.git
 
+[submodule "Ngaq.Test"]
+	path = Ngaq.Test
+	url = https://github.com/Tsinswreng/Ngaq.Test.git
+
 
 [submodule "Tsinswreng.CsTypeAlias"]
 	path = Tsinswreng.CsTypeAlias
@@ -32,3 +36,6 @@
 	url = https://github.com/Tsinswreng/CsSqlHelper.git
 
 
+[submodule "Tsinswreng.CsUlid"]
+	path = Tsinswreng.CsUlid
+	url = https://github.com/Tsinswreng/CsUlid.git
