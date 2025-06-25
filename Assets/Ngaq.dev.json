@@ -4,7 +4,7 @@
 	,"Background": {
 		//"GalleryDirs": ["E:/_/視聽/圖"]
 		"GalleryDirs": [
-			"E:/_/視聽/圖"
+			//"E:/_/視聽/圖"
 		]
 		,"Order": "Random"
 		,"Stretch": "UniformToFill"

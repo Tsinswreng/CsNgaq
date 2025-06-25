@@ -23,9 +23,9 @@
 	path = Tsinswreng.CsTypeAlias
 	url = https://github.com/Tsinswreng/CsTypeAlias.git
 
-[submodule "Tsinswreng.CsCore"]
-	path = Tsinswreng.CsCore
-	url = https://github.com/Tsinswreng/CsCore.git
+[submodule "Tsinswreng.CsTools"]
+	path = Tsinswreng.CsTools
+	url = https://github.com/Tsinswreng/CsTools.git
 
 [submodule "Tsinswreng.CsDictMapper"]
 	path = Tsinswreng.CsDictMapper
@@ -39,3 +39,6 @@
 [submodule "Tsinswreng.CsUlid"]
 	path = Tsinswreng.CsUlid
 	url = https://github.com/Tsinswreng/CsUlid.git
+[submodule "Tsinswreng.CsPage"]
+	path = Tsinswreng.CsPage
+	url = https://github.com/Tsinswreng/CsPage.git
