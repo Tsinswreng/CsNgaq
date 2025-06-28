@@ -48,3 +48,6 @@
 [submodule "Tsinswreng.CsCore"]
 	path = Tsinswreng.CsCore
 	url = https://github.com/Tsinswreng/CsCore.git
+[submodule "Tsinswreng.CsCfg"]
+	path = Tsinswreng.CsCfg
+	url = https://github.com/Tsinswreng/CsCfg.git

@@ -11,5 +11,6 @@ git submodule add  https://github.com/Tsinswreng/CsDictMapper.git  Tsinswreng.Cs
 git submodule add  https://github.com/Tsinswreng/CsSqlHelper.git  Tsinswreng.CsSqlHelper
 git submodule add  https://github.com/Tsinswreng/CsUlid.git  Tsinswreng.CsUlid
 git submodule add  https://github.com/Tsinswreng/CsPage.git  Tsinswreng.CsPage
+git submodule add  https://github.com/Tsinswreng/CsCfg.git  Tsinswreng.CsCfg
 git submodule add  https://github.com/Tsinswreng/AvaloniaTools.git  Tsinswreng.Avalonia
 
