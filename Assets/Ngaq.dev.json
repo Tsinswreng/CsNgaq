@@ -10,5 +10,6 @@
 		,"Stretch": "UniformToFill"
 		,"Brightness": 1.0
 	}
+	,"ServerBaseUrl": "http://localhost:5000/"
 }
 

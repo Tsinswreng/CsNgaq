@@ -6,6 +6,6 @@ mkdir -p $DirDebug
 cp -r ./Assets/*  $DirDebug
 #勿用此dotnet run --project ./Ngaq.Frontend/proj/Ngaq.Windows 先cd到目標目錄再運行、否則pwd與可執行程序不一致 影響相對路經解析
 cd $DirWin
-dotnet build
+dotnet build --verbosity detailed
 cd ./bin/Debug/net9.0/
 ./Ngaq.Windows.exe
