@@ -1,2 +1,4 @@
+sh ./CpAssets.sh
 cd Ngaq.Server/proj/Ngaq.Web
-dotnet run
+dotnet build
+#dotnet run

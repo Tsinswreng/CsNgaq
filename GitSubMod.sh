@@ -12,5 +12,5 @@ git submodule add  https://github.com/Tsinswreng/CsSqlHelper.git  Tsinswreng.CsS
 git submodule add  https://github.com/Tsinswreng/CsUlid.git  Tsinswreng.CsUlid
 git submodule add  https://github.com/Tsinswreng/CsPage.git  Tsinswreng.CsPage
 git submodule add  https://github.com/Tsinswreng/CsCfg.git  Tsinswreng.CsCfg
-git submodule add  https://github.com/Tsinswreng/AvaloniaTools.git  Tsinswreng.Avalonia
+git submodule add  https://github.com/Tsinswreng/AvaloniaTools.git  Tsinswreng.AvlnTools
 

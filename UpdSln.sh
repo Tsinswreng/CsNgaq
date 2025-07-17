@@ -13,4 +13,4 @@ dotnet sln add Tsinswreng.CsSqlHelper/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsUlid/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsPage/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsCfg/proj/**/*.csproj
-dotnet sln add Tsinswreng.Avalonia/proj/**/*.csproj
+dotnet sln add Tsinswreng.AvlnTools/proj/**/*.csproj

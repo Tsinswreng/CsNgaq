@@ -42,8 +42,8 @@
 [submodule "Tsinswreng.CsPage"]
 	path = Tsinswreng.CsPage
 	url = https://github.com/Tsinswreng/CsPage.git
-[submodule "Tsinswreng.Avalonia"]
-	path = Tsinswreng.Avalonia
+[submodule "Tsinswreng.AvlnTools"]
+	path = Tsinswreng.AvlnTools
 	url = https://github.com/Tsinswreng/AvaloniaTools.git
 [submodule "Tsinswreng.CsCore"]
 	path = Tsinswreng.CsCore
