@@ -5,3 +5,5 @@ obj/
 *-wal
 *-shm
 *.sln
+.vs/
+Tsinswreng.JavaSqlHelper/

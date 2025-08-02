@@ -1,6 +1,10 @@
+//用戶配置文件優先級高於GUI配置
 {
-	"SqlitePath": "./Ngaq.dev.sqlite"
+	"Version": "1753512845549"
+	,"GuiConfigPath": "Ngaq.Gui.jsonc"
+	,"SqlitePath": "./Ngaq.dev.sqlite"
 	// ,"GalleryDirs": ["", "f:/"]
+	,"ServerBaseUrl": "http://localhost:5000/"
 	,"Background": {
 		"GalleryDirs": [
 			"E:/_/視聽/圖"
@@ -10,6 +14,9 @@
 		,"Stretch": "UniformToFill" //TODO
 		,"Brightness": 1.0 //TODO
 	}
-	,"ServerBaseUrl": "http://localhost:5000/"
+	,"Ui":{
+		//"BaseFontSize": 18.0
+	}
+
 }
 

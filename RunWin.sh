@@ -8,4 +8,6 @@ mkdir -p $DirDebug
 cd $DirWin
 dotnet build --verbosity detailed
 cd ./bin/Debug/net9.0/
-dotnet.exe ./Ngaq.Windows.dll
+dotnet ./Ngaq.Windows.dll
+#dotnet watch --project ../../../
+
