@@ -51,3 +51,9 @@
 [submodule "Tsinswreng.CsCfg"]
 	path = Tsinswreng.CsCfg
 	url = https://github.com/Tsinswreng/CsCfg.git
+[submodule "Tsinswreng.CsIfacegen"]
+	path = Tsinswreng.CsIfacegen
+	url = https://github.com/Tsinswreng/CsIfacegen.git
+[submodule "Tsinswreng.CsSrcGenTools"]
+	path = Tsinswreng.CsSrcGenTools
+	url = https://github.com/Tsinswreng/CsSrcGenTools.git
