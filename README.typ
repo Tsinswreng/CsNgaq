@@ -45,7 +45,7 @@ the app has a built-in weight algorithm.
 
 (in progress) you can also adjust the parameters of existing weight algorithm or define your own weight algorithm. to create custom algorithm, you need to implements the interfaces to make a executable file and specify the path in the app settings. we will call it through command line.
 
-= Word Leaning page
+= Word Learning page
 
 after start, short click the word card represents for remembering the word, long click for forgetting the word. click again is for undo. after each rotate of leaning, click save to save your new leaning records in the database and fresh the words weight
 

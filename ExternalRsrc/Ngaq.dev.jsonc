@@ -1,6 +1,6 @@
 //用戶配置文件優先級高於GUI配置
 {
-	"Version": "1753512845549"
+	"Version": "0.0.1"
 	,"GuiConfigPath": "Ngaq.Gui.jsonc"
 	,"SqlitePath": "./Ngaq.dev.sqlite"
 	// ,"GalleryDirs": ["", "f:/"]

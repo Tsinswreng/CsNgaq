@@ -6,7 +6,7 @@
 </metadata>
 
 # time block
-# the time represents for the add time for all the words in the tiem block
+# the time represents for the add time for all the words in the time block
 # add time will be used to calculate the weight/priority of the words when learning word
 # only this kind of format(ISO 8601) is supported by now.
 # the time zone is arbitary e,g +08:00. use `Z` for UTC.
