@@ -9,7 +9,7 @@ Tech Stack:
 -   Local Backend: C#, Sqlite,
     [CsSqlHelper](https://github.com/Tsinswreng/CsSqlHelper)
 
--   Server Backend(in progress): C#, Asp.net, EFCore, PostgreSql
+-   Server Backend(in progress): C#, Asp.net, EFCore, Postgres
 
 Features:
 

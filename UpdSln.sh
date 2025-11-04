@@ -9,6 +9,7 @@ dotnet sln add Ngaq.Server/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsCore/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsTools/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsSrcGenTools/proj/**/*.csproj
+dotnet sln add Tsinswreng.CsFactoryMkr/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsDictMapper/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsIfaceGen/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsSqlHelper/proj/**/*.csproj
@@ -16,3 +17,4 @@ dotnet sln add Tsinswreng.CsUlid/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsPage/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsCfg/proj/**/*.csproj
 dotnet sln add Tsinswreng.AvlnTools/proj/**/*.csproj
+dotnet sln add Lang.Avalonia/src/**/*.csproj

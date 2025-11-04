@@ -3,7 +3,7 @@
 	"Version": "0.0.1"
 	,"Lang": "zh-TW"
 	,"GuiConfigPath": "Ngaq.Gui.jsonc"
-	,"SqlitePath": "./Ngaq.sqlite"
+	,"SqlitePath": "./Ngaq.dev.sqlite"
 	// ,"GalleryDirs": ["", "f:/"]
 	,"ServerBaseUrl": "http://localhost:5000/"
 	,"Background": {

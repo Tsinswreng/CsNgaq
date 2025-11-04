@@ -6,7 +6,7 @@ An app helps you remember vocabularies
 Tech Stack:
 - Frontend: C\#, Avalonia
 - Local Backend: C\#, Sqlite, #link("https://github.com/Tsinswreng/CsSqlHelper")[CsSqlHelper]
-- Server Backend(in progress): C\#, Asp.net, EFCore, PostgreSql
+- Server Backend(in progress): C\#, Asp.net, EFCore, Postgres
 
 Features:
 - client AOT-compatible
@@ -98,3 +98,60 @@ after start, short click the word card represents for remembering the word, long
 - `UpdSln.sh`	清除根目錄ʹ .sln並根據所有`.csproj`緟生成
 - `WebSrv.sh` 複製外部資源並構建遠程後端
 - `WordList.typ` 單詞表示例
+
+
+
+
+
+#if false{
+[
+我要做一個Avalonia的跨平臺背單詞程序
+
+```bash
+Ngaq.Core/	# 共用庫 平臺無關
+	Shared/	# 前端, 本地後端, Web後端等都共用。如登錄註冊請求與響應DTO實體, 基礎實體類等
+	Frontend/	# 放前端專用之接口 如 鍵值存儲接口 平臺無關
+Ngaq.Local/
+	Frontend/	# 實現 Ngaq.Core/Frontend中定義的接口
+Ngaq.Frontend/	# Avalonia.xplat
+	Nagq.Client/	# 發Web請求。
+	Ngaq.Ui/	# 平臺無關Ui代碼
+	Ngaq.Windows/
+	Ngaq.Android/
+	Ngaq.Browser/
+	...
+Ngaq.Server/	# Web後端
+	Ngaq.Biz/	# Web後端主要業務邏輯
+	Ngaq.Web/	# 封裝Http Api
+```
+預期有以下幾種運行模式:
++ 用戶在自己的設備上安裝客戶端App。用戶添加的單詞或背單詞的數據用sqlite存在本機。登錄Web後端可以做雲端備份同步
++ 用戶不在自己的設備上安裝App、而是直接通過瀏覽器訪問前端。用戶添加的單詞或背單詞的數據直接存在Web服務端
++ (優先級最低)用戶在自己的設備上安裝 監聽localhost的服務器(本機服務器)、然後通過瀏覽器訪問前端。用戶添加的單詞或背單詞的數據 由本機服務器 用sqlite存在本機。同時用戶也可登錄Web後端做雲端備份同步
+
+所有程序集都引用Ngaq.Core
+Ngaq.Server引用Ngaq.Local(有些實體類和數據庫操作 在 Web後端 和 Ngaq.Local中都有、 如Orm中通用實體類的定義)
+
+入口類(如Ngaq.Windows) 引用 Ngaq.Local和Ngaq.Client
+
+在第一種模式下、Ui的ViewModel層 通過編程語言接口(interface) 與 本地後端 交互。 interface定義在Ngaq.Core程序集中、實現在 Ngaq.Local程序集中。 同時在Ngaq.Local中配置依賴注入。具體如: `AddTransient<Ngaq.Core中定義的接口, Ngaq.Local中的實現>`
+需要訪問Web後端時、則由Ngaq.Client程序集發送請求。
+Ngaq.Client中也配置依賴注入、具體如`AddTransient<Ngaq.Core中定義的接口, Ngaq.Client 中的實現>`。
+有時 Ngaq.Server 和 Ngaq.Client可能會實現相同的接口 如
+```cs
+public partial interface ISvcUser{
+	public Task<nil> AddUser(
+		ReqAddUser ReqAddUser
+		,CT Ct
+	);
+
+	public Task<RespLogin> Login(ReqLogin ReqLogin, CT Ct);
+
+	public Task<nil> Logout(ReqLogout ReqLogout, CT Ct);
+}
+```
+在Ngaq.Client中的實現爲 給Web後端發請求。
+在Ngaq.Server中的實現爲 處理Web請求。
+
+]
+}
