@@ -9,3 +9,7 @@ cp -r ./Ngaq.Server/ExternalRsrc/*  $WebDirDebug
 DirWinPublish=./Ngaq.Frontend/proj/Ngaq.Windows/bin/Release/net9.0/win-x64/publish
 mkdir -p $DirWinPublish
 cp -r ./ExternalRsrc/*  $DirWinPublish
+
+DirAndroidAssets=./Ngaq.Frontend/proj/Ngaq.Android/Assets
+mkdir -p $DirAndroidAssets
+cp -r ./ExternalRsrc/*  $DirAndroidAssets
