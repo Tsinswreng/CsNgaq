@@ -11,7 +11,7 @@ cd ../../../
 sh ./CpAssets.sh
 cd Ngaq.Frontend/proj/Ngaq.Windows
 
-cd ./bin/Release/net9.0/win-x64
+cd ./bin/Release/net10.0/win-x64
 mkdir -p publishNoPdb
 rm -r publishNoPdb
 cp -r publish publishNoPdb
