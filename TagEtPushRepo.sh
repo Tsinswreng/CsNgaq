@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 用法: ./auto-tag.sh /path/to/repo v1.2.3
-
+# TODO 改成只tag洏不push。 多寫一腳本作 批量push
 set -euo pipefail
 
 # 參數檢查

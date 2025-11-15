@@ -18,12 +18,88 @@ csharp_new_line_before_open_brace = none
 [{*.json,*.yml}]
 indent_size = 2 # 对于 JSON 和 YAML 文件，缩进大小为 2 个空格
 
+
 [*.cs]
-# Microsoft .NET properties
-csharp_indent_braces = false # 设置为false表示花括号不跟随代码行缩进
-#csharp_new_line_before_open_brace = local_functions, methods, types # 这里设置为local_functions, methods, types，表示在局部函数、方法和类型定义的开放花括号前应换行
-# 不在左大括号前换行
-csharp_new_line_before_open_brace = none
-csharp_new_line_before_else = false
-csharp_new_line_before_catch = false
-csharp_new_line_before_finally = false
+generated_code = true    # 告訴 Roslyn 這是產生的碼， skip 所有格式化
+
+# [*.cs]
+# # Microsoft .NET properties
+# csharp_indent_braces = false # 设置为false表示花括号不跟随代码行缩进
+# #csharp_new_line_before_open_brace = local_functions, methods, types # 这里设置为local_functions, methods, types，表示在局部函数、方法和类型定义的开放花括号前应换行
+# # 不在左大括号前换行
+# csharp_new_line_before_open_brace = none
+# csharp_new_line_before_else = false
+# csharp_new_line_before_catch = false
+# csharp_new_line_before_finally = false
+
+# # 控制流关键字（if、foreach、for、while 等）后不加空格
+# csharp_space_after_control_flow_keywords = false
+
+# # 括号 () 内部不加空格（如 if(condition) 而非 if( condition )）
+# csharp_space_within_parentheses = false
+
+# # 左大括号 { 前不加空格（如 if(){} 而非 if() {}）
+# csharp_space_before_open_brace = none
+
+# # 大括号 {} 内部首尾不加额外空行（可选，根据你的回车后换行需求）
+# csharp_new_line_before_open_brace = none
+# csharp_new_line_between_braces = true  # 回车后在 {} 中间换行（保留你的需求）
+
+# # 补充：避免其他括号相关的空格（如方法参数、强制转换等）
+# csharp_space_after_comma = false  # 逗号后不加空格（可选，按需开启）
+# csharp_space_before_comma = false  # 逗号前不加空格
+# csharp_space_within_braces = false  # 大括号 {} 内部边缘不加空格（如 {x} 而非 { x }）
+# csharp_space_within_cast_parentheses = false  # 强制转换括号内不加空格（如 (int)x 而非 (int) x）
+
+
+# [*.cs]
+# # 1. 关键字（if/for/while等）与左括号之间无空格（if(...)而非if (...)）
+# csharp_space_after_keywords_in_control_flow_statements = false
+
+# # 2. 左大括号前无空格（if(){而非if() {）
+# # 覆盖所有场景：语句块、方法、类等
+# csharp_space_before_open_brace = none
+# csharp_space_before_open_brace_for_types = none
+# csharp_space_before_open_brace_for_methods = none
+# csharp_space_before_open_brace_for_control_blocks = none
+
+# # 3. 括号内部/之间无空格（如(a,b)而非(a, b)、(x)而非(x )）
+# csharp_space_between_parentheses = false
+# csharp_space_between_parentheses_in_control_flow_statements = false
+# csharp_space_between_parentheses_in_method_declarations = false
+# csharp_space_between_parentheses_in_method_calls = false
+
+# # 4. Lambda表达式箭头（=>）前后无空格（()=>{}而非() => {}）
+# csharp_space_around_lambda_operator = false  # 这是关键项，覆盖箭头前后
+
+# # 5. 方法名与括号间无空格（Func()而非Func ()）
+# csharp_space_after_method_call_name = false
+# csharp_space_after_method_declaration_name = false
+
+# # 6. 强制转换后无空格（(int)x而非(int) x）
+# csharp_space_after_cast = false
+
+# # 7. 逗号后无空格（避免自动加空格，如a,b而非a, b）
+# csharp_space_after_comma = false
+
+
+# [*.cs]
+# # 關鍵：以下規則設 false，Roslyn 就不會再幫你塞空格
+# csharp_space_after_cast = false
+# csharp_space_after_keywords_in_control_flow_statements = false
+# csharp_space_between_method_declaration_name_and_open_parenthesis = false
+# csharp_space_between_method_call_name_and_opening_parenthesis = false
+# csharp_space_before_open_square_brackets = false
+# csharp_space_between_empty_square_brackets = false
+# csharp_space_within_single_line_array_initializer_braces = false
+# csharp_space_within_parentheses = false
+# csharp_space_before_colon_in_inheritance_clause = false
+# csharp_space_after_colon_in_inheritance_clause = false
+# csharp_space_around_binary_operators = none
+# csharp_space_around_assignment_operators = false
+# csharp_space_around_declaration_statements = false
+
+
+csharp_space_after_keywords_in_control_flow_statements = false # 開啓後會從「if () {}」 變成「if() {}」 但還是會多一個空格
+# 设置大括号前面不添加空格
+space_before_blocks = false

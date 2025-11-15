@@ -3,7 +3,7 @@
 cd Ngaq.Frontend/proj/Ngaq.Windows
 mkdir -p publish
 mv publish publishOld
-dotnet publish -c Release -r win-x64
+dotnet publish -c Release -r win-x64 -p:AllowMissingPrunePackageData=true
 rm -r publishOld
 
 #sh $CpAssets
