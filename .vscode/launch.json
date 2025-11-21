@@ -5,19 +5,7 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "C#:Ngaq.Test-Debug",
-			"type": "dotnet",
-			"request": "launch",
-			"projectPath": "${workspaceFolder}/Ngaq.Test/Ngaq.Test.csproj"
-		},
-		{
-			"name": "C#:Ngaq.Windows-Debug",
-			"type": "dotnet",
-			"request": "launch",
-			"projectPath": "${workspaceFolder}/Ngaq.Frontend/proj/Ngaq.Windows/Ngaq.Windows.csproj"
-		},
-		{
-			"name": "Web-coreclr",
+			"name": "WebServer",
 			"type": "coreclr",
 			"request": "launch",
 			//"preLaunchTask": "build", // 可根据你的项目配置修改
@@ -39,7 +27,7 @@
 			"stopAtEntry": false // 是否在程序入口处停止
 		},
 		{
-			"name": "Win-coreclr",
+			"name": "Win",
 			"type": "coreclr",
 			"request": "launch",
 			//"preLaunchTask": "build", // 可根据你的项目配置修改
@@ -60,6 +48,7 @@
 			"console": "internalConsole", // 或 "integratedTerminal" 或 "externalTerminal"
 			"stopAtEntry": false // 是否在程序入口处停止
 		},
+
 		// {
 		// 	"name": "Ai-Debug Android",
 		// 	"type": "mono",

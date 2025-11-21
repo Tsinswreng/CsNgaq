@@ -8,6 +8,7 @@ dotnet sln add Ngaq.Server/proj/**/*.csproj
 
 dotnet sln add Tsinswreng.CsCore/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsTools/proj/**/*.csproj
+dotnet sln add Tsinswreng.CsErr/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsSrcGenTools/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsFactoryMkr/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsDictMapper/proj/**/*.csproj

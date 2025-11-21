@@ -7,6 +7,7 @@ git submodule add  https://github.com/Tsinswreng/Ngaq.Test.git  Ngaq.Test
 git submodule add  https://github.com/Tsinswreng/CsTypeAlias.git  Tsinswreng.CsTypeAlias
 git submodule add  https://github.com/Tsinswreng/CsTools.git  Tsinswreng.CsTools
 git submodule add  https://github.com/Tsinswreng/CsCore.git  Tsinswreng.CsCore
+git submodule add  https://github.com/Tsinswreng/CsErr.git  Tsinswreng.CsErr
 git submodule add  https://github.com/Tsinswreng/CsDictMapper.git  Tsinswreng.CsDictMapper
 git submodule add  https://github.com/Tsinswreng/CsSqlHelper.git  Tsinswreng.CsSqlHelper
 #git submodule add  https://github.com/Tsinswreng/CsUlid.git  Tsinswreng.CsUlid

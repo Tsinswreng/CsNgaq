@@ -57,3 +57,6 @@
 [submodule "Tsinswreng.CsSrcGenTools"]
 	path = Tsinswreng.CsSrcGenTools
 	url = https://github.com/Tsinswreng/CsSrcGenTools.git
+[submodule "Tsinswreng.CsErr"]
+	path = Tsinswreng.CsErr
+	url = https://github.com/Tsinswreng/CsErr.git
