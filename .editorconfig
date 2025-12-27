@@ -19,8 +19,8 @@ csharp_new_line_before_open_brace = none
 indent_size = 2 # 对于 JSON 和 YAML 文件，缩进大小为 2 个空格
 
 
-[*.cs]
-generated_code = true    # 告訴 Roslyn 這是產生的碼， skip 所有格式化
+# [*.cs]
+# generated_code = true    # 告訴 Roslyn 這是產生的碼， skip 所有格式化 # 會導致nullable enable失效
 
 # [*.cs]
 # # Microsoft .NET properties

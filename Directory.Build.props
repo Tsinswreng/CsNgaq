@@ -1,5 +1,8 @@
 <Project>
-	<PropertyGroup>
-		<AllowMissingPrunePackageData>true</AllowMissingPrunePackageData>
-	</PropertyGroup>
+  <PropertyGroup>
+    <!-- 启用 C# 可为 null 的引用类型注释上下文（全局生效） -->
+    <Nullable>enable</Nullable>
+    <!-- 确保使用较新的语言版本来支持 nullable 特性 -->
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
 </Project>
