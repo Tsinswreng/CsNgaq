@@ -36,9 +36,6 @@
 	url = https://github.com/Tsinswreng/CsSqlHelper.git
 
 
-[submodule "Tsinswreng.CsUlid"]
-	path = Tsinswreng.CsUlid
-	url = https://github.com/Tsinswreng/CsUlid.git
 [submodule "Tsinswreng.CsPage"]
 	path = Tsinswreng.CsPage
 	url = https://github.com/Tsinswreng/CsPage.git

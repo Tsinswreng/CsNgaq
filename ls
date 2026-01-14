@@ -47,7 +47,6 @@ Tsinswreng.CsSqlHelper/
 Tsinswreng.CsSrcGenTools/
 Tsinswreng.CsTools/
 Tsinswreng.CsTypeAlias/
-Tsinswreng.CsUlid/
 Tsinswreng.JavaSqlHelper/
 Tsinswreng.TypstTools/
 UpdSln.sh

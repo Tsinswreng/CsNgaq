@@ -54,5 +54,17 @@
 			],
 			"problemMatcher": "$msCompile"
 		},
+		{
+			"label": "MkWin",
+			"command": "sh",
+			"type": "shell",
+			"args": [
+				"RunWin.sh"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": []
+		}
 	]
 }

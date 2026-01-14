@@ -8,6 +8,6 @@ mkdir -p $DirDebug
 cd $DirWin
 dotnet build --verbosity detailed -p:AllowMissingPrunePackageData=true
 cd ./bin/Debug/net10.0/
-dotnet ./Ngaq.Windows.dll
+#dotnet ./Ngaq.Windows.dll
 #dotnet watch --project ../../../
 

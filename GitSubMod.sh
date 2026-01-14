@@ -10,7 +10,6 @@ git submodule add  https://github.com/Tsinswreng/CsCore.git  Tsinswreng.CsCore
 git submodule add  https://github.com/Tsinswreng/CsErr.git  Tsinswreng.CsErr
 git submodule add  https://github.com/Tsinswreng/CsDictMapper.git  Tsinswreng.CsDictMapper
 git submodule add  https://github.com/Tsinswreng/CsSqlHelper.git  Tsinswreng.CsSqlHelper
-#git submodule add  https://github.com/Tsinswreng/CsUlid.git  Tsinswreng.CsUlid
 git submodule add  https://github.com/Tsinswreng/CsPage.git  Tsinswreng.CsPage
 git submodule add  https://github.com/Tsinswreng/CsCfg.git  Tsinswreng.CsCfg
 git submodule add  https://github.com/Tsinswreng/CsSrcGenTools.git  Tsinswreng.CsSrcGenTools
