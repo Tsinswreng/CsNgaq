@@ -16,6 +16,14 @@
 	- `SvcXxx`: 服務層、寫業務理則。不應直接在此層寫Sql操作數據庫、可調用DaoXxx或RepoXxx
 ]
 
+#H[常用API][
+	#H[表][
+		見
+		- `Tsinswreng.CsSqlHelper.ITable`
+		- `Tsinswreng.CsSqlHelper.ExtnITable`
+	]
+]
+
 #H[數據庫ˇ操作ʹ函數ˇʹ組合複用 與 事務傳播][
 涉及數據庫查詢的方法定義示例:
 ```cs
