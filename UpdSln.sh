@@ -13,6 +13,7 @@ dotnet sln add Tsinswreng.CsSrcGenTools/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsFactoryMkr/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsDictMapper/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsIfaceGen/proj/**/*.csproj
+dotnet sln add Tsinswreng.CsDecl/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsSqlHelper/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsPage/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsCfg/proj/**/*.csproj
