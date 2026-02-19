@@ -10,9 +10,10 @@
 #Params([字典A],[字典B])
 #TParams([鍵],[值])
 #Rtn[合併後的字典]
-#See[{nameof(IDictionary)}]
+#See([{nameof(IDictionary)}],[...])
 #Throw[{nameof(Exception1)}][原因1]
 #Throw[{nameof(Exception2)}][原因2]
+#Example[]
 ...
 ")]
 public IDictionary<K,V> Merge<K,V>(IDictionary<K,V> A, IDictionary<K,V> B)
@@ -26,6 +27,7 @@ public IDictionary<K,V> Merge<K,V>(IDictionary<K,V> A, IDictionary<K,V> B)
 - 不是每個標籤都要寫。按需使用標籤即可。如簡單的函數 像 `int Add(int a, int b)=>a+b;`這種簡單的函數就只用寫`#Sum[兩數相加]`,`#Params([...],[...]...)`, `#Rtn[]`就夠了。
 - 需要引用其他符號的時候就用`nameof`、避免硬編碼。
 - `#Params([],[]...)` 這種是按參數順序填寫。如`#Params([第一個參數的解釋],[第二個參數的解釋]...)`。`#TParams`同理。 *注意是按參數順序填寫解釋、不要再把參數名稱寫上去。*
+- `#Sum[]`標籤可以省略不寫
 
 
 
@@ -47,24 +49,8 @@ public ERelationType Type{get;set;}
 public ERelationType Type{get;set;}
 ```
 
-#H[寫給AI的提示詞][
-	如果你是AI、當你接收到任務、需要在源碼中補充`[Doc]`風格的文檔的時候:
-	- 嚴格按照上面的說明執行
-	- 如果源碼中已經有了xml風格的註釋、仍然要補充上`[Doc]`註釋
-	- 大部分情況下 public的符號 都建議要加 `[Doc]`註釋。除非是代碼非常簡單且意圖顯而易見
-	- 一次性多改點、不要每次就只改了一點東西就來找我確認
-	- 註釋要避免正確廢話。
-		錯誤示例:
-		```cs
-		public class Person{
-			[Doc($@"Default ctor")]
-			public Person(){
+當子類繼承父類或實現接口時、若無特殊情況、Doc應標在父類/接口上而不是子類上
 
-			}
-		}
-		```
-		誰都能一眼看出來`public Person()`是默認構造器、這種註釋毫無意義、所以應當避免。
-
-]
+`#Child[{nameof(ChildClass)}][Descr]`
 
 ]

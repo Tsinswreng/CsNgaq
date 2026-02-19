@@ -18,6 +18,7 @@ dotnet sln add Tsinswreng.CsSqlHelper/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsPage/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsCfg/proj/**/*.csproj
 dotnet sln add Tsinswreng.AvlnTools/proj/**/*.csproj
+dotnet sln add Tsinswreng.CsYamlMd/proj/**/*.csproj
 #dotnet sln add Tsinswreng.AvlnTools/Example/proj/**/*.csproj
 dotnet sln add Tsinswreng.Avln.StrokeText/proj/**/*.csproj
 #dotnet sln add Tsinswreng.Avln.StrokeText/Samples/StrokeText.Sample/**/*.csproj

@@ -20,3 +20,6 @@ global using CT = CancellationToken;
 ]
 
 
+#H[目錄描述][
+	建議每個文件夾下都放一個`_.typ`文件來簡要描述該目錄。
+]

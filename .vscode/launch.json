@@ -5,6 +5,12 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Thesis",
+			"type": "dotnet",
+			"request": "launch",
+			"projectPath": "${workspaceFolder}/Thesis/proj/Thesis/Thesis.csproj"
+		},
+		{
 			"name": "WebServer",
 			"type": "coreclr",
 			"request": "launch",
