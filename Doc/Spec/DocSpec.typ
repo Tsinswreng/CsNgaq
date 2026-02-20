@@ -13,7 +13,7 @@
 #See([{nameof(IDictionary)}],[...])
 #Throw[{nameof(Exception1)}][原因1]
 #Throw[{nameof(Exception2)}][原因2]
-#Example[]
+#Examples([示例1],[示例2])
 ...
 ")]
 public IDictionary<K,V> Merge<K,V>(IDictionary<K,V> A, IDictionary<K,V> B)
@@ -28,7 +28,7 @@ public IDictionary<K,V> Merge<K,V>(IDictionary<K,V> A, IDictionary<K,V> B)
 - 需要引用其他符號的時候就用`nameof`、避免硬編碼。
 - `#Params([],[]...)` 這種是按參數順序填寫。如`#Params([第一個參數的解釋],[第二個參數的解釋]...)`。`#TParams`同理。 *注意是按參數順序填寫解釋、不要再把參數名稱寫上去。*
 - `#Sum[]`標籤可以省略不寫
-
+- `#Examples`支持多個示例、與`#Params`語法類似、小括號內接多組中括號。
 
 
 同一個符號上面可以加多個`[Doc]`特性。
