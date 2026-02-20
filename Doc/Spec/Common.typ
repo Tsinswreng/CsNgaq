@@ -5,6 +5,7 @@
 global using i32 = int;
 global using str = string;
 global using obj = object;
+global using nil = object; // 專門用來表示null
 global using CT = CancellationToken;
 ```
 ]
@@ -17,6 +18,8 @@ global using CT = CancellationToken;
 
 #H[AOT][
 	*!!!所有代碼必須兼容AOT!!!*
+
+	禁止使用一切不兼容AOT的反射
 ]
 
 #H[配置讀取示例][
