@@ -19,7 +19,16 @@ global using CT = CancellationToken;
 	*!!!所有代碼必須兼容AOT!!!*
 ]
 
+#H[配置讀取示例][
+```cs
+using Tsinswreng.CsCfg;
 
-#H[目錄描述][
-	建議每個文件夾下都放一個`_.typ`文件來簡要描述該目錄。
+void ReadCfg(
+	ICfgAccessor Cfg
+	,ICfgItem<str> Item
+){
+	str Value = Cfg.Get(Item);
+}
+```
+
 ]

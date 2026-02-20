@@ -3,6 +3,7 @@
 ```
 Common.typ	-- 通用
 DocSpec.typ -- 在代碼加註釋文檔的規範
+CodeDoc.typ -- 在C#代碼中撰寫目錄文檔的規範
 Db.typ -- 數據庫相關
 Frontend.typ -- 前端相關
 MapEtSerialization.typ -- 對象映射與序列化
