@@ -1,4 +1,5 @@
-#let H(t,d)={}
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
 
 #H[文檔記錄][
 	在代碼中記錄文檔旹*不*使用C\#的xml文檔註釋格式、在本項目中我們使用以下格式:

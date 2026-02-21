@@ -1,4 +1,5 @@
-#let H(t,d)={}
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
 #H[序列化][
 	#H[Json][
 		- 依賴注入 `E:\_code\CsNgaq\Ngaq.Core\Tools\Json\IJsonSerializer.cs`

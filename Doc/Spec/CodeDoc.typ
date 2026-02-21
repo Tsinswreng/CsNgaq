@@ -1,4 +1,5 @@
-#let H(t,d)={}
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
 
 #H[目錄文檔][
 在每個目錄下都放一個`_.cs`的文件 作爲該目錄的文檔。

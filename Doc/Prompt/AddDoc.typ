@@ -1,4 +1,5 @@
-#let H(t,d)={}
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
 #H[寫給AI的提示詞][
 	如果你是AI、當你接收到任務、需要在源碼中補充`[Doc]`風格的文檔的時候:
 	- 嚴格按照上面的說明執行

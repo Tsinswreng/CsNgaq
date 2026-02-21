@@ -1,3 +1,6 @@
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
 Typst 文檔書寫規範
 
 標題用這種寫法:
@@ -29,3 +32,4 @@ Typst 文檔書寫規範
 注意typst和markdown語法的區別。在typst中 加粗是一對星號、不是雙星號
 
 井號是Typst關鍵字。在內容中表達普通井號時要反斜槓轉義。
+
