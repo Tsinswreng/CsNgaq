@@ -55,3 +55,17 @@ public ERelationType Type{get;set;}
 `#Child[{nameof(ChildClass)}][Descr]`
 
 ]
+
+在Doc內的字符串中引用其他符號時 能用`nameof`的就用`nameof`、禁止硬編碼
+
+其他符號 包括 類型, 成員, 方法, 形參 等等。
+
+錯誤示例
+```cs
+[Doc(@$"this is for MyClass ......")]
+```
+
+正確示例
+```
+[Doc(@$"this is for {nameof(MyClass)} ......")]
+```

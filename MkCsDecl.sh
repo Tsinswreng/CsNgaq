@@ -9,3 +9,6 @@ CsDecl Tsinswreng.CsPage/proj/Tsinswreng.CsPage/Tsinswreng.CsPage.csproj  CsDecl
 
 mkdir -p CsDeclOut/Tsinswreng.CsCfg/
 CsDecl Tsinswreng.CsCfg/proj/Tsinswreng.CsCfg/Tsinswreng.CsCfg.csproj  CsDeclOut/Tsinswreng.CsCfg/
+
+mkdir -p CsDeclOut/Tsinswreng.CsErr/
+CsDecl Tsinswreng.CsErr/proj/Tsinswreng.CsErr/Tsinswreng.CsErr.csproj  CsDeclOut/Tsinswreng.CsErr/
