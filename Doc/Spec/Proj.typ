@@ -31,6 +31,10 @@
 
 	#H[Ngaq.Local][
 		後端基礎程序集。
+
+		本地服務端 與 Web服務端 通用的代碼都被這裏。
+
+		主要有用戶詞庫管理等。
 	]
 
 	#H[Ngaq.Frontend][
@@ -62,10 +66,12 @@
 		]
 		後續還有其他平臺特定入口程序集、就不一一列舉了。
 	]
+
+	#H[Ngaq.Server][
+		Web服務端程序集。
+	]
+
+	#H[Ngaq.Test][
+		測試/嘗試 程序集。
+	]
 ]
-
-
-Ngaq.Frontend/
-Ngaq.Local/
-Ngaq.Server/
-Ngaq.Test/
