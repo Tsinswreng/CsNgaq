@@ -17,6 +17,7 @@ global using CT = CancellationToken;
 #H[異步函數規範][
 	- 約定 最後一個參數聲明爲`CT Ct`的爲異步函數、不需要加`Async後綴`
 	- 異步函數不返回值時、返回值聲明爲`Task<nil>`、不用無泛型的Task
+	- 異步函數實現(有方法體的即函數實現)一定要加`async`
 	正確示例: 
 	```cs
 	async Task<nil> WriteToFile(str FilePath, str Content, CT Ct){
