@@ -10,7 +10,22 @@ global using obj = object;
 global using nil = object; // 專門用來表示null
 global using CT = CancellationToken;
 ```
+
+全局變量:`const nil NIL = null`
 ]
+
+#H[異步函數規範][
+	- 約定 最後一個參數聲明爲`CT Ct`的爲異步函數、不需要加`Async後綴`
+	- 異步函數不返回值時、返回值聲明爲`Task<nil>`、不用無泛型的Task
+	正確示例: 
+	```cs
+	async Task<nil> WriteToFile(str FilePath, str Content, CT Ct){
+		...
+		return NIL;
+	}
+	```
+]
+
 
 #H[代碼風格][
 - 左大括號不換行
@@ -25,16 +40,3 @@ global using CT = CancellationToken;
 	- 禁止使用dynamic
 ]
 
-#H[配置讀取示例][
-```cs
-using Tsinswreng.CsCfg;
-
-void ReadCfg(
-	ICfgAccessor Cfg
-	,ICfgItem<str> Item
-){
-	str Value = Cfg.Get(Item);
-}
-```
-
-]
