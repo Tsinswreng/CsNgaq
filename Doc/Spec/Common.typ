@@ -48,3 +48,20 @@ global using CT = CancellationToken;
 	當你修改了模塊的代碼、需要同步更新文檔時、也寫進對應位置的`_.cs`裏
 ]
 
+#H[xml文檔][
+禁止寫 `/// <summary>` 和 `/// </summary>`  因爲太長了
+
+錯誤示例
+```cs
+/// <summary>
+/// This is a summary.
+/// </summary>
+public class MyClass {}
+```
+
+正確示例
+```cs
+/// This is a summary.
+public class MyClass {}
+```
+]
