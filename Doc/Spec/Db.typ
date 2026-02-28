@@ -5,14 +5,14 @@
 
 #H[ORM][
 	- 自研的`Tsinswreng.CsSqlHelper`
-	- 常用API: `E:\_code\CsNgaq\Tsinswreng.CsSqlHelper\proj\Tsinswreng.CsSqlHelper\ExtnITable.cs`
+	- 常用API: `E:\_code\CsNgaq\CsDeclOut\Tsinswreng.CsSqlHelper\ExtnITable.cs`
 	- 需要獲取成員名旹、若有[能用表達式樹拿到成員名]的API 就不要用nameof、
 		- 例: 有`T.Fld(x=>x.Id)`就勿用`T.Fld(nameof(MyEntity.Id))`
 		- 實在沒有纔考慮nameof。但是*絕對禁止硬編碼字段與表名*!
 ]
 
 #H[文件命名][
-	- `IAppRepo<TEntity>`: 通用倉儲類、封裝了常用且通用的Crud方法。接口見`E:\_code\CsNgaq\Tsinswreng.CsSqlHelper\proj\Tsinswreng.CsSqlHelper\IRepo.cs`
+	- `IAppRepo<TEntity>`: 通用倉儲類、封裝了常用且通用的Crud方法。接口見`E:\_code\CsNgaq\CsDeclOut\Tsinswreng.CsSqlHelper\IRepo.cs`
 	- `DaoXxx`: 數據訪問層。寫Sql操作數據庫
 	- `SvcXxx`: 服務層、寫業務理則。不應直接在此層寫Sql操作數據庫、可調用DaoXxx或RepoXxx
 ]
@@ -36,7 +36,7 @@
 ]
 
 #H[數據庫ˇ操作ʹ函數ˇʹ組合複用 與 事務傳播][
-涉及數據庫查詢的方法定義示例:
+涉及數據庫查詢的方法定義示例(非批量):
 ```cs
 public async Task<Func<
 	TId, TArg2,
@@ -77,4 +77,11 @@ public async Task<R> QueryDb(TId Id, TArg2 Arg2, CT Ct){
 #H[其他有用的工具(你不一定會用到、按需讀取)][
 	- 分頁模型: `IPageAsyE<>`
 	- 攢批發送: `BatchCollector`
+]
+
+
+#H[批量操作][
+	#H[多條同結構sql同時拼進sqlCmd.CommandText中][
+		
+	]
 ]
