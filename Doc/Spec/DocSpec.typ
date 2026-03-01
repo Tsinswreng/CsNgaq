@@ -6,7 +6,7 @@
 
 舉例:
 ```cs
-[Doc($@"
+[Doc(@"""
 #Sum[合併兩字典]
 #Params([字典A],[字典B])
 #TParams([鍵],[值])
@@ -16,7 +16,7 @@
 #Throw[{nameof(Exception2)}][原因2]
 #Examples([示例1],[示例2])
 ...
-")]
+""")]
 public IDictionary<K,V> Merge<K,V>(IDictionary<K,V> A, IDictionary<K,V> B)
 	where K:notnull
 {
