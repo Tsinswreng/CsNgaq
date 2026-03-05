@@ -41,11 +41,14 @@
 	]
 
 	#H[Ngaq.Local][
-		後端基礎程序集。
+		後端基礎程序集。 主要負責數據庫IO 等
 
 		本地服務端 與 Web服務端 通用的代碼都被這裏。
 
 		主要有用戶詞庫管理等。
+		
+		- 當 隨客戶端一起編譯時 連接的數據庫是Sqlite
+		- 當 隨Web服務端一起編譯時 連接的數據庫是Pg
 	]
 
 	#H[Ngaq.Frontend][
@@ -77,14 +80,74 @@
 		]
 		後續還有其他平臺特定入口程序集、就不一一列舉了。
 	]
-
-	#H[Ngaq.Server][
-		Web服務端程序集。
-	]
-
 	#H[Ngaq.Test][
+		測試程序集。 主要測試 Ngaq.Core 與 Ngaq.Local 中的功能
+		
+		引用以下程序集:
+		- Ngaq.Core
+		- Ngaq.Local
 		測試/嘗試 程序集。
+		
+		擬使用 Xunit 框架 做自動化測試。
+		
+		- 測試: 指自動化測試、程序自動比較測試用例的預期輸出和實際輸出、批量測試多項
+		- 嘗試: 指人工寫的臨時嘗試。主要是臨時試跑一些代碼 把結果輸出到控制臺看。
+		
+		目前Program類配置了以下依賴注入 可以自動裝配實例 來便捷測試
+		```cs
+	public static void Init(){
+		Di();
+		InitApp();
+	}
+	
+	public static ServiceProvider SvcProvider = null!;
+	public static nil Di(){
+		var svc = new ServiceCollection();
+		svc
+			.SetupCore()
+			.SetupLocal()//TODO 改成按需API調用
+			.SetupLocalFrontend()
+		;
+		SvcProvider = svc.BuildServiceProvider();
+		return NIL;
+	}
+	public static nil InitApp(){
+		AppIniter.Inst.Sp = SvcProvider;
+		_ = AppIniter.Inst.Init(default).Result;
+		return NIL;
+	}
+
+		```
 	]
+
+	#H[Ngaq.Server/][
+		Web服務端目錄(不是程序集)
+		其proj/下有多個程序集。
+		#H[Ngaq.Biz][
+			Web服務端 核心程序集
+			
+			引用
+			- Ngaq.Local
+		]
+		#H[Ngaq.Web][
+			Web Api程序集。
+			
+			主要是把Ngaq.Biz的接口 實現成Web Api(http)。
+			
+			引用
+			- Ngaq.Biz
+		]
+		
+		#H[Ngaq.Server.Test][
+			Web 服務端 測試程序集。
+			
+			引用
+			- Ngaq.Biz
+			- Ngaq.Web
+			- Ngaq.Test
+		]
+	]
+
 ]
 
 #H[文檔與規範][
