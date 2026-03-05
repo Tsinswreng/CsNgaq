@@ -79,6 +79,17 @@
 			Android入口。
 		]
 		後續還有其他平臺特定入口程序集、就不一一列舉了。
+		#H[配置文件][
+			ExternalRsrc/Ngaq.jsonc
+			
+			客戶端配置文件
+			
+			此文件應當與入口exe在同一個目錄下。
+			
+			開發環境中測試運行時也與exe同一目錄。
+			
+			該測試文件中定義了客戶端Sqlite的路徑
+		]
 	]
 	#H[Ngaq.Test][
 		測試程序集。 主要測試 Ngaq.Core 與 Ngaq.Local 中的功能
