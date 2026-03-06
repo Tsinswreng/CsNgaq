@@ -45,3 +45,22 @@ public partial class PoMyEntity
 ```
 ]
 
+
+#H[IdMyEntity][
+API 僞代碼示意
+```cs
+[StronglyTypedId(ConstStrongTypeIdTemplate.UInt128)]
+public record struct IdMyEntity{
+	public UInt128 Value { get; set; }
+	public u8[] ToByteArr();
+	public static readonly IdMyEntity Zero = default;
+	public IdMyEntity(){
+		Value = Ngaq.Core.Tools.ToolId.NewUlidUInt128();
+	}
+	//64進制(位值制 不是base64!)  編碼 0~9  A~Z a~z -_
+	public static IdMyEntity FromLow64Base(string Low64Base);
+	public static IdMyEntity FromByteArr(byte[] bytes);
+	public static bool TryParse(string? S, out IdMyEntity R){}
+}
+```
+]
