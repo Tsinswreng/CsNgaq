@@ -58,32 +58,24 @@ public class DaoWord{
 	){
 		//此處使用了 SqlSplicer 工具、文檔見 CsDeclOut/Tsinswreng.CsSqlHelper/ISqlSplicer.cs
 		// T是Dao的成員變量 代表ITable<PoWord>
-		// 此處的Sql的類型是 I_DuplicateSql 、 不是str
+		// 此處的Sql的類型是 IAutoBindSqlDuplicator 、 不是str
 		var Sql = T.SqlSplicer().Select(x=>x.Id).From().Where1() //.From()不傳參數則默認用T的表名; Where1即 where 1=1
-		.AndEq(x=>x.Owner, out var POwner) // out var POwner 即聲明了一個Sql參數、可在後文直接使用POwner
-		.AndEq(x=>x.Head, out var PHead)
+		.AndEq(x=>x.Owner, y=>y.One(Owner))//綁固定參數、後期生成多條同結構sql時 此位置的實參始終于同一個
+		.AndEq(x=>x.Head, y=>y.Many(Heads))//綁定列表參數、後期生成多條同結構sql時 此位置的實參爲列表對應位置的元素
 		;
 		
-		//第一個泛型參數str是待批量傳入的參數的元素類型、因爲我們稍後要傳入 IEnumerable<str> Heads、所以第一個泛型參數填str
-		//第二個泛型參數即 AutoBatch內部的lambda的返回值類型
-		await using var batch = SqlCmdMkr.AutoBatch<str, IAsyncEnumerable<IdWord?>>(
-			Ctx, Sql,
-			async(z, Heads, Ct)=>{ //第一個參數 z 即 batch 自己
-				var Args = ArgDict.Mk(T)
-				.AddT(POwner, Owner) // AddT即 綁定固定的參數
-				.AddManyT(PHead, Head) // AddManyT即 綁定列表參數 實際傳參時該參數會被傳入列表的每一個元素
-				//執行命令有四種寫法 Asy2d, Asy1d, All2d, All1d
-				// Asy表示返回 IAsyncEnumerable<IStr_Obj> ; All表示返回 IList<IStr_Obj>
-				// 2d表示把結果集分成2維存在不同列表、不混在一起; 1d表示把結果集在同一列表中混在一起
-				var GotDicts = z.SqlCmd.Args(Args).AsyE1d(Ct).OrEmpty();
-				return GotDicts.Select(x=>{
-					var ans = x[T.Memb(x=>x.Id)];//x是 IStr_Obj 類型、這裏我們只取 Id 字段的值
-					return (IdWord?)IdWord.FromByteArr((u8[])ans!);
-				});
+		var GotDicts = SqlCmdMkr.RunBatSql(Ctx, Sql, Ct);//返值類型爲 IAsyncEnumerate
+		return GotDicts.Select(x=>{
+			if(x is null){
+				return null;
 			}
-		);
-		var R = batch.AllFlat(Heads, Ct);//傳入所有Heads參數、R的類型是 IAsyncEnumerable<IdWord?>
-		return R;
+			//因为在Sql中我們只Select了Id一個字段、所以取得的字典只有 Id一個鍵
+			//結果字典的鍵名 和 程序中實體類的字段名相同、與數據庫的列名未必相同
+			// 用 T.Memb(x=>x.SomeField)獲取 實體類的字段名、也可以用 nameof(PoMyEntity.SomeField)
+			// 從數據庫取出的裸Id是 byte[]、後轉自定義強類型Id
+			var ans = x[T.Memb(x=>x.Id)];
+			return (IdWord?)IdWord.FromByteArr((u8[])ans!);
+		});
 	}
 }
 		```
