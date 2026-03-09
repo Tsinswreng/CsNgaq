@@ -1,9 +1,8 @@
 `E:/_code/CsNgaq/Doc/Spec/`
 這個目錄下有項目說明和代碼規範。
+
 ```
 Common.typ	-- 通用
-DocSpec.typ -- 在代碼加註釋文檔的規範
-CodeDoc.typ -- 在C#代碼中撰寫目錄文檔的規範
 Db.typ -- 數據庫相關
 Entity.typ -- 實體類相關
 Frontend.typ -- 前端相關
@@ -12,6 +11,7 @@ Cfg.typ -- 配置文件用法
 Proj.typ -- 項目結構介紹 (按需閱讀、如果你要做的任務只是一個小功能就可以先不看整個項目結構的介紹)
 Err.typ -- 異常處理
 ```
+
 Common.typ是必看項。
 
 其次、根據你這次要做的任務、在上述文件中挑選你所需的來看。

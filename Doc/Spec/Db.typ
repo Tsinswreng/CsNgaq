@@ -8,7 +8,12 @@
 #H[使用的庫][
 	#H[ORM][
 		- 自研的`Tsinswreng.CsSqlHelper`
-		- 常用API: `<項目根目錄>\CsDeclOut\Tsinswreng.CsSqlHelper\ExtnITable.cs`
+			- 文檔: `CsDeclOut/Tsinswreng.CsSqlHelper/`
+				- (優先看CsDeclOut/下的文檔、以節約Token、不建議直接翻Tsinswreng.CsSqlHelper/下的代碼)
+		- 常用API: 
+			- 表對象:`CsDeclOut/Tsinswreng.CsSqlHelper/ExtnITable.cs`
+			- 常用Crud操作: `IRepo`
+				- (IRepo中、以Fn開頭且返回內部函數的函數已廢棄、不建議用)
 		- 需要獲取成員名旹、若有[能用表達式樹拿到成員名]的API 就不要用nameof、
 			- 例: 有`T.Fld(x=>x.Id)`就勿用`T.Fld(nameof(MyEntity.Id))`
 			- 實在沒有纔考慮nameof。但是*絕對禁止硬編碼字段與表名*!
@@ -31,7 +36,8 @@
 	
 	實現量操作旹, 一般有兩種思路
 	
-	一種是使用專爲批量設計的sql語法 如 `IN`子句 但是這種做法適配性有限、與非批量寫法差異較大
+	一種是使用專爲批量設計的sql語法 如 `IN`子句 但是這種做法適配性有限、與非批量寫法差異較大、
+	且IN子句不保證返回順序
 	
 	所以一般只有在 只操作單個字段的時候、我們纔考慮用`IN`子句的批量實現
 	
@@ -41,10 +47,7 @@
 
 		原理: 把多個同結構的Sql語句拼進同一個sqlCmd.CommandText中, 一次執行多條sql語句。
 		以下簡體「同構批量」
-		
 
-		同構批量函數命名必須以 `Bat`開頭
-		
 		代碼示例
 		
 		```cs
@@ -80,9 +83,13 @@ public class DaoWord{
 }
 		```
 	]
+	
+	#H[函數命名規範][
+		- 批量函數 若返回的可迭代集合元素與入參元素位置一一對應(如同構批量)、則函數命名以 `Bat`開頭;
+		- 否則函數名則不得以`Bat`開頭。如用是`IN`子句實現的則建議在函數名中體現出`In`、
+		如`ScltEntitysInIds`
+	]
 ]
-
-
 
 #H[文件命名][
 	- `IRepo<TEntity>`: 通用倉儲類、封裝了常用且通用的Crud方法。接口見`CsDeclOut\Tsinswreng.CsSqlHelper\IRepo.cs`
@@ -109,49 +116,9 @@ public class DaoWord{
 
 ]
 
-#H[數據庫ˇ操作ʹ函數ˇʹ組合複用 與 事務傳播][
-涉及數據庫查詢的方法定義示例(非批量):
-```cs
-public async Task<Func<
-	TId, TArg2,
-	CT, Task<R>
->> FnQueryDb(IDbFnCtx Ctx, CT Ct){
-	//在外層構建帶參數的sql
-	var Sql = T.SqlSplicer().Select().From().WhereT()
-	.AndEq(x=>x.Id, PId).ToSqlStr();
-	;
-	var Cmd = await Ctx.PrepareToDispose(SqlCmdMkr, Sql, Ct);
-	var fnAnother = await FnAnother(Ctx, Ct);//如需組合其他的數據庫操作函數也應在外層構建
-	return async (Id, Arg2)=>{
-		//在裏層傳參並執行sql
-		var Args = ArgDict.Mk(T).AddT(PId, Id)
-		var GotDict = await SqlCmd.Args(Args).AsyE1d(Ct).FirstOrDefaultAsync(Ct);
-		var R = DoSomeHandle(GotDict);//如在此調用fnAnother
-		return R;
-	}
-}
-```
-
-
-
-
-需要封裝成帶事務的函數時:
-```cs
-public async Task<R> QueryDb(TId Id, TArg2 Arg2, CT Ct){
-	return await TxnWraper.Wrap(FnQueryDb, Id, Arg2, Ct);
-}
-```
-]
-
-#H[Sql參數][
-	- 見 ITable.Prm()
-	不准用位置參數。若一定要則用`@_0`, `@_1`的命名參數來模擬
-]
-
 #H[其他有用的工具(你不一定會用到、按需讀取)][
 	- 分頁模型: `IPageAsyE<>`
+		- 在CsDeclOut/Tsinswreng.CsPage/下
 	- 攢批發送: `BatchCollector`
+		- 在CsDeclOut/Tsinswreng.CsTools/下
 ]
-
-
-
