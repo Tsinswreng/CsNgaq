@@ -5,16 +5,46 @@
 	在代碼中記錄文檔旹*不*使用C\#的xml文檔註釋格式、在本項目中我們使用以下格式:
 
 舉例:
-```cs
-[Doc(@"""
+````cs
+[Doc($$"""
 #Sum[合併兩字典]
-#Params([字典A],[字典B])
-#TParams([鍵],[值])
+#Params(
+	[字典A],
+	[字典B],
+)
+#TParams(
+	[鍵],
+	[值],
+)
 #Rtn[合併後的字典]
-#See([{nameof(IDictionary)}],[...])
-#Throw[{nameof(Exception1)}][原因1]
-#Throw[{nameof(Exception2)}][原因2]
-#Examples([示例1],[示例2])
+#See([{{nameof(IDictionary)}}],[...])
+#Throw[{{nameof(Exception1)}}][原因1]
+#Throw[{{nameof(Exception2)}}][原因2]
+#Examples(
+	[
+	```cs
+	var d1 = new Dict<str, obj?>(){
+		["a"] = "A",
+		["b"] = "B",
+	}
+	var d2 = new Dict<str, obj?>(){
+		["c"] = "C",
+	}
+	var R = fn(d1, d2)
+	
+	```
+	
+	```
+	R is
+	{
+		["a"] = "A",
+		["b"] = "B",
+		["c"] = "C",
+	}
+	```
+	],
+	[示例2],
+)
 ...
 """)]
 public IDictionary<K,V> Merge<K,V>(IDictionary<K,V> A, IDictionary<K,V> B)
@@ -22,7 +52,7 @@ public IDictionary<K,V> Merge<K,V>(IDictionary<K,V> A, IDictionary<K,V> B)
 {
 
 }
-```
+````
 說明:
 - 像`#Sum[content]`這樣的 使用的是typst語法。中括號內的東西爲內容塊。內容塊內可以換行; 用星號包裹的內容爲加粗; 用 - 表示無序標題; 用 + 表示有序標題; 用 = 表示一級標題, 用==表示 二級標題。用三個一組的兩組反引號可以包裹代碼塊。不過這些提到的都是高級的，我們推薦你儘量簡單描述，所以大部分時候你是不應該用到很多高級語法的。
 - 不是每個標籤都要寫。按需使用標籤即可。如簡單的函數 像 `int Add(int a, int b)=>a+b;`這種簡單的函數就只用寫`#Sum[兩數相加]`,`#Params([...],[...]...)`, `#Rtn[]`就夠了。
