@@ -8,7 +8,7 @@
 ```cs
 file class DirDoc{
 	str Doc =
-$"""
+$$"""
 #Sum[
 
 ]

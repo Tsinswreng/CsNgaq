@@ -45,6 +45,10 @@ public partial class PoMyEntity
 ```
 ]
 
+#H[PoBase][
+	Ngaq.Core/Shared/Base/Models/Po/IPoBase.cs
+]
+
 
 #H[IdMyEntity][
 API 僞代碼示意
@@ -63,4 +67,8 @@ public record struct IdMyEntity{
 	public static bool TryParse(string? S, out IdMyEntity R){}
 }
 ```
+]
+
+#H[字典映射與序列化][
+	見 MapEtSerialization.typ
 ]

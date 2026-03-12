@@ -85,9 +85,11 @@ public class DaoWord{
 	]
 	
 	#H[函數命名規範][
-		- 批量函數 若返回的可迭代集合元素與入參元素位置一一對應(如同構批量)、則函數命名以 `Bat`開頭;
-		- 否則函數名則不得以`Bat`開頭。如用是`IN`子句實現的則建議在函數名中體現出`In`、
-		如`ScltEntitysInIds`
+		- 批量函數 若返回的可迭代集合元素做不到與入參元素位置一一對應(無則對應null)、則函數命名不得以 `Bat`開頭;
+			- (同構批量應以Bat開頭)
+			例: 
+			- `BatScltEntityById` 表示 返回的可迭代集合元素與入參元素位置一一對應。 
+			- `ScltEntityInId` 函數命名中明確提及`IN`返回的可迭代集合元素與入參元素位置不一一對應。
 	]
 ]
 
@@ -121,4 +123,12 @@ public class DaoWord{
 		- 在CsDeclOut/Tsinswreng.CsPage/下
 	- 攢批發送: `BatchCollector`
 		- 在CsDeclOut/Tsinswreng.CsTools/下
+]
+
+
+#H[廢棄的閉包模式][
+	原架構中使用的模式爲
+	以Fn開頭的操作數據庫的函數返回一個內部函數、在外層函數做命令初始化與預編譯等、在內部函數做實際數據庫操作。
+	
+	當前 這種模式已經被棄用、請改用 Enumerable批量+BatchCollector(如需要)的模式。
 ]
