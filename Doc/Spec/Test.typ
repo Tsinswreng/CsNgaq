@@ -6,20 +6,39 @@
 使用的測試框架: 自研的 `Tsinswreng.CsTest`
 ]
 
-#H[新建測試標準寫法][
+#H[新建測試參考寫法][
+	
+	定義成分部類的形式、每個分部文件只測一個函數
+	
+	分部類主文件不測任何函數 只裝配
+	
+	`_TestXxx.cs`
+	
 	```cs
 	using Tsinswreng.CsTest;
-	public class TestXxx: ITester{
-		private readonly XxxSvc Svc;
+	public partial class TestXxx: ITester{
+		XxxSvc Svc;
 		public TestXxx(XxxSvc svc){
 			Svc = svc;
 		}
-
 		public ITestNode RegisterTestsInto(ITestNode? Test){
 			Test ??= new TestNode();
-			var R = Test.MkFnRegisterTest(typeof(TestXxx), typeof(XxxSvc), "YourTestNamePrefix");
+			var register = Test.MkTestFnRegister(typeof(TestXxx), typeof(XxxSvc), "YourTestNamePrefix");
+			RegisterMyApi1(register);
+			RegisterMyApi2(register);
+			return Test;
+		}
+	}
+	```
 
+	`TestMyApi1.cs`
+	```cs
+	using Tsinswreng.CsTest;
+	public partial class TestXxx{
+		public ITestNode RegisterMyApi1(ITestFnRegister Register){
+			var R = Register.Register;
 			R("YourUniqName1", async(o)=>{
+				//Test With Svc.MyApi1() here
 				// arrange / act / assert
 				return NIL;
 			});
@@ -28,6 +47,22 @@
 				return NIL;
 			});
 
+			return Test;
+		}
+	}
+	```
+	
+	`TestMyApi2.cs`
+	```cs
+	using Tsinswreng.CsTest;
+	public partial class TestXxx{
+		public ITestNode RegisterMyApi2(ITestFnRegister Register){
+			var R = Register.Register;
+			R("YourUniqName3", async(o)=>{
+				//Test With Svc.MyApi2() here
+				return NIL;
+			});
+			//...
 			return Test;
 		}
 	}
@@ -81,7 +116,7 @@
 	參考:
 	- `Ngaq.Test/proj/Ngaq.Windows.Test/WindowsTestMgr.cs`
 
-	標準寫法:
+	參考寫法:
 	```cs
 	public class WindowsTestMgr: DiEtTestMgr{
 		public static WindowsTestMgr Inst = new();
