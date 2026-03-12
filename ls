@@ -43,7 +43,7 @@ Tsinswreng.CsFactoryMkr/
 Tsinswreng.CsIfaceGen/
 Tsinswreng.CsIfaceGen.Cli.exe
 Tsinswreng.CsPage/
-Tsinswreng.CsSqlHelper/
+Tsinswreng.CsSql/
 Tsinswreng.CsSrcGenTools/
 Tsinswreng.CsTools/
 Tsinswreng.CsTypeAlias/

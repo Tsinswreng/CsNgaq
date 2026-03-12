@@ -15,7 +15,7 @@ An app helps you remember vocabularies
 
 Tech Stack:
 - Frontend: C\#, Avalonia
-- Local Backend: C\#, Sqlite, #link("https://github.com/Tsinswreng/CsSqlHelper")[CsSqlHelper]
+- Local Backend: C\#, Sqlite, #link("https://github.com/Tsinswreng/CsSql")[CsSql]
 - Server Backend(in progress): C\#, Asp.net, EFCore, Postgres
 
 Features:

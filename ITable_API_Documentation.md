@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `ITable` interface represents a database table in the Tsinswreng.CsSqlHelper library. It provides properties and extension methods for SQL operations, data mapping, and table management.
+The `ITable` interface represents a database table in the Tsinswreng.CsSql library. It provides properties and extension methods for SQL operations, data mapping, and table management.
 
 ## Interface Definition
 

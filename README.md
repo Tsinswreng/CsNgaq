@@ -7,7 +7,7 @@ Tech Stack:
 -   Frontend: C#, Avalonia
 
 -   Local Backend: C#, Sqlite,
-    [CsSqlHelper](https://github.com/Tsinswreng/CsSqlHelper)
+    [CsSql](https://github.com/Tsinswreng/CsSql)
 
 -   Server Backend(in progress): C#, Asp.net, EFCore, Postgres
 

@@ -1,5 +1,5 @@
 		```cs
-using Tsinswreng.CsSqlHelper;
+using Tsinswreng.CsSql;
 using IStr_Obj = IDictionary<str, obj?>;
 public class DaoWord{
 	public async Task<IAsyncEnumerable<IdWord?>> BatSlctIdByOwnerHead(//同構批量函數名稱必須以Bat開頭
@@ -7,7 +7,7 @@ public class DaoWord{
 		IdUser Owner, IEnumerable<str> Heads
 		,CT Ct // 異步函數必須以CT Ct參數結尾、函數名不另加Async後綴
 	){
-		//此處使用了 SqlSplicer 工具、文檔見 CsDeclOut/Tsinswreng.CsSqlHelper/ISqlSplicer.cs
+		//此處使用了 SqlSplicer 工具、文檔見 CsDeclOut/Tsinswreng.CsSql/ISqlSplicer.cs
 		// T是Dao的成員變量 代表ITable<PoWord>
 		// 此處的Sql的類型是 I_DuplicateSql 、 不是str
 		var Sql = T.SqlSplicer().Select(x=>x.Id).From().Where1() //.From()不傳參數則默認用T的表名; Where1即 where 1=1

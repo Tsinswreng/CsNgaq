@@ -7,11 +7,11 @@
 
 #H[使用的庫][
 	#H[ORM][
-		- 自研的`Tsinswreng.CsSqlHelper`
-			- 文檔: `CsDeclOut/Tsinswreng.CsSqlHelper/`
-				- (優先看CsDeclOut/下的文檔、以節約Token、不建議直接翻Tsinswreng.CsSqlHelper/下的代碼)
+		- 自研的`Tsinswreng.CsSql`
+			- 文檔: `CsDeclOut/Tsinswreng.CsSql/`
+				- (優先看CsDeclOut/下的文檔、以節約Token、不建議直接翻Tsinswreng.CsSql/下的代碼)
 		- 常用API: 
-			- 表對象:`CsDeclOut/Tsinswreng.CsSqlHelper/ExtnITable.cs`
+			- 表對象:`CsDeclOut/Tsinswreng.CsSql/ExtnITable.cs`
 			- 常用Crud操作: `IRepo`
 				- (IRepo中、以Fn開頭且返回內部函數的函數已廢棄、不建議用)
 		- 需要獲取成員名旹、若有[能用表達式樹拿到成員名]的API 就不要用nameof、
@@ -51,7 +51,7 @@
 		代碼示例
 		
 		```cs
-using Tsinswreng.CsSqlHelper;
+using Tsinswreng.CsSql;
 using IStr_Obj = IDictionary<str, obj?>;
 public class DaoWord{
 	public async Task<IAsyncEnumerable<IdWord?>> BatSlctIdByOwnerHead(//同構批量函數名稱必須以Bat開頭
@@ -59,7 +59,7 @@ public class DaoWord{
 		IdUser Owner, IEnumerable<str> Heads
 		,CT Ct // 異步函數必須以CT Ct參數結尾、函數名不另加Async後綴
 	){
-		//此處使用了 SqlSplicer 工具、文檔見 CsDeclOut/Tsinswreng.CsSqlHelper/ISqlSplicer.cs
+		//此處使用了 SqlSplicer 工具、文檔見 CsDeclOut/Tsinswreng.CsSql/ISqlSplicer.cs
 		// T是Dao的成員變量 代表ITable<PoWord>
 		// 此處的Sql的類型是 IAutoBindSqlDuplicator 、 不是str
 		var Sql = T.SqlSplicer().Select(x=>x.Id).From().Where1() //.From()不傳參數則默認用T的表名; Where1即 where 1=1
@@ -94,25 +94,25 @@ public class DaoWord{
 ]
 
 #H[文件命名][
-	- `IRepo<TEntity>`: 通用倉儲類、封裝了常用且通用的Crud方法。接口見`CsDeclOut\Tsinswreng.CsSqlHelper\IRepo.cs`
+	- `IRepo<TEntity>`: 通用倉儲類、封裝了常用且通用的Crud方法。接口見`CsDeclOut\Tsinswreng.CsSql\IRepo.cs`
 	- `DaoXxx`: 數據訪問層。寫Sql操作數據庫
 	- `SvcXxx`: 服務層、寫業務理則。不應直接在此層寫Sql操作數據庫、可調用DaoXxx或RepoXxx
 ]
 
 #H[常用API(重要)][
 	#H[表][
-		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSqlHelper/`下:
+		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSql/`下:
 		- `ITable.cs`
 		- `ExtnITable.cs`
 		- `IRepo.cs`
 	]
 	#H[常用工具][
-		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSqlHelper/CsTools/`下:
+		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSql/CsTools/`下:
 		- `BatchCollector.cs`
 		//AutoBatch
 	]
 	#H[分頁][
-		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSqlHelper/CsPage/`下:
+		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSql/CsPage/`下:
 
 	]
 

@@ -93,43 +93,23 @@
 		]
 	]
 	#H[Ngaq.Test][
-		測試程序集。 主要測試 Ngaq.Core 與 Ngaq.Local 中的功能
+		測試目錄。
 		
-		引用以下程序集:
-		- Ngaq.Core
-		- Ngaq.Local
-		測試/嘗試 程序集。
+		其`proj/`下有多個程序集:
 		
-		擬使用 Xunit 框架 做自動化測試。
+		#H[Ngaq.Core.Test][
+			
+		]
 		
+		#H[Ngaq.Local.Test][
+			
+		]
+		
+		#H[Ngaq.Windows.Test][
+			
+		]
 		- 測試: 指自動化測試、程序自動比較測試用例的預期輸出和實際輸出、批量測試多項
 		- 嘗試: 指人工寫的臨時嘗試。主要是臨時試跑一些代碼 把結果輸出到控制臺看。
-		
-		目前Program類配置了以下依賴注入 可以自動裝配實例 來便捷測試
-		```cs
-	public static void Init(){
-		Di();
-		InitApp();
-	}
-	
-	public static ServiceProvider SvcProvider = null!;
-	public static nil Di(){
-		var svc = new ServiceCollection();
-		svc
-			.SetupCore()
-			.SetupLocal()//TODO 改成按需API調用
-			.SetupLocalFrontend()
-		;
-		SvcProvider = svc.BuildServiceProvider();
-		return NIL;
-	}
-	public static nil InitApp(){
-		AppIniter.Inst.Sp = SvcProvider;
-		_ = AppIniter.Inst.Init(default).Result;
-		return NIL;
-	}
-
-		```
 	]
 
 	#H[Ngaq.Server/][

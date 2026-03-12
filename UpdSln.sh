@@ -15,7 +15,7 @@ dotnet sln add Tsinswreng.CsFactoryMkr/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsDictMapper/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsIfaceGen/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsDecl/proj/**/*.csproj
-dotnet sln add Tsinswreng.CsSqlHelper/proj/**/*.csproj
+dotnet sln add Tsinswreng.CsSql/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsPage/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsCfg/proj/**/*.csproj
 dotnet sln add Tsinswreng.AvlnTools/proj/**/*.csproj
