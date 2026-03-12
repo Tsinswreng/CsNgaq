@@ -125,6 +125,22 @@ public class DaoWord{
 		- 在CsDeclOut/Tsinswreng.CsTools/下
 ]
 
+#H[事務][
+非純查詢的函數、最終在Svc層作API導出旹必須要帶事務
+
+寫法如下
+```cs
+public class SvcWord{
+	public async Task<nil> BatInsertJnWord(IAsyncEnumerable<IJnWord> Words, CT Ct){
+		await SqlCmdMkr.RunInTxn(Ct, async(Ctx)=>
+			DaoWord.BatInsertJnWord(Ctx,Words, Ct)
+		);
+		return NIL;
+	}
+}
+```
+]
+
 
 #H[廢棄的閉包模式][
 	原架構中使用的模式爲
