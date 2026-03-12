@@ -23,6 +23,7 @@
 		}
 		public ITestNode RegisterTestsInto(ITestNode? Test){
 			Test ??= new TestNode();
+			Test.Ordered = true;//默認false。false時、不同的測試用例可能併發執行; 設爲true後當前節點的一級子節點會按插入順序執行。
 			var register = Test.MkTestFnRegister(typeof(TestXxx), typeof(XxxSvc), "YourTestNamePrefix");
 			RegisterMyApi1(register);
 			RegisterMyApi2(register);
@@ -145,6 +146,10 @@
 
 #H[測試涉及數據庫操作的函數][
 要先自行把測試數據插入數據庫、
-注意構造的測試數據要構獨特、避免與其他已有數據重複
-測試結束後(不管成功還是失敗)都要把插入的數據都刪除
+注意構造的測試數據要足夠獨特、避免與其他已有數據重複
+測試結束後(不管成功還是失敗)都要把插入的數據都硬刪除
+
+不需要在每個測試用例都做一遍插入測試數據 再清理測試數據的操作
+可以把Node設爲有序、在最開始的用例做插入數據、在最後一個用例清理數據。
+
 ]
