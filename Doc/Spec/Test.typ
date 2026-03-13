@@ -21,13 +21,13 @@
 		public TestXxx(XxxSvc svc){
 			Svc = svc;
 		}
-		public ITestNode RegisterTestsInto(ITestNode? Test){
-			Test ??= new TestNode();
-			Test.Ordered = true;//默認false。false時、不同的測試用例可能併發執行; 設爲true後當前節點的一級子節點會按插入順序執行。
-			var register = Test.MkTestFnRegister(typeof(TestXxx), typeof(XxxSvc), "YourTestNamePrefix");
+		public ITestNode RegisterTestsInto(ITestNode? Node){
+			Node ??= new TestNode();
+			Node.Ordered = true;//默認false。false時、不同的測試用例可能併發執行; 設爲true後當前節點的一級子節點會按插入順序執行。
+			
 			RegisterMyApi1(register);
 			RegisterMyApi2(register);
-			return Test;
+			return Node;
 		}
 	}
 	```
@@ -36,7 +36,14 @@
 	```cs
 	using Tsinswreng.CsTest;
 	public partial class TestXxx{
-		public ITestNode RegisterMyApi1(ITestFnRegister Register){
+		public void RegisterMyApi1(ITestNode Node){
+			var register = Node.MkTestFnRegister(
+				typeof(TestXxx) // TesterType
+				,[typeof(XxxSvc)] // TesteeTypes
+				,[nameof(XxxSvc.MyApi1)] // TesteeFnNames , must use `nameof()`
+				,"YourTestNamePrefix" // optional
+			);
+			
 			var R = Register.Register;
 			R("YourUniqName1", async(o)=>{
 				//Test With Svc.MyApi1() here
@@ -47,8 +54,9 @@
 			R("YourUniqName2", async(o)=>{
 				return NIL;
 			});
-
-			return Test;
+			
+			//you can modify the fields of `register` then call `Register()`
+			return Node;
 		}
 	}
 	```
@@ -57,14 +65,20 @@
 	```cs
 	using Tsinswreng.CsTest;
 	public partial class TestXxx{
-		public ITestNode RegisterMyApi2(ITestFnRegister Register){
-			var R = Register.Register;
+		public ITestNode RegisterMyApi2(ITestNode Node){
+			var register = Node.MkTestFnRegister(
+				typeof(TestXxx)
+				,[typeof(XxxSvc)]
+				,[nameof(XxxSvc.MyApi2)]
+				,"YourTestNamePrefix"
+			);
+			var R = register.Register;
 			R("YourUniqName3", async(o)=>{
 				//Test With Svc.MyApi2() here
 				return NIL;
 			});
 			//...
-			return Test;
+			return Node;
 		}
 	}
 	```
