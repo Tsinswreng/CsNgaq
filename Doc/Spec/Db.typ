@@ -8,15 +8,73 @@
 #H[使用的庫][
 	#H[ORM][
 		- 自研的`Tsinswreng.CsSql`
-			- 文檔: `CsDeclOut/Tsinswreng.CsSql/`
-				- (優先看CsDeclOut/下的文檔、以節約Token、不建議直接翻Tsinswreng.CsSql/下的代碼)
-		- 常用API: 
-			- 表對象:`CsDeclOut/Tsinswreng.CsSql/ExtnITable.cs`
-			- 常用Crud操作: `IRepo`
+		#H[文檔][
+			在`CsDeclOut/Tsinswreng.CsSql/`
+				- 優先看`<項目根目錄>/CsDeclOut/`下的文檔、以節約Token
+				- 不建議直接翻`<項目根目錄>/Tsinswreng.CsSql/`下的代碼
+		]
+		#H[常用API][
+			#H[表對象][
+				`CsDeclOut/Tsinswreng.CsSql/ExtnITable.cs`
+			]
+			#H[常用Crud操作][
+				`IRepo`
 				- (IRepo中、以Fn開頭且返回內部函數的函數已廢棄、不建議用)
-		- 需要獲取成員名旹、若有[能用表達式樹拿到成員名]的API 就不要用nameof、
-			- 例: 有`T.Fld(x=>x.Id)`就勿用`T.Fld(nameof(MyEntity.Id))`
-			- 實在沒有纔考慮nameof。但是*絕對禁止硬編碼字段與表名*!
+			]
+			#H[`SqlSplicer`][
+				- 需要寫Sql時 能用 `SqlSplicer` 實現的就不要用字符串拼Sql。
+				- 如果 `SqlSplicer` 缺少功能但該功能易于實現則優先爲 `SqlSplicer` 補上該功能
+				- 實在不行再考慮字符串拼sql
+			]
+			
+			#H[代碼實體與數據庫表間的字段與類型映射][
+				代碼: 指*編程語言*的代碼、在當前項目中 「代碼」 即指 C\# 代碼
+				
+				幾個基本概念
+				- 列:
+					- CodeCol: 代碼中實體類的字段名
+					- DbCol: 數據庫表中的列名
+				- 值: 
+					- UpperValue: 代碼中實體類的值
+					- RawValue: 未經映射的 初從數據庫取出的值
+				- 字典:
+					- UpperDict/CodeDict: CodeCol -> UpperValue
+					- RawDict/DbDict: DbCol -> RawValue
+				
+				例(非本項目代碼風格、僅展示概念):
+				```cs
+				public enum EStatus{ON=0,OFF=1}
+				public class User{
+					public IdUser Id{get;set;}
+					public str Name{get;set;}
+					public EStatus Status{get;set;}
+				}
+				var u = new User{
+					Status = EStatus.ON
+				}
+				```
+				
+				```sql
+				CREATE TABLE "user"(
+					"id" BLOB PRIMARY KEY
+					,"name" TEXT
+					,"status" INT
+				)
+				```
+				以 Status字段爲例
+				#table(
+					[CodeCol],[DbCol],[UpperValue],[RawValue],
+					[`nameof(User.Status)`],[`status`],[`EStatus.ON`],[`0`]
+				)
+				
+				*在本項目中、我們會使數據庫表的列名與代碼中定義的實體字段名保持一致*
+			]
+			#H[在Sql中引用成員名][
+				- 需要獲取成員名旹、若有[能用表達式樹拿到成員名]的API 就不要用nameof、
+				- 例: 有`T.Fld(x=>x.Id)`就勿用`T.Fld(nameof(MyEntity.Id))`
+				- 實在沒有纔考慮nameof。但是*絕對禁止硬編碼字段與表名*!
+			]
+		]
 	]
 	#H[強類型Id][
 		命名: Id+實體名 如`IdUser`
