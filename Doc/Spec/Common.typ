@@ -68,7 +68,9 @@ public class MyClass {}
 
 #H[可迭代集合][
 如果代碼中有 `IEnumerable<>`或`IAsyncEnumerable<>`
-則默認是需要懶加載的
+則默認是需要懶加載的。
+
+設計API旹優先接收`IAsyncEnumerable<>`。
 
 謹慎使用`.ToList()`或類似API 因爲這會把所有元素都載入內存!
 ]

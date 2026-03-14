@@ -91,6 +91,7 @@
 	此處的批量操作 包括讀與寫的批量 不只是寫入的批量。
 	
 	*!!設計 讀寫數據庫相關的函數, API時 優先提供批量版本!!*
+	批量函數接收參數時 優先用 `IAsyncEnumerable<>` !
 	
 	實現量操作旹, 一般有兩種思路
 	
@@ -114,7 +115,7 @@ using IStr_Obj = IDictionary<str, obj?>;
 public class DaoWord{
 	public async Task<IAsyncEnumerable<IdWord?>> BatSlctIdByOwnerHead(//同構批量函數名稱必須以Bat開頭
 		IDbFnCtx Ctx, //涉及同構批量的函數 第一個參數必須爲IDbFnCtx Ctx
-		IdUser Owner, IEnumerable<str> Heads
+		IdUser Owner, IAsyncEnumerable<str> Heads // 優先接收異步迭代器
 		,CT Ct // 異步函數必須以CT Ct參數結尾、函數名不另加Async後綴
 	){
 		//此處使用了 SqlSplicer 工具、文檔見 CsDeclOut/Tsinswreng.CsSql/ISqlSplicer.cs
