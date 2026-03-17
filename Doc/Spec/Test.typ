@@ -6,6 +6,19 @@
 使用的測試框架: 自研的 `Tsinswreng.CsTreeTest`
 ]
 
+#H[測試程序集目錄結構][
+```
+Xxx.Test/
+	Xxx.Test.csproj
+	XxxTestMgr.cs
+	User/
+		SvcUser/
+			_TestSvcUser.cs
+			Test
+```
+]
+
+
 #H[新建測試參考寫法][
 	
 	定義成分部類的形式、每個分部文件只測一個函數
@@ -17,8 +30,8 @@
 	```cs
 	using Tsinswreng.CsTreeTest;
 	public partial class TestXxx: ITester{
-		XxxSvc Svc;
-		public TestXxx(XxxSvc svc){
+		SvcUser Svc;
+		public TestXxx(SvcUser svc){
 			Svc = svc;
 		}
 		public ITestNode RegisterTestsInto(ITestNode? Node){
@@ -39,8 +52,8 @@
 		public void RegisterMyApi1(ITestNode Node){
 			var register = Node.MkTestFnRegister(
 				typeof(TestXxx) // TesterType
-				,[typeof(XxxSvc)] // TesteeTypes
-				,[nameof(XxxSvc.MyApi1)] // TesteeFnNames , must use `nameof()`
+				,[typeof(SvcUser)] // TesteeTypes
+				,[nameof(SvcUser.MyApi1)] // TesteeFnNames , must use `nameof()`
 				,"YourTestNamePrefix" // optional
 			);
 			
@@ -56,6 +69,10 @@
 			});
 			
 			//you can modify the fields of `register` then call `Register()`
+			register.UniqNamePrefix = "AnotherUniqNamePrefix"
+			R("YourUniqName", async(o)=>{
+				...
+			});
 			return Node;
 		}
 	}
@@ -68,8 +85,8 @@
 		public ITestNode RegisterMyApi2(ITestNode Node){
 			var register = Node.MkTestFnRegister(
 				typeof(TestXxx)
-				,[typeof(XxxSvc)]
-				,[nameof(XxxSvc.MyApi2)]
+				,[typeof(SvcUser)]
+				,[nameof(SvcUser.MyApi2)]
 				,"YourTestNamePrefix"
 			);
 			var R = register.Register;
