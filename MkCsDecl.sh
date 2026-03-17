@@ -13,5 +13,5 @@ CsDecl Tsinswreng.CsCfg/proj/Tsinswreng.CsCfg/Tsinswreng.CsCfg.csproj  CsDeclOut
 mkdir -p CsDeclOut/Tsinswreng.CsErr/
 CsDecl Tsinswreng.CsErr/proj/Tsinswreng.CsErr/Tsinswreng.CsErr.csproj  CsDeclOut/Tsinswreng.CsErr/
 
-mkdir -p CsDeclOut/Tsinswreng.CsTest/
-CsDecl Tsinswreng.CsTest/proj/Tsinswreng.CsTest/Tsinswreng.CsTest.csproj  CsDeclOut/Tsinswreng.CsTest/
+mkdir -p CsDeclOut/Tsinswreng.CsTreeTest/
+CsDecl Tsinswreng.CsTreeTest/proj/Tsinswreng.CsTreeTest/Tsinswreng.CsTreeTest.csproj  CsDeclOut/Tsinswreng.CsTreeTest/

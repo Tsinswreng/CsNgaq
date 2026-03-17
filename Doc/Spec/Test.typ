@@ -3,7 +3,7 @@
 
 #H[測試規範][
 	
-使用的測試框架: 自研的 `Tsinswreng.CsTest`
+使用的測試框架: 自研的 `Tsinswreng.CsTreeTest`
 ]
 
 #H[新建測試參考寫法][
@@ -15,7 +15,7 @@
 	`_TestXxx.cs`
 	
 	```cs
-	using Tsinswreng.CsTest;
+	using Tsinswreng.CsTreeTest;
 	public partial class TestXxx: ITester{
 		XxxSvc Svc;
 		public TestXxx(XxxSvc svc){
@@ -25,8 +25,8 @@
 			Node ??= new TestNode();
 			Node.Ordered = true;//默認false。false時、不同的測試用例可能併發執行; 設爲true後當前節點的一級子節點會按插入順序執行。
 			
-			RegisterMyApi1(register);
-			RegisterMyApi2(register);
+			RegisterMyApi1(Node);
+			RegisterMyApi2(Node);
 			return Node;
 		}
 	}
@@ -34,7 +34,7 @@
 
 	`TestMyApi1.cs`
 	```cs
-	using Tsinswreng.CsTest;
+	using Tsinswreng.CsTreeTest;
 	public partial class TestXxx{
 		public void RegisterMyApi1(ITestNode Node){
 			var register = Node.MkTestFnRegister(
@@ -63,7 +63,7 @@
 	
 	`TestMyApi2.cs`
 	```cs
-	using Tsinswreng.CsTest;
+	using Tsinswreng.CsTreeTest;
 	public partial class TestXxx{
 		public ITestNode RegisterMyApi2(ITestNode Node){
 			var register = Node.MkTestFnRegister(
