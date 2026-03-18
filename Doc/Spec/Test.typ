@@ -1,130 +1,17 @@
 #import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
 #let H = auto-heading;
 
+// cwln . -i cs$ -e bin -e obj
+
+
 #H[測試規範][
-	
 使用的測試框架: 自研的 `Tsinswreng.CsTreeTest`
 ]
 
-#H[測試程序集目錄結構][
-```
-Xxx.Test/
-	Xxx.Test.csproj
-	XxxTestMgr.cs
-	User/
-		SvcUser/
-			_TestSvcUser.cs
-			Test
-```
+#H[參考示例代碼][
+	看同目錄下 `TestSample.typ`
 ]
 
-
-#H[新建測試參考寫法][
-	
-	定義成分部類的形式、每個分部文件只測一個函數
-	
-	分部類主文件不測任何函數 只裝配
-	
-	`_TestXxx.cs`
-	
-	```cs
-	using Tsinswreng.CsTreeTest;
-	public partial class TestXxx: ITester{
-		SvcUser Svc;
-		public TestXxx(SvcUser svc){
-			Svc = svc;
-		}
-		public ITestNode RegisterTestsInto(ITestNode? Node){
-			Node ??= new TestNode();
-			Node.Ordered = true;//默認false。false時、不同的測試用例可能併發執行; 設爲true後當前節點的一級子節點會按插入順序執行。
-			
-			RegisterMyApi1(Node);
-			RegisterMyApi2(Node);
-			return Node;
-		}
-	}
-	```
-
-	`TestMyApi1.cs`
-	```cs
-	using Tsinswreng.CsTreeTest;
-	public partial class TestXxx{
-		public void RegisterMyApi1(ITestNode Node){
-			var register = Node.MkTestFnRegister(
-				typeof(TestXxx) // TesterType
-				,[typeof(SvcUser)] // TesteeTypes
-				,[nameof(SvcUser.MyApi1)] // TesteeFnNames , must use `nameof()`
-				,"YourTestNamePrefix" // optional
-			);
-			
-			var R = Register.Register;
-			R("YourUniqName1", async(o)=>{
-				//Test With Svc.MyApi1() here
-				// arrange / act / assert
-				return NIL;
-			});
-
-			R("YourUniqName2", async(o)=>{
-				return NIL;
-			});
-			
-			//you can modify the fields of `register` then call `Register()`
-			register.UniqNamePrefix = "AnotherUniqNamePrefix"
-			R("YourUniqName", async(o)=>{
-				...
-			});
-			return Node;
-		}
-	}
-	```
-	
-	`TestMyApi2.cs`
-	```cs
-	using Tsinswreng.CsTreeTest;
-	public partial class TestXxx{
-		public ITestNode RegisterMyApi2(ITestNode Node){
-			var register = Node.MkTestFnRegister(
-				typeof(TestXxx)
-				,[typeof(SvcUser)]
-				,[nameof(SvcUser.MyApi2)]
-				,"YourTestNamePrefix"
-			);
-			var R = register.Register;
-			R("YourUniqName3", async(o)=>{
-				//Test With Svc.MyApi2() here
-				return NIL;
-			});
-			//...
-			return Node;
-		}
-	}
-	```
-
-	這是新增測試類的首選模板。除非場景特殊, 否則不要自行發明另一套註冊方式。
-]
-
-
-#H[怎麼寫單個測試用例][
-	單個測試用例本質上是一個 `async(o)=>{...}`。
-
-	約定:
-	- 成功就 `return NIL;`
-	- 失敗就直接 `throw`
-	- `o` 是預留擴展參數, 不需要時可忽略
-
-	示例:
-	```cs
-	R("Should_Create_Word", async(o)=>{
-		var id = await Svc.Create(...);
-		if(id == null){
-			throw new Exception("id should not be null");
-		}
-		return NIL;
-	});
-	```
-
-	執行器以*是否拋異常*判定成敗。
-]
 
 #H[用例命名][
 	用例名應當滿足:
@@ -133,13 +20,6 @@ Xxx.Test/
 	- 不要寫成含糊的 `Test1`, `Try`, `Temp`
 ]
 
-#H[怎麼把測試類(Tester)註冊到 TestMgr][
-	一個程序集(csproj)中只有一個 `TestMgr`
-	新增完測試類後, *還必須註冊* 到對應的 TestMgr, 否則不會被執行。
-
-	參考:
-	- `Ngaq.Test/proj/Ngaq.Local.Test/LocalTestMgr.cs`
-]
 
 #H[怎麼收編子程序集(csproj)測試][
 	如果是更上層的 TestMgr 
