@@ -4,7 +4,7 @@ cwln . -i cs$ -e bin -e obj
 ```
 
 ```cs
-File: MyProj1.Test/MyProj1TestMgr.cs
+File: MyProj1TestMgr.cs
 01: using MyProj1.Test.MyDomains.Calculator;
 02: using Tsinswreng.CsTreeTest;
 03: 
@@ -23,35 +23,56 @@ File: MyProj1.Test/MyProj1TestMgr.cs
 16: 	}
 17: }
 
-File: MyProj1.Test/Program.cs
-1: using MyProj1.Test;
-2: using Tsinswreng.CsTreeTest;
-3: 
-4: var mgr = MyProj1TestMgr.Inst;
-5: ITestExecutor executor = new TreeTestExecutor();
-6: await executor.RunEtPrint(mgr.TestNode);
+File: Program.cs
+01: using Microsoft.Extensions.DependencyInjection;
+02: using MyProj1.Test;
+03: using MyProj1.Test.MyDomains.Calculator;
+04: using Tsinswreng.CsTreeTest;
+05: 
+06: 
+07: 
+08: 
+09: public class Program{
+10: 	public static IServiceCollection SvcColct = new ServiceCollection();
+11: 	public static IServiceProvider SvcProvdr = null!;
+12: 	public static async Task Main(string[] args){
+13: 		SvcColct
+14: 			//.SetupXxx()
+15: 			.AddSingleton<ICalculator, Calculator>();
+16: 		;
+17: 		var mgr = MyProj1TestMgr.Inst;
+18: 		SvcProvdr = mgr.InitSvc(SvcColct, sc => sc.BuildServiceProvider());
+19: 		ITestExecutor executor = new TreeTestExecutor();
+20: 		await executor.RunEtPrint(mgr.TestNode);
+21: 		
+22: 	}
+23: }
 
-File: MyProj1.Test/MyDomains/AnotherService/_TestAnotherService.cs
+File: MyDomains/AnotherService/_TestAnotherService.cs
 
-File: MyProj1.Test/MyDomains/Calculator/Calculator.cs
+File: MyDomains/Calculator/Calculator.cs
 01: namespace MyProj1.Test.MyDomains.Calculator;
 02: /// example Testee class. this is a sample proj , we put it here for convenience
 03: /// actually testee class are not in the same csproj as test code
-04: public class Calculator {
-05: 	public int Add(int a, int b) {
-06: 		return a + b;
-07: 	}
-08: 	public bool TryIntDivide(int a, int b, out int R) {
-09: 		if (b == 0) {
-10: 			R = default;
-11: 			return false;
-12: 		}
-13: 		R = a / b;
-14: 		return true;
-15: 	}
-16: }
+04: public interface ICalculator {
+05: 	int Add(int a, int b);
+06: 	bool TryIntDivide(int a, int b, out int R);
+07: }
+08: public class Calculator:ICalculator{
+09: 	public int Add(int a, int b) {
+10: 		return a + b;
+11: 	}
+12: 	public bool TryIntDivide(int a, int b, out int R) {
+13: 		if (b == 0) {
+14: 			R = default;
+15: 			return false;
+16: 		}
+17: 		R = a / b;
+18: 		return true;
+19: 	}
+20: }
 
-File: MyProj1.Test/MyDomains/Calculator/TestAdd.cs
+File: MyDomains/Calculator/TestAdd.cs
 01: using Tsinswreng.CsTreeTest;
 02: 
 03: namespace MyProj1.Test.MyDomains.Calculator;
@@ -60,8 +81,8 @@ File: MyProj1.Test/MyDomains/Calculator/TestAdd.cs
 06: 	public void RegisterAdd(ITestNode Node) {
 07: 		var register = Node.MkTestFnRegister(
 08: 			typeof(TestCalculator), // tester type
-09: 			[typeof(Calculator)], // testee types
-10: 			[nameof(MyDomains.Calculator.Calculator.Add)], // testee fn names, must use nameof()
+09: 			[typeof(ICalculator)], // testee types
+10: 			[nameof(MyDomains.Calculator.ICalculator.Add)], // testee fn names, must use nameof()
 11: 			"YourTestNamePrefix" // optional
 12: 		);
 13: 		var R = register.Register;
@@ -84,7 +105,7 @@ File: MyProj1.Test/MyDomains/Calculator/TestAdd.cs
 30: 	}
 31: }
 
-File: MyProj1.Test/MyDomains/Calculator/TestDivide.cs
+File: MyDomains/Calculator/TestDivide.cs
 01: using Tsinswreng.CsTreeTest;
 02: 
 03: namespace MyProj1.Test.MyDomains.Calculator;
@@ -93,8 +114,8 @@ File: MyProj1.Test/MyDomains/Calculator/TestDivide.cs
 06: 	public void RegisterTryIntDivide(ITestNode Node) {
 07: 		var register = Node.MkTestFnRegister(
 08: 			typeof(TestCalculator),
-09: 			[typeof(Calculator)],
-10: 			[nameof(MyDomains.Calculator.Calculator.TryIntDivide)],
+09: 			[typeof(ICalculator)],
+10: 			[nameof(MyDomains.Calculator.ICalculator.TryIntDivide)],
 11: 			"Divide"
 12: 		);
 13: 
@@ -118,7 +139,7 @@ File: MyProj1.Test/MyDomains/Calculator/TestDivide.cs
 31: 	}
 32: }
 
-File: MyProj1.Test/MyDomains/Calculator/_TestCalculator.cs
+File: MyDomains/Calculator/_TestCalculator.cs
 01: //we suggest one tester class corresponds to one testee class.
 02: // and put different tester classes in separates folders.
 03: //now we are in Calculator/ , this is only for `TestCalculator`
@@ -130,22 +151,25 @@ File: MyProj1.Test/MyDomains/Calculator/_TestCalculator.cs
 09: // each part of the class should only test one method
 10: // the main part should not do test but assemble the test cases in other parts.
 11: public partial class TestCalculator : ITester {
-12: 	Calculator Calculator;
-13: 	public TestCalculator() {
-14: 		//you can also use dependency injection
-15: 		Calculator = new Calculator();
-16: 	}
-17: 	
-18: 	public ITestNode RegisterTestsInto(ITestNode? Test) {
-19: 		Test ??= new TestNode();
-20: 		//default is false, if set to true, the tests in this node will run in order.
-21: 		Test.Ordered = false;
-22: 
-23: 		RegisterAdd(Test);
-24: 		RegisterTryIntDivide(Test);
-25: 		return Test;
-26: 	}
-27: }
+12: 	ICalculator Calculator;
+13: 	public TestCalculator(
+14: 		ICalculator Calculator
+15: 	) {
+16: 		this.Calculator = Calculator;
+17: 	}//we use DependencyInjection here
+18: 	// In some scenarios we use di, in other cases
+19: 	// we can directly new the testee class without di
+20: 	
+21: 	public ITestNode RegisterTestsInto(ITestNode? Test) {
+22: 		Test ??= new TestNode();
+23: 		//default is false, if set to true, the tests in this node will run in order.
+24: 		Test.Ordered = false;
+25: 
+26: 		RegisterAdd(Test);
+27: 		RegisterTryIntDivide(Test);
+28: 		return Test;
+29: 	}
+30: }
 
 
 ```
