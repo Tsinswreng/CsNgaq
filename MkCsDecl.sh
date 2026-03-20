@@ -15,3 +15,6 @@ CsDecl Tsinswreng.CsErr/proj/Tsinswreng.CsErr/Tsinswreng.CsErr.csproj  CsDeclOut
 
 mkdir -p CsDeclOut/Tsinswreng.CsTreeTest/
 CsDecl Tsinswreng.CsTreeTest/proj/Tsinswreng.CsTreeTest/Tsinswreng.CsTreeTest.csproj  CsDeclOut/Tsinswreng.CsTreeTest/
+
+mkdir -p CsDeclOut/Tsinswreng.AvlnTools/
+CsDecl Tsinswreng.AvlnTools/proj/Tsinswreng.AvlnTools/Tsinswreng.AvlnTools.csproj  CsDeclOut/Tsinswreng.AvlnTools/
