@@ -39,6 +39,8 @@ public class SvcKv:ISvcKv{
 		IDbFnCtx? Ctx,
 		IAsyncEnumerable<PoKv> Kvs, CT Ct
 	) {
+		//如果操作涉及修改數據庫即需用RunInTxnIfNoCtx
+		//如果是純讀 則用 Ctx??=new DbFnCtx();
 		return await SqlCmdMkr.RunInTxnIfNoCtx(Ctx, Ct, async(Ctx)=>{
 			return await BatSet(Ctx, Kvs, Ct);
 		});

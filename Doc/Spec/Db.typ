@@ -205,5 +205,5 @@ public class SvcWord{
 	原架構中使用的模式爲
 	以Fn開頭的操作數據庫的函數返回一個內部函數、在外層函數做命令初始化與預編譯等、在內部函數做實際數據庫操作。
 	
-	當前 這種模式已經被棄用、請改用 Enumerable批量+BatchCollector(如需要)的模式。
+	當前 這種模式已經被棄用、請改用 IAsyncEnumerable批量+BatchCollector(如需要)的模式。
 ]
