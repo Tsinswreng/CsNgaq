@@ -18,3 +18,8 @@
 - `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/ViewXxx.cs`
 - `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/VmXxx.cs`
 ]
+
+
+#H[UI設計風格][
+	- 不要圓角
+]
