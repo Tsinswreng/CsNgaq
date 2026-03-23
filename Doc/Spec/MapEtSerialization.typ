@@ -5,9 +5,8 @@
 		- 依賴注入 `Ngaq.Core/Tools/Json/IJsonSerializer.cs` (優先)
 		- 或用全局 `JSON.parse()` 等
 	]
-	#H[對象與詞典互轉][
-		- 依賴注入`Tsinswreng.CsDictMapper\proj\Tsinswreng.CsDictMapper\IDictMapperShallow.cs`
-		- 或用全局 `CoreDictMapper.Inst`
+	#H[Srefl][
+		//TODO
 	]
 
 ]

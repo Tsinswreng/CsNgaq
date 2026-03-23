@@ -9,3 +9,4 @@ obj/
 Tsinswreng.JavaSqlHelper/
 *.exe
 CsDeclOut/
+.dotnet_home/
