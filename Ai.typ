@@ -1,21 +1,54 @@
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
 `E:/_code/CsNgaq/Doc/Spec/`
 這個目錄下有項目說明和代碼規範。
 
-```
-Common.typ	-- 通用
-DocSpec.typ -- 在代碼加註釋文檔的規範 (大多數情況你不需要讀此文件 除非明確要求)
-CodeDoc.typ -- 在C#代碼中撰寫目錄文檔的規範 (大多數情況你不需要讀此文件 除非明確要求)
-Db.typ -- 數據庫相關
-Entity.typ -- 實體類相關
-Frontend.typ -- 前端相關
-MapEtSerialization.typ -- 對象映射與序列化
-Cfg.typ -- 配置文件用法
-Proj.typ -- 項目結構介紹 (按需閱讀、如果你要做的任務只是一個小功能就可以先不看整個項目結構的介紹)
-Err.typ -- 異常處理
-Dto.typ -- 數據庫傳輸對象規範
-SvcDao.typ -- Serivce 和 Dao 規範
-Typst.typ -- typst文檔(.typ) 撰寫規範 (大多數情況你不需要讀此文件)
-```
+#H[Common.typ][
+	通用
+]
+
+#H[DocSpec.typ][
+	在代碼加註釋文檔的規範
+	(大多數情況你不需要讀此文件 除非明確要求)
+]
+#H[CodeDoc.typ][
+	在C\#代碼中撰寫目錄文檔的規範 (大多數情況你不需要讀此文件 除非明確要求)
+]
+#H[Db.typ][
+	數據庫操作相關、主要包含自研ORM用法
+]
+#H[Entity.typ][
+	實體類相關
+]
+#H[Frontend.typ][
+	前端相關
+]
+#H[MapEtSerialization.typ][
+	對象映射與序列化
+]
+#H[Cfg.typ][
+	配置文件用法 (大部分情況下你不需要讀配置文件)
+]
+#H[Proj.typ][
+	項目結構介紹 (按需閱讀、如果你要做的任務只是一個小功能就可以先不看整個項目結構的介紹)
+]
+#H[Err.typ][
+	自研異常處理框架 (大部分時候你不用看、直接throw+try-catch即可)
+]
+#H[Dto.typ][
+	數據庫傳輸對象規範 (寫Svc和Dao層的函數時可能會涉及)
+]
+#H[SvcDao.typ][
+	Serivce 和 Dao 規範
+]
+#H[Typst.typ][
+	typst文檔(.typ) 撰寫規範 (大多數情況你不需要讀此文件)
+]
+#H[DbMigration.typ][
+	數據庫遷移 (大多數情況你不需要讀此文件)
+]
+
 
 Common.typ是必看項。
 
