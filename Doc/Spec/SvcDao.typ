@@ -48,5 +48,15 @@ public class SvcKv:ISvcKv{
 }
 
 ```
+		#H[UserCtx][
+			`/Ngaq.Core/Shared/User/UserCtx/IUserCtx.cs`
+			常用API:
+			- `UserCtx.UserId`
+			
+			Svc層中、若函數的前兩個參數爲`IDbFnCtx? Ctx, IUserCtx User`、
+			則應改定義成 `IDbUserCtx`
+			`/Ngaq.Core/Infra/DbUserCtx.cs`
+			以減少重複參數數量
+		]
 	]
 ]
