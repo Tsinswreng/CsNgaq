@@ -142,3 +142,12 @@ System.InvalidOperationException: This SqliteTransaction has completed; it is no
 #H[2025-12-25T16:42:27.335+08:00_W52-4][
 	底菜單蘭 當前所在標籤 高亮
 ]
+
+#H[2026_0324_231201][
+WinGlobalKey AOT下啓動後 無法顯程序主界面
+]
+
+#H[E:\_code\CsNgaq\Ngaq.Test\proj\Ngaq.Local.Test\Domains\Word\SvcWordV2\TestISvcWordV2.BatAddNewWordToLearn.cs][
+	補測試用例。
+	
+]

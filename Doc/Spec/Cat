@@ -1,0 +1,1289 @@
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+#H[配置讀取示例][
+```cs
+using Tsinswreng.CsCfg;
+
+void ReadCfg(
+	ICfgAccessor Cfg
+	,ICfgItem<str> Item
+){
+	str Value = Cfg.Get(Item);
+}
+```
+
+]
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+#H[目錄文檔][
+在每個目錄下都放一個`_.cs`的文件 作爲該目錄的文檔。描述該目錄或所屬模塊/領域的功能職責等。
+
+內容結構:
+```cs
+file class DirDoc{
+	str Doc =
+$$"""
+#Sum[
+
+]
+#Descr[
+
+]
+""";
+}
+
+```
+
+- 必須定義成`file class DirDoc{}`
+- `str Doc`必須使用多行文本塊。其內部使用Typst語法。
+- 需要引用符號名稱時使用`nameof()`、不要硬編碼。
+
+]
+
+#H[文件文檔][
+在cs文件頂部放`file class __FileDoc{}`來作文件文檔、描述這個文件。
+其餘內容同DirDoc。
+]
+
+
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+註釋內容的規範
+
+不論註釋形式是普通註釋或是DocAttr的註釋 都適用本規則
+
+- 大部分情況下 public的符號 都建議要加註釋。除非是代碼非常簡單且意圖顯而易見
+- 註釋要避免正確廢話
+
+錯誤示例:
+```cs
+public class Person{
+	[Doc($@"Default ctor")]
+	public Person(){
+
+	}
+}
+```
+誰都能一眼看出來`public Person()`是默認構造器、這種註釋毫無意義、所以應當避免。
+
+- 註釋要多舉例子
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+通用C\#代碼規範
+#H[類型別名][
+```cs
+global using i32 = int;
+global using str = string;
+global using obj = object;
+global using nil = object; // 專門用來表示null
+global using CT = CancellationToken;
+```
+
+全局變量:`const nil NIL = null`
+]
+
+#H[異步函數規範][
+	- 約定 最後一個參數聲明爲`CT Ct`的爲異步函數、不需要加`Async後綴`
+	- 異步函數不返回值時、返回值聲明爲`Task<nil>`、不用無泛型的Task
+	- 異步函數實現(有方法體的即函數實現)一定要加`async`
+	正確示例: 
+	```cs
+	async Task<nil> WriteToFile(str FilePath, str Content, CT Ct){
+		...
+		return NIL;
+	}
+	```
+]
+
+
+#H[代碼風格][
+- 左大括號不換行
+- 除函數中的局部變量外、所有標識符(包括函數參數)都用大駝峯! 首字母要大寫!
+]
+
+#H[AOT][
+	*!!!所有代碼必須兼容AOT!!!*
+	- 禁止使用一切不兼容AOT的反射, Emit等
+	- 禁止在表達式樹外使用匿名對象
+	- 禁止使用dynamic
+]
+
+#H[目錄文檔][
+	目錄下的`_.cs`的文件 作爲該目錄的文檔。描述該目錄或所屬模塊/領域的功能職責等。
+	
+	如果你的任務涉及到某些模塊、建議先閱讀裏面的說明㕥瞭解業務
+	
+	當你修改了模塊的代碼、需要同步更新文檔時、也寫進對應位置的`_.cs`裏
+]
+
+#H[xml文檔][
+禁止寫 `/// <summary>` 和 `/// </summary>`  因爲太長了
+
+錯誤示例
+```cs
+/// <summary>
+/// This is a summary.
+/// </summary>
+public class MyClass {}
+```
+
+正確示例
+```cs
+/// This is a summary.
+public class MyClass {}
+```
+]
+
+#H[可迭代集合][
+如果代碼中有 `IEnumerable<>`或`IAsyncEnumerable<>`
+則默認是需要懶加載的。
+
+設計API旹優先接收`IAsyncEnumerable<>`。
+
+謹慎使用`.ToList()`或類似API 因爲這會把所有元素都載入內存!
+]
+
+
+#H[註釋][
+	- 修改代碼時禁止刪除我已有的註釋
+	- 新寫的代碼一定要多加註釋
+	- 註釋要避免正確的廢話 不能只是把表面的流程和意思翻譯一遍
+]
+
+#H[自研庫的文檔][
+	對于自研庫(即命名空間以`Tsinswreng`開頭的)
+	要開文檔優先看 `<項目根目錄>/CsDeclOut/`下的
+	如非必要則禁止亂翻我的`<項目根目錄>/Tsinswreng.Xxx/`裏的源代碼!
+]
+再次重申
+除了/CsDeclOut/中的代碼
+其他所有 路徑包含`Tsinswreng.`文件都禁止讀取!
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+數據庫操作規範
+
+*所有操作都要兼容AOT!!!*
+
+#H[使用的庫][
+	#H[ORM][
+		- 自研的`Tsinswreng.CsSql`
+		#H[文檔][
+			在`CsDeclOut/Tsinswreng.CsSql/`
+				- 優先看`<項目根目錄>/CsDeclOut/`下的文檔、以節約Token
+				- 不建議直接翻`<項目根目錄>/Tsinswreng.CsSql/`下的代碼
+		]
+		#H[常用API][
+			#H[表對象][
+				`CsDeclOut/Tsinswreng.CsSql/ExtnITable.cs`
+			]
+			#H[常用Crud操作][
+				`IRepo`
+				- (IRepo中、以Fn開頭且返回內部函數的函數已廢棄、不建議用)
+			]
+			#H[`SqlSplicer`][
+				- 需要寫Sql時 能用 `SqlSplicer` 實現的就不要用字符串拼Sql。
+				- 如果 `SqlSplicer` 缺少功能但該功能易于實現則優先爲 `SqlSplicer` 補上該功能
+				- 實在不行再考慮字符串拼sql
+			]
+			
+			#H[代碼實體與數據庫表間的字段與類型映射][
+				代碼: 指*編程語言*的代碼、在當前項目中 「代碼」 即指 C\# 代碼
+				
+				幾個基本概念
+				- 列:
+					- CodeCol: 代碼中實體類的字段名
+					- DbCol: 數據庫表中的列名
+				- 值: 
+					- UpperValue: 代碼中實體類的值
+					- RawValue: 未經映射的 初從數據庫取出的值
+				- 字典:
+					- UpperDict/CodeDict: CodeCol -> UpperValue
+					- RawDict/DbDict: DbCol -> RawValue
+				
+				例(非本項目代碼風格、僅展示概念):
+				```cs
+				public enum EStatus{ON=0,OFF=1}
+				public class User{
+					public IdUser Id{get;set;}
+					public str Name{get;set;}
+					public EStatus Status{get;set;}
+				}
+				var u = new User{
+					Status = EStatus.ON
+				}
+				```
+				
+				```sql
+				CREATE TABLE "user"(
+					"id" BLOB PRIMARY KEY
+					,"name" TEXT
+					,"status" INT
+				)
+				```
+				以 Status字段爲例
+				#table(
+					[CodeCol],[DbCol],[UpperValue],[RawValue],
+					[`nameof(User.Status)`],[`status`],[`EStatus.ON`],[`0`]
+				)
+				
+				*在本項目中、我們會使數據庫表的列名與代碼中定義的實體字段名保持一致*
+			]
+			#H[在Sql中引用成員名][
+				- 需要獲取成員名旹、若有[能用表達式樹拿到成員名]的API 就不要用nameof、
+				- 例: 有`T.Fld(x=>x.Id)`就勿用`T.Fld(nameof(MyEntity.Id))`
+				- 實在沒有纔考慮nameof。但是*絕對禁止硬編碼字段與表名*!
+			]
+		]
+	]
+	#H[強類型Id][
+		命名: Id+實體名 如`IdUser`
+		
+		內部封裝了 UInt128、生成的羅輯是ULID (前48位是unix毫秒時間戳、後80位是隨機數)
+		
+		在數據庫存儲時被映射到`byte[]`類型
+	]
+
+]
+
+#H[批量操作][
+	
+	此處的批量操作 包括讀與寫的批量 不只是寫入的批量。
+	
+	*!!設計 讀寫數據庫相關的函數, API時 優先提供批量版本!!*
+	批量函數接收參數時 優先用 `IAsyncEnumerable<>` !
+	
+	實現量操作旹, 一般有兩種思路
+	
+	一種是使用專爲批量設計的sql語法 如 `IN`子句 但是這種做法適配性有限、與非批量寫法差異較大、
+	且IN子句不保證返回順序
+	
+	所以一般只有在 只操作單個字段的時候、我們纔考慮用`IN`子句的批量實現
+	
+	其他大多數時候都是用 基于拼接同結構sql語句的批量操作
+	
+	#H[基于拼接同結構sql語句的批量操作][
+
+		原理: 把多個同結構的Sql語句拼進同一個sqlCmd.CommandText中, 一次執行多條sql語句。
+		以下簡體「同構批量」
+
+		代碼示例
+		
+		```cs
+using Tsinswreng.CsSql;
+using IStr_Obj = IDictionary<str, obj?>;
+public class DaoWord{
+	public async Task<IAsyncEnumerable<IdWord?>> BatSlctIdByOwnerHead(//同構批量函數名稱必須以Bat開頭
+		IDbFnCtx Ctx, //涉及同構批量的函數 第一個參數必須爲IDbFnCtx Ctx
+		IdUser Owner, IAsyncEnumerable<str> Heads // 優先接收異步迭代器
+		,CT Ct // 異步函數必須以CT Ct參數結尾、函數名不另加Async後綴
+	){
+		//此處使用了 SqlSplicer 工具、文檔見 CsDeclOut/Tsinswreng.CsSql/ISqlSplicer.cs
+		// T是Dao的成員變量 代表ITable<PoWord>
+		// 此處的Sql的類型是 IAutoBindSqlDuplicator 、 不是str
+		var Sql = T.SqlSplicer().Select(x=>x.Id).From().Where1() //.From()不傳參數則默認用T的表名; Where1即 where 1=1
+		.AndEq(x=>x.Owner, y=>y.One(Owner))//綁固定參數、後期生成多條同結構sql時 此位置的實參始終于同一個
+		.AndEq(x=>x.Head, y=>y.Many(Heads))//綁定列表參數、後期生成多條同結構sql時 此位置的實參爲列表對應位置的元素
+		;
+		
+		var GotDicts = SqlCmdMkr.RunBatSql(Ctx, Sql, Ct);//返值類型爲 IAsyncEnumerate
+		return GotDicts.Select(x=>{
+			if(x is null){
+				return null;
+			}
+			//因为在Sql中我們只Select了Id一個字段、所以取得的字典只有 Id一個鍵
+			//結果字典的鍵名 和 程序中實體類的字段名相同、與數據庫的列名未必相同
+			// 用 T.Memb(x=>x.SomeField)獲取 實體類的字段名、也可以用 nameof(PoMyEntity.SomeField)
+			// 從數據庫取出的裸Id是 byte[]、後轉自定義強類型Id
+			var ans = x[T.Memb(x=>x.Id)];
+			return (IdWord?)IdWord.FromByteArr((u8[])ans!);
+		});
+	}
+}
+		```
+	]
+	
+	#H[函數命名規範][
+		- 批量函數 若返回的可迭代集合元素做不到與入參元素位置一一對應(無則對應null)、則函數命名不得以 `Bat`開頭;
+			- (同構批量應以Bat開頭)
+			例: 
+			- `BatScltEntityById` 表示 返回的可迭代集合元素與入參元素位置一一對應。 
+			- `ScltEntityInId` 函數命名中明確提及`IN`返回的可迭代集合元素與入參元素位置不一一對應。
+	]
+]
+
+#H[文件命名][
+	- `IRepo<TEntity>`: 通用倉儲類、封裝了常用且通用的Crud方法。接口見`CsDeclOut\Tsinswreng.CsSql\IRepo.cs`
+	- `DaoXxx`: 數據訪問層。寫Sql操作數據庫
+	- `SvcXxx`: 服務層、寫業務理則。不應直接在此層寫Sql操作數據庫、可調用DaoXxx或RepoXxx
+]
+
+#H[常用API(重要)][
+	#H[表][
+		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSql/`下:
+		- `ITable.cs`
+		- `ExtnITable.cs`
+		- `IRepo.cs`
+	]
+	#H[常用工具][
+		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSql/CsTools/`下:
+		- `BatchCollector.cs`
+		//AutoBatch
+	]
+	#H[分頁][
+		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSql/CsPage/`下:
+
+	]
+
+]
+
+#H[其他有用的工具(你不一定會用到、按需讀取)][
+	- 分頁模型: `IPageAsyE<>`
+		- 在CsDeclOut/Tsinswreng.CsPage/下
+	- 攢批發送: `BatchCollector`
+		- 在CsDeclOut/Tsinswreng.CsTools/下
+]
+
+#H[事務][
+非純查詢的函數、最終在Svc層作API導出旹必須要帶事務
+
+寫法如下
+```cs
+public class SvcWord{
+	public async Task<nil> BatInsertJnWord(IAsyncEnumerable<IJnWord> Words, CT Ct){
+		await SqlCmdMkr.RunInTxn(Ct, async(Ctx)=>
+			DaoWord.BatInsertJnWord(Ctx,Words, Ct)
+		);
+		return NIL;
+	}
+}
+```
+]
+
+
+#H[廢棄的閉包模式][
+	原架構中使用的模式爲
+	以Fn開頭的操作數據庫的函數返回一個內部函數、在外層函數做命令初始化與預編譯等、在內部函數做實際數據庫操作。
+	
+	當前 這種模式已經被棄用、請改用 IAsyncEnumerable批量+BatchCollector(如需要)的模式。
+]
+//此文件爲AI生成 與實際情況可能不符
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+數據庫遷移
+
+#H[目標][
+	當你需要對*現有數據庫*做結構變更（增表、增列、刪列、改名、索引調整等）時：
+
+	- 保持 `TblMgrIniter` 中的實體映射始終是*最新版*。
+	- 另外新增一條「增量遷移」記錄，讓舊庫可升級到最新版。
+	- 禁止降級遷移（不做自動 Down）。
+]
+
+#H[三層分工][
+	- `Tsinswreng.CsSql`
+		- 放通用遷移抽象與執行器（`IMigrationMgr`、`MigrationMgr`、`MigrationRunner` 等）。
+		- 不放業務遷移內容。
+
+	- `Ngaq.Local`
+		- 放客戶端遷移清單（`UseLocalMigrations()`）與本地遷移類。
+
+	- `Ngaq.Biz`
+		- 放服務端遷移清單（`UseServerMigrations()`）與服務端遷移類。
+]
+
+#H[新增遷移的標準流程][
+	#H[先改最新版映射（必做）][
+		先在 `TblMgrIniter` 對應位置修改最新版表結構（這一步是權威來源）。
+
+		例如新增 `PoStudyPlan` 系列：
+
+		- 在 `LocalTblMgrIniter` 中補充/調整 `InitStudyPlan()`。
+		- 若服務端也用到，確保 `ServerTblMgrIniter` 最終映射含該結構。
+	]
+
+	#H[新建一個遷移類][
+		在對應程序集新增 `SqlMigrationInfo` 類：
+
+		- 類名建議：`MYYYY_MMDD_HHMMSS_描述`
+		- 必填：`CreatedMs`（全局唯一、遞增）
+		- `Init()` 中生成 `SqlsUp`
+
+		推薦做法：
+
+		- *純加表/加索引*：直接用 `TblMgr` + DSL 生成 DDL（最不易與最新版不一致）
+		- *改名/複雜改造*：可手寫 SQL
+	]
+
+	#H[註冊到遷移清單][
+		把新遷移加入清單函數：
+
+		- 客戶端：`UseLocalMigrations()`
+		- 服務端：`UseServerMigrations()`
+
+		使用 `AddMigrationsIfAbsent([...])` 註冊，按 `CreatedMs` 去重。
+	]
+
+	#H[執行方式][
+		- 客戶端啓動：
+			- 新安裝：建最新版庫 + `MarkAllApplied()`
+			- 舊庫升級：`RunPendingMigrations()`
+
+		- 服務端部署：
+			- 在部署腳本/工具中調 `MigrationRunner.UpAsy()`，僅執行未應用遷移。
+	]
+
+	#H[驗證][
+		至少做兩類驗證：
+
+		- 新庫驗證：從 0 建庫後可正常跑。
+		- 升級驗證：拿一個舊版本庫，升級後可正常跑。
+	]
+]
+
+#H[常見變更怎麼做][
+	#H[新增表][
+		1. 在最新版 `TblMgrIniter` 註冊新表。
+		2. 新建一條遷移，輸出該表 DDL。
+		3. 註冊遷移。
+	]
+
+	#H[新增列][
+		1. 先改最新版映射（加屬性、映射、必要索引）。
+		2. 遷移 SQL 用 `ALTER TABLE ADD COLUMN ...`。
+		3. 如需回填默認值，緊接 `UPDATE ...`。
+	]
+
+	#H[刪除列][
+		1. 先評估數據保留策略（備份/搬遷）。
+		2. 再改最新版映射。
+		3. 遷移中做安全刪除（不同方言可能需要中間表策略）。
+	]
+
+	#H[改名（表/列）][
+		1. 改最新版映射名稱。
+		2. 遷移中明確寫 rename SQL（必要時兼容舊查詢過渡）。
+		3. 不要依賴自動 diff 猜改名。
+	]
+]
+
+#H[規則][
+	- 每次結構變更都要「*改最新版映射 + 新增一條遷移*」。
+	- `CreatedMs` 不可重複。
+	- 已發佈遷移只追加，不回寫歷史。
+	- 遷移失敗必須整體回滾（單事務執行）。
+	- 禁止自動降級。
+]
+
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+#H[文檔記錄][
+	在代碼中記錄文檔旹*不*使用C\#的xml文檔註釋格式、在本項目中我們使用以下格式:
+
+舉例:
+````cs
+[Doc($$"""
+#Sum[合併兩字典]
+#Params(
+	[字典A],
+	[字典B],
+)
+#TParams(
+	[鍵],
+	[值],
+)
+#Rtn[合併後的字典]
+#See([{{nameof(IDictionary)}}],[...])
+#Throw[{{nameof(Exception1)}}][原因1]
+#Throw[{{nameof(Exception2)}}][原因2]
+#Examples(
+	[
+	```cs
+	var d1 = new Dict<str, obj?>(){
+		["a"] = "A",
+		["b"] = "B",
+	}
+	var d2 = new Dict<str, obj?>(){
+		["c"] = "C",
+	}
+	var R = fn(d1, d2)
+	
+	```
+	
+	```
+	R is
+	{
+		["a"] = "A",
+		["b"] = "B",
+		["c"] = "C",
+	}
+	```
+	],
+	[示例2],
+)
+...
+""")]
+public IDictionary<K,V> Merge<K,V>(IDictionary<K,V> A, IDictionary<K,V> B)
+	where K:notnull
+{
+
+}
+````
+說明:
+- 像`#Sum[content]`這樣的 使用的是typst語法。中括號內的東西爲內容塊。內容塊內可以換行; 用星號包裹的內容爲加粗; 用 - 表示無序標題; 用 + 表示有序標題; 用 = 表示一級標題, 用==表示 二級標題。用三個一組的兩組反引號可以包裹代碼塊。不過這些提到的都是高級的，我們推薦你儘量簡單描述，所以大部分時候你是不應該用到很多高級語法的。
+- 不是每個標籤都要寫。按需使用標籤即可。如簡單的函數 像 `int Add(int a, int b)=>a+b;`這種簡單的函數就只用寫`#Sum[兩數相加]`,`#Params([...],[...]...)`, `#Rtn[]`就夠了。
+- 需要引用其他符號的時候就用`nameof`、避免硬編碼。
+- `#Params([],[]...)` 這種是按參數順序填寫。如`#Params([第一個參數的解釋],[第二個參數的解釋]...)`。`#TParams`同理。 *注意是按參數順序填寫解釋、不要再把參數名稱寫上去。*
+- `#Sum[]`標籤可以省略不寫
+- `#Examples`支持多個示例、與`#Params`語法類似、小括號內接多組中括號。
+
+
+同一個符號上面可以加多個`[Doc]`特性。
+
+當Doc只寫一個 `#Sum`標籤旹 應該簡化
+
+正確示例:
+```cs
+[Doc($@"Type of the relationship")]
+public ERelationType Type{get;set;}
+```
+
+不建議的示例:
+```cs
+[Doc($@"
+#Sum[Type of the relationship]
+")]
+public ERelationType Type{get;set;}
+```
+
+當子類繼承父類或實現接口時、若無特殊情況、Doc應標在父類/接口上而不是子類上
+
+`#Child[{nameof(ChildClass)}][Descr]`
+
+]
+
+在Doc內的字符串中引用其他符號時 能用`nameof`的就用`nameof`、禁止硬編碼
+
+其他符號 包括 類型, 成員, 方法, 形參 等等。
+
+錯誤示例
+```cs
+[Doc(@$"this is for MyClass ......")]
+```
+
+正確示例
+```
+[Doc(@$"this is for {nameof(MyClass)} ......")]
+```
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+數據傳輸對象 規範
+
+#H[Req][
+作入參的 命名前綴爲 Req、 需要實現 IReq接口
+
+文件放置在 `<MyDomain>/Models/Req/`下
+
+例
+```cs
+namespace Ngaq.Core.Shared.User.Models.Req;
+using Ngaq.Core.Shared.Base.Models.Req;
+public partial class ReqAddUser: IReq{
+	public str? UniqName{get;set;} = "";
+	public str Email{get;set;} = "";
+	public str Password{get;set;} = "";
+}
+
+```
+]
+
+#H[Resp][
+返回的 命名前綴爲 Resp、 需要實現 IResp接口
+
+]
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+實體規範
+
+#H[基實體][
+見
+- `Ngaq.Core\Shared\Base\Models\Po\IPoBase.cs`
+- `E:\_code\CsNgaq\Ngaq.Core\Shared\Base\Models\Po\PoBase.cs`
+
+]
+
+文件結構:
+
+`<MyDomain>/Models/Po/<MyEntity>/`
+
+在此文件夾下建立兩個文件
+- `PoMyEntity.cs`
+- `IdMyEntity.cs`
+
+#H[IdMyEntity][
+```cs
+namespace Ngaq.Core.Shared.MyDomain.Models.Po.MyEntity;
+
+using Ngaq.Core.Model.Consts;
+using StronglyTypedIds;
+
+[StronglyTypedId(ConstStrongTypeIdTemplate.UInt128)]//ulid 48位unix毫秒時間戳+80位隨機數
+public partial struct IdMyEntity {
+
+}
+
+```
+]
+
+#H[PoMyEntity][
+```cs
+public partial class PoMyEntity
+	:PoBaseBizTime // 若不需要 業務上的時間屬性, 則只繼承 PoBase即可
+	,I_Id<IdMyEntity>
+{
+	public IdMyEntity Id { get; set; } = new(); //必須顯式寫`=new()`來初始化! 否則會變0值
+	//...其他成員
+}
+```
+]
+
+#H[PoBase][
+	Ngaq.Core/Shared/Base/Models/Po/IPoBase.cs
+]
+
+
+#H[IdMyEntity][
+API 僞代碼示意
+```cs
+[StronglyTypedId(ConstStrongTypeIdTemplate.UInt128)]
+public record struct IdMyEntity{
+	public UInt128 Value { get; set; }
+	public u8[] ToByteArr();
+	public static readonly IdMyEntity Zero = default;
+	public IdMyEntity(){
+		Value = Ngaq.Core.Tools.ToolId.NewUlidUInt128();
+	}
+	//64進制(位值制 不是base64!)  編碼 0~9  A~Z a~z -_
+	public static IdMyEntity FromLow64Base(string Low64Base);
+	public static IdMyEntity FromByteArr(byte[] bytes);
+	public static bool TryParse(string? S, out IdMyEntity R){}
+}
+```
+]
+
+#H[字典映射與序列化][
+	見 MapEtSerialization.typ
+]
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+#[異常處理]
+
+
+
+異常框架 用例 見 `<項目根目錄>Tsinswreng.CsErr/proj/Tsinswreng.CsErr.Test/Sample.cs`
+
+本程序的異常條目枚舉 在`<項目根目錄>Ngaq.Core/Infra/Errors/ItemsErr.cs`:
+
+注意內部類按領域劃分
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+前端代碼規範
+#H[項目技術棧][
+- 語言C\#
+- 平臺: .NET 10 AOT發佈(所有代碼必須兼容AOT)
+- 框架: Avalonia (純C\# 不用Xaml)
+- UI工具庫: `<項目根目錄>/CsDeclOut/Tsinswreng.AvlnTools/`
+- 因爲要一套UI同時兼容移動端平臺與桌面端平臺、所以所有UI佈局都按豎屏移動端的來做
+
+]
+
+#H[架構][
+- MVVM模式
+參考
+- `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/Sample/**/*.cs`
+- `Ngaq.Frontend/proj/Ngaq.Ui/Infra/ViewModelBase.cs`
+
+這兩個是模板、你不用看、上面的Sample/已經包含了
+- `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/ViewXxx.cs`
+- `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/VmXxx.cs`
+]
+
+
+#H[UI設計風格][
+	- 不要圓角
+]
+
+#H[常用工具][
+帶標題修飾器:
+`Ngaq.Frontend\proj\Ngaq.Ui\Tools\ToolView.cs`
+
+#H[視圖導航][
+用ViewModelBase的
+```cs
+public IViewNavi? ViewNavi{get;set;}
+```
+]
+]
+
+#H[UiCfg][
+`Ngaq.Frontend\proj\Ngaq.Ui\UiCfg.cs`
+內有字體大小, 主題色與窗口大小。
+]
+
+
+#H[字體大小設置][
+	勿硬編碼字體大小
+	應當用`UiCfg.Inst.BaseFontSize` 乘以一個系數
+]
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+#H[序列化][
+	#H[Json][
+		- 依賴注入 `Ngaq.Core/Tools/Json/IJsonSerializer.cs` (優先)
+		- 或用全局 `JSON.parse()` 等
+	]
+	#H[Srefl][
+		//TODO
+	]
+
+]
+
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+#[項目說明]
+
+背單詞軟件
+- 技術棧 C\# .NET 10
+- 客戶端 Avalonia
+- 本地服務端 Sqlite
+- Web服務端 Asp.net Core minimal API
+
+*!項目所有程序集都採用AOT編譯。禁止一切不兼容AOT的代碼!*
+
+#H[程序集][
+	csproj即程序集。
+	#H[Ngaq.Core][
+		核心程序集
+		- 要求平臺無關(包含Web)
+		包含:
+		- 通用的基礎設施
+		- 實體類定義
+			- 前後端通用DTO
+		- 平臺無關基礎業務邏輯
+		- 接口(interface) 等
+
+		平臺無關的意思是 放在哪裏都能編譯運行。要考慮Web平臺
+		所有不能在此程序集中 直接做 文件讀寫, 數據庫操作 等相關IO操作。也不推薦你這麼做、因爲這會破壞架構約定。
+
+		一般的做法是、在此程序集中 定義接口、比如我要操作詞庫 就定義詞庫服務接口、然後在接口中聲明方法。後端程序集再實現接口、在實現的方法體中執行IO操作。
+
+		#H[Shared][
+			前後端通用接口, DTO等
+		]
+		#H[Frontend][
+			前端專用接口, DTO等
+			
+			如自抽象的剪貼板接口
+		]
+		#H[Backend][
+			後端專用接口, DTO等
+		]
+	]
+
+	#H[Ngaq.Local][
+		後端基礎程序集。 主要負責數據庫IO 等
+
+		本地服務端 與 Web服務端 通用的代碼都被這裏。
+
+		主要有用戶詞庫管理等。
+		
+		- 當 隨客戶端一起編譯時 連接的數據庫是Sqlite
+		- 當 隨Web服務端一起編譯時 連接的數據庫是Pg
+	]
+
+	#H[Ngaq.Frontend][
+		前端文件夾。Avalonia項目。不是一個單獨的程序集。
+
+		其proj/下有多個程序集。
+		#H[Ngaq.UI][
+			此程序集同樣要求平臺無關。使用MVVM模式。
+			- 包含UI, 交互邏輯 等
+			- 此程序集引用 Ngaq.Core 程序集。
+		]
+		後續提到的特定平臺的程序集僅有以下職責:
+			- 程序入口(有Main方法或頂層語句)
+			- 依賴注入 ServiceCollection裝配
+			- 平臺特定功能的方法實現
+		一般不會有UI、交互邏輯等。
+		#H[Ngaq.Windows][
+			引用以下程序集:
+			- Ngaq.UI
+			- Ngaq.Local
+			Windows入口。
+
+		]
+		#H[Ngaq.Android][
+			引用以下程序集:
+			- Ngaq.UI
+			- Ngaq.Local
+			Android入口。
+		]
+		後續還有其他平臺特定入口程序集、就不一一列舉了。
+		#H[配置文件][
+			ExternalRsrc/Ngaq.jsonc
+			
+			客戶端配置文件
+			
+			此文件應當與入口exe在同一個目錄下。
+			
+			開發環境中測試運行時也與exe同一目錄。
+			
+			該測試文件中定義了客戶端Sqlite的路徑。直接在開發環境中把程序跑起來的話就會連到上面的數據庫。
+			裏面的數據的內容是不固定的、就是在開發環境做非自動化的隨手自測時 會改到裏面的數據。
+		]
+	]
+	#H[Ngaq.Test][
+		測試目錄。
+		
+		其`proj/`下有多個程序集:
+		
+		#H[Ngaq.Core.Test][
+			
+		]
+		
+		#H[Ngaq.Local.Test][
+			
+		]
+		
+		#H[Ngaq.Windows.Test][
+			
+		]
+		- 測試: 指自動化測試、程序自動比較測試用例的預期輸出和實際輸出、批量測試多項
+		- 嘗試: 指人工寫的臨時嘗試。主要是臨時試跑一些代碼 把結果輸出到控制臺看。
+	]
+
+	#H[Ngaq.Server/][
+		Web服務端目錄(不是程序集)
+		其proj/下有多個程序集。
+		#H[Ngaq.Biz][
+			Web服務端 核心程序集
+			
+			引用
+			- Ngaq.Local
+		]
+		#H[Ngaq.Web][
+			Web Api程序集。
+			
+			主要是把Ngaq.Biz的接口 實現成Web Api(http)。
+			
+			引用
+			- Ngaq.Biz
+		]
+		
+		#H[Ngaq.Server.Test][
+			Web 服務端 測試程序集。
+			
+			引用
+			- Ngaq.Biz
+			- Ngaq.Web
+			- Ngaq.Test
+		]
+	]
+
+]
+
+#H[文檔與規範][
+	在項目根目錄/Doc下
+	#H[Prompt/][
+		可複用大模型提示詞
+	]
+	#H[Spec/][
+		代碼規範(不是功能模塊介紹)
+	]
+]
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+#H[Dao][
+	數據訪問層
+	
+	- 命名規範: DaoXxx
+	- 可以在此層寫 Sql 與調用 IRepo
+]
+
+#H[Svc][
+	`Service`之簡稱
+	
+	- 命名規範: SvcXxx
+	- 可在此層調用 Dao 與 IRepo
+	- 不應在此層直接寫Sql
+	
+	- 前端不應直接依賴SvcXxx
+	- 規範做法: 做一個 `ISvcXxx` 接口、前端通過接口來訪問。
+	#H[事務相關][
+一般的涉及操作數據庫的函數、第一次參數通常定義爲 `IDbFnCtx Ctx`、用上下文來儲存數據庫連接與事務
+```cs
+public interface ISvcKv{
+	// ISvc接口中定義的API 涉及修改數據庫的 一定要在事務中執行
+	// 函數第一個參數定義成`IDbFnCtx? Ctx`
+	// 若傳入的Ctx不爲null則使用傳入的上下文 若爲空則自己開一個帶事務的上下文
+	// 這樣前端通過接口調用API時就有事務了。
+	// 優先定義批量API
+	public Task<nil> BatSet(
+		IDbFnCtx? Ctx
+		,IAsyncEnumerable<PoKv> Kvs, CT Ct
+	);
+}
+
+public class SvcKv:ISvcKv{
+	//此函數是 ISvcKv 的方法實現
+	[Impl]
+	public async Task<nil> BatSet(
+		IDbFnCtx? Ctx,
+		IAsyncEnumerable<PoKv> Kvs, CT Ct
+	) {
+		//如果操作涉及修改數據庫即需用RunInTxnIfNoCtx
+		//如果是純讀 則用 Ctx??=new DbFnCtx();
+		return await SqlCmdMkr.RunInTxnIfNoCtx(Ctx, Ct, async(Ctx)=>{
+			return await BatSet(Ctx, Kvs, Ct);
+		});
+	}
+}
+
+```
+		#H[UserCtx][
+			`/Ngaq.Core/Shared/User/UserCtx/IUserCtx.cs`
+			常用API:
+			- `UserCtx.UserId`
+			
+			Svc層中、若函數的前兩個參數爲`IDbFnCtx? Ctx, IUserCtx User`、
+			則應改定義成 `IDbUserCtx`
+			`/Ngaq.Core/Infra/DbUserCtx.cs`
+			以減少重複參數數量
+		]
+	]
+]
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+// cwln . -i cs$ -e bin -e obj
+
+
+#H[測試規範][
+使用的測試框架: 自研的 `Tsinswreng.CsTreeTest`
+]
+
+#H[參考示例代碼][
+	看同目錄下 `TestSample.typ`
+]
+
+
+#H[用例命名][
+	用例名應當滿足:
+	- 在同一個測試類內易於辨認
+	- 能看出測什麼行爲
+	- 不要寫成含糊的 `Test1`, `Try`, `Temp`
+]
+
+
+#H[怎麼收編子程序集(csproj)測試][
+	如果是更上層的 TestMgr 
+	不直接註冊每個測試類, 而是收編下級 TestMgr。
+
+	參考:
+	- `Ngaq.Test/proj/Ngaq.Windows.Test/WindowsTestMgr.cs`
+
+	參考寫法:
+	```cs
+	public class WindowsTestMgr: DiEtTestMgr{
+		public static WindowsTestMgr Inst = new();
+		public override ITestNode RegisterTestsInto(ITestNode? Test){
+			Test = this.TestNode;
+			this.RegisterSubMgr(LocalTestMgr.Inst);
+			return Test;
+		}
+	}
+	```
+]
+
+#H[測試執行入口][
+非必要 不需關心入口
+]
+
+#H[AI 新增測試時的最小操作清單][
+	如果你是 AI, 當用戶要求“爲某個類補測試”時, 按這個順序做:
+	+ 找到對應模塊下最近的測試目錄
+	+ 新建 `TestXxx.cs`, 實現 `ITester`
+	+ 在 `RegisterTestsInto` 中用 `MkFnRegisterTest` 註冊用例
+	+ 在最近的 `TestMgr` 補 `RegisterTester<TestXxx>()`
+	+ 若該模塊尚未被上層收編, 再補 `RegisterSubMgr(...)`
+	+ 不看主入口, 除非用戶明確要求
+]
+
+#H[測試涉及數據庫操作的函數][
+要先自行把測試數據插入數據庫、
+注意構造的測試數據要足夠獨特、避免與其他已有數據重複
+測試結束後(不管成功還是失敗)都要把插入的數據都硬刪除
+
+不需要在每個測試用例都做一遍插入測試數據 再清理測試數據的操作
+可以把Node設爲有序、在最開始的用例做插入數據、在最後一個用例清理數據。
+
+]
+this file is generated by
+```bash
+cwln . -i cs$ -e bin -e obj
+```
+
+```cs
+File: MyProj1TestMgr.cs
+01: using MyProj1.Test.MyDomains.Calculator;
+02: using Tsinswreng.CsTreeTest;
+03: 
+04: namespace MyProj1.Test;
+05: 
+06: 
+07: // Each csproj of test project should have a Test Manager
+08: // and register all tester below
+09: public class MyProj1TestMgr : DiEtTestMgr {
+10: 	public static MyProj1TestMgr Inst = new();
+11: 	public override ITestNode RegisterTestsInto(ITestNode? Test) {
+12: 		Test = this.TestNode;
+13: 		// 注册各个领域的测试器
+14: 		this.RegisterTester<TestCalculator>();
+15: 		return Test;
+16: 	}
+17: }
+
+File: Program.cs
+01: using Microsoft.Extensions.DependencyInjection;
+02: using MyProj1.Test;
+03: using MyProj1.Test.MyDomains.Calculator;
+04: using Tsinswreng.CsTreeTest;
+05: 
+06: 
+07: 
+08: 
+09: public class Program{
+10: 	public static IServiceCollection SvcColct = new ServiceCollection();
+11: 	public static IServiceProvider SvcProvdr = null!;
+12: 	public static async Task Main(string[] args){
+13: 		SvcColct
+14: 			//.SetupXxx()
+15: 			.AddSingleton<ICalculator, Calculator>();
+16: 		;
+17: 		var mgr = MyProj1TestMgr.Inst;
+18: 		SvcProvdr = mgr.InitSvc(SvcColct, sc => sc.BuildServiceProvider());
+19: 		ITestExecutor executor = new TreeTestExecutor();
+20: 		await executor.RunEtPrint(mgr.TestNode);
+21: 		
+22: 	}
+23: }
+
+File: MyDomains/AnotherService/_TestAnotherService.cs
+
+File: MyDomains/Calculator/Calculator.cs
+01: namespace MyProj1.Test.MyDomains.Calculator;
+02: /// example Testee class. this is a sample proj , we put it here for convenience
+03: /// actually testee class are not in the same csproj as test code
+04: public interface ICalculator {
+05: 	int Add(int a, int b);
+06: 	bool TryIntDivide(int a, int b, out int R);
+07: }
+08: public class Calculator:ICalculator{
+09: 	public int Add(int a, int b) {
+10: 		return a + b;
+11: 	}
+12: 	public bool TryIntDivide(int a, int b, out int R) {
+13: 		if (b == 0) {
+14: 			R = default;
+15: 			return false;
+16: 		}
+17: 		R = a / b;
+18: 		return true;
+19: 	}
+20: }
+
+File: MyDomains/Calculator/TestAdd.cs
+01: using Tsinswreng.CsTreeTest;
+02: 
+03: namespace MyProj1.Test.MyDomains.Calculator;
+04: // each part should only mainly test one function. in this part we test Add
+05: public partial class TestCalculator {
+06: 	public void RegisterAdd(ITestNode Node) {
+07: 		var register = Node.MkTestFnRegister(
+08: 			typeof(TestCalculator), // tester type
+09: 			[typeof(ICalculator)], // testee types
+10: 			[nameof(MyDomains.Calculator.ICalculator.Add)], // testee fn names, must use nameof()
+11: 			"YourTestNamePrefix" // optional
+12: 		);
+13: 		var R = register.Register;
+14: 		R("Add positive numbers", async (o) => {
+15: 			var r = Calculator.Add(5, 3);
+16: 			if (r != 8) {
+17: 				throw new Exception($"Expected 8 but got {r}");
+18: 			}
+19: 			return null;
+20: 		});
+21: 		//you can change the props of `register` here and then you can still use `R` directly
+22: 		//e.g. register.UniqNamePrefix = "NewPrefix";
+23: 		R("Add positive and negative numbers", async (o) => {
+24: 			var r = Calculator.Add(5, -3);
+25: 			if (r != 2) {
+26: 				throw new Exception($"Expected 2 but got {r}");
+27: 			}
+28: 			return null;
+29: 		});
+30: 	}
+31: }
+
+File: MyDomains/Calculator/TestDivide.cs
+01: using Tsinswreng.CsTreeTest;
+02: 
+03: namespace MyProj1.Test.MyDomains.Calculator;
+04: 
+05: public partial class TestCalculator {
+06: 	public void RegisterTryIntDivide(ITestNode Node) {
+07: 		var register = Node.MkTestFnRegister(
+08: 			typeof(TestCalculator),
+09: 			[typeof(ICalculator)],
+10: 			[nameof(MyDomains.Calculator.ICalculator.TryIntDivide)],
+11: 			"Divide"
+12: 		);
+13: 
+14: 		var R = register.Register;
+15: 
+16: 		R("positive", async (o) => {
+17: 			if(!Calculator.TryIntDivide(20, 4, out var R)){
+18: 				throw new Exception("Expected true but got false");
+19: 			}
+20: 			if(R != 5){
+21: 				throw new Exception($"Expected 5 but got {R}");
+22: 			}
+23: 			return null;
+24: 		});
+25: 		R("Divide by zero", async (o) => {
+26: 			if(Calculator.TryIntDivide(20, 0, out var R)){
+27: 				throw new Exception("Expected false but got true");
+28: 			}
+29: 			return null;
+30: 		});
+31: 	}
+32: }
+
+File: MyDomains/Calculator/_TestCalculator.cs
+01: //we suggest one tester class corresponds to one testee class.
+02: // and put different tester classes in separates folders.
+03: //now we are in Calculator/ , this is only for `TestCalculator`
+04: using Tsinswreng.CsTreeTest;
+05: 
+06: namespace MyProj1.Test.MyDomains.Calculator;
+07: 
+08: //Use partial class. this is the main part. the file name of main part should start with _
+09: // each part of the class should only test one method
+10: // the main part should not do test but assemble the test cases in other parts.
+11: public partial class TestCalculator : ITester {
+12: 	ICalculator Calculator;
+13: 	public TestCalculator(
+14: 		ICalculator Calculator
+15: 	) {
+16: 		this.Calculator = Calculator;
+17: 	}//we use DependencyInjection here
+18: 	// In some scenarios we use di, in other cases
+19: 	// we can directly new the testee class without di
+20: 	
+21: 	public ITestNode RegisterTestsInto(ITestNode? Test) {
+22: 		Test ??= new TestNode();
+23: 		//default is false, if set to true, the tests in this node will run in order.
+24: 		Test.Ordered = false;
+25: 
+26: 		RegisterAdd(Test);
+27: 		RegisterTryIntDivide(Test);
+28: 		return Test;
+29: 	}
+30: }
+
+
+```
+
+#H[數據庫ˇ操作ʹ函數ˇʹ組合複用 與 事務傳播][
+涉及數據庫查詢的方法定義示例(非批量):
+```cs
+public async Task<Func<
+	TId, TArg2,
+	CT, Task<R>
+>> FnQueryDb(IDbFnCtx Ctx, CT Ct){
+	//在外層構建帶參數的sql
+	var Sql = T.SqlSplicer().Select().From().WhereT()
+	.AndEq(x=>x.Id, PId).ToSqlStr();
+	;
+	var Cmd = await Ctx.PrepareToDispose(SqlCmdMkr, Sql, Ct);
+	var fnAnother = await FnAnother(Ctx, Ct);//如需組合其他的數據庫操作函數也應在外層構建
+	return async (Id, Arg2)=>{
+		//在裏層傳參並執行sql
+		var Args = ArgDict.Mk(T).AddT(PId, Id)
+		var GotDict = await SqlCmd.Args(Args).AsyE1d(Ct).FirstOrDefaultAsync(Ct);
+		var R = DoSomeHandle(GotDict);//如在此調用fnAnother
+		return R;
+	}
+}
+```
+
+
+
+
+需要封裝成帶事務的函數時:
+```cs
+public async Task<R> QueryDb(TId Id, TArg2 Arg2, CT Ct){
+	return await TxnWraper.Wrap(FnQueryDb, Id, Arg2, Ct);
+}
+```
+]
+
+#H[Sql參數][
+	- 見 ITable.Prm()
+	不准用位置參數。若一定要則用`@_0`, `@_1`的命名參數來模擬
+]
+#import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
+#let H = auto-heading;
+
+Typst 文檔書寫規範
+
+標題用這種寫法:
+#H[一級標題內容一][
+	內容
+	#H[二級標題內容][
+		內容
+	]
+]
+#H[一級標題內容二][
+	內容
+]
+不要硬編碼標題序號。
+
+錯誤示例:
+#H[1. 概述][
+	#H[1.1 開頭][
+
+	]
+]
+
+正確示例:
+#H[概述][
+	#H[開頭][
+
+	]
+]
+
+注意typst和markdown語法的區別。在typst中 加粗是一對星號、不是雙星號
+
+井號是Typst關鍵字。在內容中表達普通井號時要反斜槓轉義。
+

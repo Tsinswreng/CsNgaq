@@ -57,7 +57,7 @@ API 僞代碼示意
 public record struct IdMyEntity{
 	public UInt128 Value { get; set; }
 	public u8[] ToByteArr();
-	public static readonly IdMyEntity Zero = default;
+	public static readonly IdMyEntity Zero = default; //表示無效值 語義上相當于null
 	public IdMyEntity(){
 		Value = Ngaq.Core.Tools.ToolId.NewUlidUInt128();
 	}

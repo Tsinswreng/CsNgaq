@@ -15,11 +15,11 @@ File: MyProj1TestMgr.cs
 08: // and register all tester below
 09: public class MyProj1TestMgr : DiEtTestMgr {
 10: 	public static MyProj1TestMgr Inst = new();
-11: 	public override ITestNode RegisterTestsInto(ITestNode? Test) {
-12: 		Test = this.TestNode;
+11: 	public override ITestNode RegisterTestsInto(ITestNode? Node) {
+12: 		Node = this.TestNode;
 13: 		// 注册各个领域的测试器
 14: 		this.RegisterTester<TestCalculator>();
-15: 		return Test;
+15: 		return Node;
 16: 	}
 17: }
 
@@ -160,16 +160,19 @@ File: MyDomains/Calculator/_TestCalculator.cs
 18: 	// In some scenarios we use di, in other cases
 19: 	// we can directly new the testee class without di
 20: 	
-21: 	public ITestNode RegisterTestsInto(ITestNode? Test) {
-22: 		Test ??= new TestNode();
+21: 	public ITestNode RegisterTestsInto(ITestNode? Node) {
+22: 		Node ??= new TestNode();
 23: 		//default is false, if set to true, the tests in this node will run in order.
-24: 		Test.Ordered = false;
-25: 
-26: 		RegisterAdd(Test);
-27: 		RegisterTryIntDivide(Test);
-28: 		return Test;
-29: 	}
-30: }
+24: 		Node.Ordered = false;
+25: 		//default is false, which means all recursive childred nodes will be run in one thread
+26: 		Node.IsParallelRecursive = false;
+27: 		// when you do unit test e.g test pure functions without side-effect,
+28: 		// you can set the node Node.Ordered = true; Node.IsParallelRecursive = true;
+29: 		RegisterAdd(Node);
+30: 		RegisterTryIntDivide(Node);
+31: 		return Node;
+32: 	}
+33: }
 
 
 ```
