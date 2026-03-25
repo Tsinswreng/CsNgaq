@@ -73,6 +73,7 @@ public class MyClass {}
 設計API旹優先接收`IAsyncEnumerable<>`。
 
 謹慎使用`.ToList()`或類似API 因爲這會把所有元素都載入內存!
+需要操作內部元素旹盡量使用`.Select`保持懶加載
 ]
 
 
