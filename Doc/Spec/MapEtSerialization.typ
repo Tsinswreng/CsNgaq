@@ -3,7 +3,7 @@
 #H[序列化][
 	#H[Json][
 		- 依賴注入 `Ngaq.Core/Tools/Json/IJsonSerializer.cs` (優先)
-		- 或用全局 `JSON.parse()` 等
+		- 或用 `JSON.Parse()` 等(不優先考慮)
 	]
 	#H[Srefl][
 		//TODO
