@@ -64,3 +64,10 @@
 可以把Node設爲有序、在最開始的用例做插入數據、在最後一個用例清理數據。
 
 ]
+
+
+#H[本項目的幾個測試程序集][
+	Ngaq.Test/proj/Ngaq.Core.Test/Ngaq.Core.Test.csproj
+	Ngaq.Test/proj/Ngaq.Local.Test/Ngaq.Local.Test.csproj
+	Ngaq.Test/proj/Ngaq.Windows.Test/Ngaq.Windows.Test.csproj
+]
