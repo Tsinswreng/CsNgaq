@@ -48,23 +48,6 @@ global using CT = CancellationToken;
 	當你修改了模塊的代碼、需要同步更新文檔時、也寫進對應位置的`_.cs`裏
 ]
 
-#H[xml文檔][
-禁止寫 `/// <summary>` 和 `/// </summary>`  因爲太長了
-
-錯誤示例
-```cs
-/// <summary>
-/// This is a summary.
-/// </summary>
-public class MyClass {}
-```
-
-正確示例
-```cs
-/// This is a summary.
-public class MyClass {}
-```
-]
 
 #H[可迭代集合][
 如果代碼中有 `IEnumerable<>`或`IAsyncEnumerable<>`
@@ -83,6 +66,23 @@ public class MyClass {}
 	- 註釋要避免正確的廢話 不能只是把表面的流程和意思翻譯一遍
 	
 	類型(interface/class/struct/enum 等等)/函數/成員 及 函數內部的實現 都要寫註釋!!!
+	
+	#H[xml文檔註釋][
+	禁止寫 `/// <summary>` 和 `/// </summary>`  因爲太長了。其他東西正常寫。
+	]
+	示例
+	```cs
+	/// 類型(interface/class/struct/enum)要寫註釋 不管是不是public的都要寫
+	public class MyClass {
+		/// 成員(field, prop 不管是不是public的)要有註釋
+		public string Name{get;set;}
+		/// 函數要寫註釋 不管是不是public的都要寫
+		/// 函數的註釋至少要解釋 參數 返回值(除了CT之外)
+		public Task<RespLogin> Login(ReqLogin Req, CT Ct){
+			// 函數實現中該寫註釋的也要寫註釋
+		}
+	}
+	```
 ]
 
 #H[自研庫的文檔][
