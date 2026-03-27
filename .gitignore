@@ -10,3 +10,4 @@ Tsinswreng.JavaSqlHelper/
 *.exe
 CsDeclOut/
 .dotnet_home/
+.dotnet_cli_home
