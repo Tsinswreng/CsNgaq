@@ -4,10 +4,20 @@
 	#H[Json][
 		- 依賴注入 `Ngaq.Core/Tools/Json/IJsonSerializer.cs` (優先)
 		- 或用 `JSON.Parse()` 等(不優先考慮)
+
+			#H[Json與`IDict<str, obj?>`互轉][
+				在 Tsinswreng.CsTools下 有 ToolJson類
+			]
 	]
 	#H[Srefl][
 		//TODO
 	]
 
 ]
+
+#H[支持序列化和反序列化的對象][
+	實現了 `Ngaq.Core.Infra.IF.IAppSerializable` 接口的 class
+	纔能序列化和反序列化
+]
+
 
