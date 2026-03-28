@@ -72,3 +72,10 @@ public record struct IdMyEntity{
 #H[字典映射與序列化][
 	見 MapEtSerialization.typ
 ]
+
+#H[常用映射][
+	UpperType -> RawType
+	- IdMyEntity -> byte[]
+	- 枚舉 -> string (默認情況下都映射到字符串、避免數據庫中出現魔法數字 MapEnumToStr)
+	- Tempus -> int64
+]

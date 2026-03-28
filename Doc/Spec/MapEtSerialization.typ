@@ -20,4 +20,10 @@
 	纔能序列化和反序列化
 ]
 
+#H[Json 與 `IDict<str, obj?>`互轉][
+	用 Tsinswreng.CsTools 下之 ToolJson
+]
 
+#H[`IDict<str, obj?>` 操作 多級讀寫][
+	用 用 Tsinswreng.CsTools 下之 ToolDict
+]
