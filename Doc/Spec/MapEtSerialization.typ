@@ -17,7 +17,11 @@
 
 #H[支持序列化和反序列化的對象][
 	實現了 `Ngaq.Core.Infra.IF.IAppSerializable` 接口的 class
-	纔能序列化和反序列化
+	纔能序列化和反序列化。
+	
+	json序列化使用標準庫內置、依賴源生成器。
+	但是此項目中 實現了 `IAppSerializable` 接口的類 不會使源生成器自動生成代碼、
+	需要cd到 `Ngaq.Core`下 執行 `sh GenAppJsonCtx.sh`
 ]
 
 #H[Json 與 `IDict<str, obj?>`互轉][
