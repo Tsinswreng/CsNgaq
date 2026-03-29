@@ -53,3 +53,8 @@ public IViewNavi? ViewNavi{get;set;}
 	當你正在做 純前端的任務時、你只需看用戶提供給你的接口文件即可
 	不要翻閱實現的部分、節約token
 ]
+
+#H[項目使用到的圖標][
+	`Ngaq.Frontend/proj/Ngaq.Ui/Icons/Svgs.Decl.cs`
+	禁止讀 Svgs.Impl.cs 文件! 否則會消耗大量token
+]
