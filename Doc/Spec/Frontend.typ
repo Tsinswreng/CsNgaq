@@ -48,3 +48,8 @@ public IViewNavi? ViewNavi{get;set;}
 	勿硬編碼字體大小
 	應當用`UiCfg.Inst.BaseFontSize` 乘以一個系數
 ]
+
+#H[AI調用後端接口的注意事項][
+	當你正在做 純前端的任務時、你只需看用戶提供給你的接口文件即可
+	不要翻閱實現的部分、節約token
+]
