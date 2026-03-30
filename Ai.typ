@@ -2,6 +2,17 @@
 #import "@preview/tsinswreng-auto-heading:0.1.0": auto-heading
 #let H = auto-heading;
 
+#H[Encoding][
+if you use PowerShell to write file,
+do not use the default encoding of `Set-Content`/`Out-File`,
+use `Set-Content -Encoding UTF8` or `.NET`'s `new UTF8Encoding(false)` instead.
+
+this project use utf-8. and the following content is written in Chinese.
+If you find the following content is already mis-encoding, switch your command and specify to use utf8 and re-read this file again.
+]
+
+
+
 `E:/_code/CsNgaq/Doc/Spec/`
 這個目錄下有項目說明和代碼規範。
 
