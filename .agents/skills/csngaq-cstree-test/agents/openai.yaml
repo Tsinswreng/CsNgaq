@@ -1,0 +1,4 @@
+interface:
+  display_name: "CsNgaq CsTreeTest"
+  short_description: "Add and wire C# tests using Tsinswreng.CsTreeTest in this repo"
+  default_prompt: "Use this skill to add or update tests in this repo with Tsinswreng.CsTreeTest conventions."
