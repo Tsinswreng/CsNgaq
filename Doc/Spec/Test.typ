@@ -9,7 +9,7 @@
 ]
 
 #H[參考示例代碼][
-	看同目錄下 `TestSample.typ`
+	*!!看同目錄下 `TestSample.typ`!!*  重要!!  一定要看!!
 ]
 
 

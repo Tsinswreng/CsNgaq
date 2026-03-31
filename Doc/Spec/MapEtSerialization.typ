@@ -3,7 +3,7 @@
 #H[序列化][
 	#H[Json][
 		- 依賴注入 `Ngaq.Core/Tools/Json/IJsonSerializer.cs` (優先)
-		- 或用 `JSON.Parse()` 等(不優先考慮)
+		- 或用 `AppJsonSerializer.Inst.Parse()` 等(不優先考慮)
 
 			#H[Json與`IDict<str, obj?>`互轉][
 				在 Tsinswreng.CsTools下 有 ToolJson類
@@ -29,5 +29,17 @@
 ]
 
 #H[`IDict<str, obj?>` 操作 多級讀寫][
-	用 用 Tsinswreng.CsTools 下之 ToolDict
+	用 Tsinswreng.CsTools 下之 ToolDict。
+	禁止手動多次 TryGet !
+]
+
+#H[對象和 `IDict<str, obj?>`互轉][
+	注入 Ngaq.Core.Tools.Json 下的 
+	IDictJsonSerializer
+	
+	或使用 AppJsonSerializer.Inst
+	
+	(他同時實現了 IJsonSerializer 和 IDictJsonSerializer) 接口
+	
+	
 ]
