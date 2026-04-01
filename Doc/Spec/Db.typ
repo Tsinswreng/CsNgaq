@@ -167,7 +167,7 @@ public class DaoWord{
 	]
 	#H[常用工具][
 		在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSql/CsTools/`下:
-		- `BatchCollector.cs`
+		- `BatchCollector.cs`  *這個很重要！至少這個文件你必須得先看過一遍！*
 		//AutoBatch
 	]
 	#H[分頁][

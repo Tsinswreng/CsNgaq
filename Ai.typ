@@ -61,11 +61,15 @@ If you find the following content is already mis-encoding, switch your command a
 	數據庫遷移 (大多數情況你不需要讀此文件)
 ]
 
-
+#H[該看哪些文件][
 *Common.typ是必看項*
+
+根據當前分配的任務、看看要用哪些skill
 
 其次、根據你這次要做的任務、在上述文件中挑選你所需的來看。
 比如我現在要你做前端的任務、你就得看Frontend.typ文件、別的就先不看。
+]
+
 
 
 *遇到任何不確定的地方一定要先問我。建議多問 不要帶着疑問幹活*
