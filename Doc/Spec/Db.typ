@@ -212,3 +212,37 @@ public class SvcWord{
 	
 	當前 這種模式已經被棄用、請改用 IAsyncEnumerable批量+BatchCollector(如需要)的模式。
 ]
+
+
+#H[BatchCollector 示例][
+完整Api在`<項目根目錄>/CsDeclOut/Tsinswreng.CsSql/CsTools/`下:
+- `BatchCollector.cs`  *這個很重要！至少這個文件你必須得先看過一遍！*
+```cs
+public async Task<nil> BatUpsert(
+		IDbFnCtx Ctx, IAsyncEnumerable<TEntity> Ents, CT Ct
+	){
+	var batchSize = T.DbStuff.DfltOptBatch.DupliSqlBatchSize;
+	var batch = new BatchCollector<TEntity, nil>(async(EntList, Ct)=>{
+		//此處的 EntList 是 IList<TEntity>、只包含了當前批次的實體
+		// 因此他不會把所有IAsyncEnumerable<TEntity> Ents一次性載入內存、滿足流式加載、空間複雜度O(常數)
+		var ids = EntList.Select(x=>(TId)T.GetEntityId(x)!).ToAsyncEnumerable();
+		var existList = BatExistsById(Ctx, ids, Ct);
+		var toInsert = new List<TEntity>();
+		var toUpdate = new List<TEntity>();
+		await foreach(var (i,isExist) in existList.Index()){
+			var ent = EntList[i];
+			if(isExist){
+				toUpdate.Add(ent);
+			}else{
+				toInsert.Add(ent);
+			}
+		}
+		await BatAdd(Ctx, ToolAsyE.ToAsyE(toInsert), Ct);
+		await BatUpd(Ctx, ToolAsyE.ToAsyE(toUpdate), Ct);
+		return NIL;
+	},batchSize);//此batchSize是可選參數、有默認值。
+	await batch.ConsumeAll(Ents, Ct); //因爲此方法是 寫 操作、故用ConsumeAll。他會把Ents 轉成List、確保消費。如果是讀操作則可用return AddToEnd(Ents, Ct)
+	return NIL;
+}
+```
+]
