@@ -72,5 +72,5 @@ If you find the following content is already mis-encoding, switch your command a
 
 再次強調三點:
 - 所有代碼必須兼容AOT
-- 可迭代集合應當保持流式、禁止用ToList()全部加載到內存裏
+- 可迭代集合應當保持流式、禁止用ToList()或類似API全部加載到內存裏
 - 代碼要有註釋!代碼要有註釋!代碼要有註釋! 最起碼的 函數參數 返回值要寫清楚。函數內部實現該寫註釋的也要寫註釋

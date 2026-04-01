@@ -71,3 +71,5 @@
 	Ngaq.Test/proj/Ngaq.Local.Test/Ngaq.Local.Test.csproj
 	Ngaq.Test/proj/Ngaq.Windows.Test/Ngaq.Windows.Test.csproj
 ]
+
+注意代碼複用 減少重複代碼
