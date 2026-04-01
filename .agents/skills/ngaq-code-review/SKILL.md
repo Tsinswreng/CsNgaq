@@ -112,6 +112,50 @@ DoSomething() {
 - 對于已有的工具 則不要重複造輪子、直接調用現成的。
 - 若無、則考慮封裝成全局的工具。
 
+### 業務異常處理
+
+必須使用 ItemsErr 中定義的異常種類、不要硬編碼異常信息。 若是快速開發中的臨時硬編碼異常信息 就用 `Todo.I18n(異常信息)`。
+
+正確示例:
+
+```cs
+if(_UserId.IsNullOrDefault()){
+	throw ItemsErr.User.AuthenticationFailed.ToErr();
+}
+```
+
+或 快速開發時臨時硬編碼
+
+```cs
+if(_UserId.IsNullOrDefault()){
+	throw new Exception(Todo.I18n("AuthenticationFailed"));
+}
+```
+
+錯誤示例
+
+```cs
+if(_UserId.IsNullOrDefault()){
+	throw new Exception("AuthenticationFailed");
+	//拋其他種類的異常也不允許、要麼你就用ItemsErr中定義的強類型異常、要麼你就用Todo.I18n()
+}
+```
+
+### 注意代碼警告
+
+- 避免使用已過頭的API (`[Obsolete]`)
+- 注意空值安全
+- 重視代碼警告
+
+## 數據庫操作規範
+
+- 讀寫數據庫相關的函數優先提供批量版本
+- 構建Sql的操作應在Dao層寫、不能在Svc層寫
+
+### 構建Sql
+
+能用SqlSplicer就不要用事符串插值
+
 ## 前端規範
 
 ### I18n
@@ -129,3 +173,9 @@ btn.Content="Login"
 ```cs
 btn.Content=Todo.I18n("Login")
 ```
+
+## 當代碼不符合上述規範時如何處理
+
+默認情況下、直接把代碼中不符合規範的內容報告給用戶、不需要自行修改代碼。
+
+如果用戶已經要求你自行迭代修改代碼 那就自行修改。改完一版之後再讀此文件對照評審。
