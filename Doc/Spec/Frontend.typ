@@ -62,3 +62,28 @@ public IViewNavi? ViewNavi{get;set;}
 	`Ngaq.Frontend/proj/Ngaq.Ui/Icons/Svgs.Decl.cs`
 	禁止讀 Svgs.Impl.cs 文件! 否則會消耗大量token
 ]
+
+#H[文件(命名空間)位置][
+	- View和ViewModel(Vm)放在同一文件夾下。
+	- 用來放View 和 Vm的文件夾 除了本View和Vm之外 不要再放別的View和Vm！
+
+	正確示例
+	```
+	WordCard/
+		ViewWordCard.cs
+		VmWordCard.cs
+	WordInfo/
+		ViewWordInfo.cs
+		VmWordInfo.cs
+	```
+	
+	錯誤示例
+	```
+	Word/
+		ViewWordCard.cs
+		VmWordCard.cs
+		ViewWordInfo.cs
+		VmWordInfo.cs
+	```
+
+]
