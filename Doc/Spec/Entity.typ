@@ -5,8 +5,8 @@
 
 #H[基實體][
 見
-- `Ngaq.Core\Shared\Base\Models\Po\IPoBase.cs`
-- `E:\_code\CsNgaq\Ngaq.Core\Shared\Base\Models\Po\PoBase.cs`
+- `Ngaq.Core/Shared/Base/Models/Po/IPoBase.cs`
+- `Ngaq.Core/Shared/Base/Models/Po/PoBase.cs`
 
 ]
 
