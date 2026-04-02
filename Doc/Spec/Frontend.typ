@@ -12,13 +12,19 @@
 
 #H[架構][
 - MVVM模式
-參考
-- `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/Sample/**/*.cs`
-- `Ngaq.Frontend/proj/Ngaq.Ui/Infra/ViewModelBase.cs`
 
-這兩個是模板、你不用看、上面的Sample/已經包含了
+#H[規範示例(*重要!下面列出的文件一定要看！*)][
+- `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/Sample/ViewSample.cs`
+- `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/Sample/VmSample.cs`
+- `Ngaq.Frontend/proj/Ngaq.Ui/Infra/ViewModelBase.cs`
+]
+
+
+#H[模板(可不看)][
 - `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/ViewXxx.cs`
 - `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/VmXxx.cs`
+]
+
 ]
 
 
