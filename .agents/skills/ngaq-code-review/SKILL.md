@@ -165,6 +165,8 @@ if(_UserId.IsNullOrDefault()){
 - 如果你當前檢查的代碼不是前端代碼則無需理會此章節。
 - 如果是前端代碼但你無法訪問後面提及的參考文檔 則應向我匯報
 
+使用`Tsinswreng.AvlnTool`下的寫法。參見 `/Doc/Spec/Frontend.typ`。
+
 ### I18n
 
 項目要求I18n。禁止硬編碼文字。 快速實現時臨時硬編碼則需先打I18n標記。
@@ -187,7 +189,10 @@ btn.Content=Todo.I18n("Login")
 
 ### UI寫法
 
-使用`Tsinswreng.AvlnTool`下的寫法。參見 `/Doc/Spec/Frontend.typ`
+- 添加子控件時使用使用鏈試調用的`.A()` 方法
+- 初始化`ContentControl.Content`時使用 `SetContent` 方法;
+- 避免硬編碼字體大小;
+- 按鈕綁定的事件是 調用後端接口/異步函數/耗時操作 的、必須用`OpBtn`而不是普通 `Button`
 
 ## 當代碼不符合上述規範時如何處理
 
