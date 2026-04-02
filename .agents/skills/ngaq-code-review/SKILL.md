@@ -193,6 +193,7 @@ btn.Content=Todo.I18n("Login")
 - 初始化`ContentControl.Content`時使用 `SetContent` 方法;
 - 避免硬編碼字體大小;
 - 按鈕綁定的事件是 調用後端接口/異步函數/耗時操作 的、必須用`OpBtn`而不是普通 `Button`
+- 避免重複的樣式設置代碼！當出現重複時 考慮用以下兩種辦法抽取複用: 1. 用工廠函數反回設好樣式的控件; 2. 用Avalonia的Classes/Styles系統 爲需要設置相同樣式的控件分配類名並統一設計
 
 ## 當代碼不符合上述規範時如何處理
 
