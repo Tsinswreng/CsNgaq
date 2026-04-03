@@ -17,6 +17,7 @@
 - `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/Sample/ViewSample.cs`
 - `Ngaq.Frontend/proj/Ngaq.Ui/CodeTemplate/Sample/VmSample.cs`
 - `Ngaq.Frontend/proj/Ngaq.Ui/Infra/ViewModelBase.cs`
+- `Ngaq.Frontend/proj/Ngaq.Ui/Views/MainView.Decl.cs`
 ]
 
 
