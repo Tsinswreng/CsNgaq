@@ -185,6 +185,11 @@ public class DaoWord{
 		- 在CsDeclOut/Tsinswreng.CsTools/下
 ]
 
+#H[注意事項][
+	- 默認情況下、查找的數據都是不包含被軟刪除的。使用SqlSplicer時記得`.WhereNonDel()`
+		- 如果明確希望查找的數據包含已刪除的條目、則方法要帶上`WithDel`後綴
+]
+
 #H[事務][
 非純查詢的函數、最終在Svc層作API導出旹必須要帶事務
 

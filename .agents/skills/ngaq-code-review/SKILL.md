@@ -6,6 +6,8 @@ description: 審查C#代碼
 
 ---
 
+該規範不包含前端相關。若要看前端相關代碼規範、請看 `.agents/skills/ngaq-code-review-frontend/SKILL.typ`
+
 ## 通用規範
 
 ### 功能正確性
@@ -155,45 +157,12 @@ if(_UserId.IsNullOrDefault()){
 
 - 讀寫數據庫相關的函數優先提供批量版本
 - 構建Sql的操作應在Dao層寫、不能在Svc層寫
+- 默認情況下、查找的數據都是不包含被軟刪除的。使用SqlSplicer時記得`.WhereNonDel()`
+  - 如果明確希望查找的數據包含已刪除的條目、則方法要帶上`WithDel`後綴
 
 ### 構建Sql
 
 能用SqlSplicer就不要用事符串插值
-
-## 前端規範
-
-- 如果你當前檢查的代碼不是前端代碼則無需理會此章節。
-- 如果是前端代碼但你無法訪問後面提及的參考文檔 則應向我匯報
-
-使用`Tsinswreng.AvlnTool`下的寫法。參見 `/Doc/Spec/Frontend.typ`。
-
-### I18n
-
-項目要求I18n。禁止硬編碼文字。 快速實現時臨時硬編碼則需先打I18n標記。
-
-錯誤示例
-
-```cs
-btn.Content="Login"
-```
-
-正確示例:
-
-```cs
-btn.Content=Todo.I18n("Login")
-```
-
-### MVVM
-
-遵守MVVM模式。
-
-### UI寫法
-
-- 添加子控件時使用使用鏈試調用的`.A()` 方法
-- 初始化`ContentControl.Content`時使用 `SetContent` 方法;
-- 避免硬編碼字體大小;
-- 按鈕綁定的事件是 調用後端接口/異步函數/耗時操作 的、必須用`OpBtn`而不是普通 `Button`
-- 避免重複的樣式設置代碼！當出現重複時 考慮用以下兩種辦法抽取複用: 1. 用工廠函數反回設好樣式的控件; 2. 用Avalonia的Classes/Styles系統 爲需要設置相同樣式的控件分配類名並統一設計
 
 ## 當代碼不符合上述規範時如何處理
 
