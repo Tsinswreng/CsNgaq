@@ -121,7 +121,8 @@ public class DaoWord{
 		//此處使用了 SqlSplicer 工具、文檔見 CsDeclOut/Tsinswreng.CsSql/ISqlSplicer.cs
 		// T是Dao的成員變量 代表ITable<PoWord>
 		// 此處的Sql的類型是 IAutoBindSqlDuplicator 、 不是str
-		var Sql = T.SqlSplicer().Select(x=>x.Id).From().Where1() //.From()不傳參數則默認用T的表名; Where1即 where 1=1
+		var Sql = T.SqlSplicer().Select(x=>x.Id).From().WhereNonDel() //.From()不傳參數則默認用T的表名; 
+		// WhereNonDel 即排除 被軟刪除的 一般首選 WhereNonDel
 		.AndEq(x=>x.Owner, y=>y.One(Owner))//綁固定參數、後期生成多條同結構sql時 此位置的實參始終于同一個
 		.AndEq(x=>x.Head, y=>y.Many(Heads))//綁定列表參數、後期生成多條同結構sql時 此位置的實參爲列表對應位置的元素
 		;
