@@ -59,6 +59,8 @@ global using CT = CancellationToken;
 也不要自己foreach消費的時候自己開List積攢起來
 
 需要操作內部元素旹盡量使用`.Select`保持懶加載
+
+可迭代集合 只允許消費一遍!! 不允許多次消費！
 ]
 
 

@@ -76,4 +76,9 @@
 	Ngaq.Test/proj/Ngaq.Windows.Test/Ngaq.Windows.Test.csproj
 ]
 
-注意代碼複用 減少重複代碼
+
+#H[注意事項][
+	- 代碼複用 減少重複代碼
+	- 當你在外部調用ISvcXxx裏的Api時、若函數第一個參數爲`IDbFnCtx?`
+		或`IDbUserCtx`時、保持`IDbFnCtx`的位置爲 null (不要自己初始化 IDbFnCtx)
+]

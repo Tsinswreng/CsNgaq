@@ -75,7 +75,9 @@ public class SvcKv:ISvcKv{
 	
 	要求: 在 Svc和Dao 及 必要的其他地方
 	
-	添加和修改操作時 要對待添加實體過一遍 CheckOwner 方法
+	添加和修改操作時 要對待添加實體過一遍 CheckOwner 方法。
+	CheckOwner方法無誤後會原樣返回。故直接
+	`entities = CheckOwner(entities)`
 ]
 
 #H[異常處理][
