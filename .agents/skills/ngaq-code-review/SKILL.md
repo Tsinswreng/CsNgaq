@@ -147,6 +147,11 @@ if(_UserId.IsNullOrDefault()){
 }
 ```
 
+重點檢查位置: 檢查Svc層。 添加或修改操作 可能拋出
+
+- ItemsErr.Common.DataIllegalOrConflict (約束違反等)
+- 或其他更細分的異常
+
 ### 注意代碼警告
 
 - 避免使用已過頭的API (`[Obsolete]`)
@@ -155,7 +160,11 @@ if(_UserId.IsNullOrDefault()){
 
 ### 安全問題
 
-檢查代碼中有無安全漏洞
+檢查代碼中有無安全漏洞。
+
+#### Owner檢查
+
+實現了 `I_Owner` 接口的實體、要用 I\_Owner.CheckOwner 擴展方法過一遍 來檢查Owner和當前UserId是否匹配
 
 ### 一致性
 

@@ -59,10 +59,35 @@ public class SvcKv:ISvcKv{
 			以減少重複參數數量
 		]
 	]
+	
+
 ]
 
 #H[調用其他批量函數的規範][
 	- 善用 BatchCollector
 	- 調用支持批量操作的函數的時候 避免在for循序中多次調用且每次調用時只傳一個參數
 		- 接收批量參數的函數 你就得批量地傳 不能把原本成批量的數據拆成一個 逐個傳
+]
+
+#H[安全相關][
+	對于 實現了 I_Owner接口的 實體、操作該實體時、
+	調用Ngaq.Core/Shared/Base/Models/Po/I_Owner.cs 下 的 CheckOwner 擴展方法
+	
+	要求: 在 Svc和Dao 及 必要的其他地方
+	
+	添加和修改操作時 要對待添加實體過一遍 CheckOwner 方法
+]
+
+#H[異常處理][
+	Doc/Spec/Err.typ
+	
+	Svc層應拋出 項目自定義的異常 即 ItemsErr中的異常
+	#H[幾種常用異常][
+		#H[ItemsErr.Common.DataIllegalOrConflict][
+			數據不合法或衝突。
+			當Svc中的添加或修改操作失敗時、默認拋出此異常。
+		]
+		上述兩種情況是一般/默認場景的情況、若定義了更細分的專用異常則應用㞢。
+	]
+	
 ]
