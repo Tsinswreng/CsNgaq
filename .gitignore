@@ -12,3 +12,4 @@ CsDeclOut/
 .dotnet*
 .dotnet_home/
 .dotnet_cli_home
+*.__Private/*
