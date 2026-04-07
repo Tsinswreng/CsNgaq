@@ -2,6 +2,7 @@
 files:
   paths:
     - Ai.typ
+    - E:\_code\CsNgaq\Doc\Spec\Common.typ
     - E:\_code\CsNgaq\Doc\Spec\Frontend.typ
     - E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\CodeTemplate\Sample\**
     - E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Infra\ViewModelBase.cs

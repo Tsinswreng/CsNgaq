@@ -126,6 +126,7 @@ public class DaoWord{
 		.AndEq(x=>x.Owner, y=>y.One(Owner))//綁固定參數、後期生成多條同結構sql時 此位置的實參始終于同一個
 		.AndEq(x=>x.Head, y=>y.Many(Heads))//綁定列表參數、後期生成多條同結構sql時 此位置的實參爲列表對應位置的元素
 		;
+		// Many支持  Many(myItbl, x=>x.NeededField)這種寫法
 		
 		var GotDicts = SqlCmdMkr.RunBatSql(Ctx, Sql, Ct);//返值類型爲 IAsyncEnumerate
 		return GotDicts.Select(x=>{
