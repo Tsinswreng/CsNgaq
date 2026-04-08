@@ -20,7 +20,7 @@
 	- `Ngaq.Local`
 		- 放客戶端遷移清單（`UseLocalMigrations()`）與本地遷移類。
 
-	- `Ngaq.Biz`
+	- `Ngaq.Server`
 		- 放服務端遷移清單（`UseServerMigrations()`）與服務端遷移類。
 ]
 

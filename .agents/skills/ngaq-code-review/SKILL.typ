@@ -29,6 +29,10 @@ description: 審查C\#代碼
 		包括但不限于 運行時動態反射API, 不兼容AOT的第三方庫等。
 		(依賴注入的IJsonSerializer, ToolJson等是兼容AOT的)
 	]
+	
+	#H[異步函數][
+		除非特殊情況、禁止用.Result或其他方式把異步轉同步
+	]
 
 	#H[註釋][
 		- AI寫的代碼要一定要有註釋。

@@ -13,3 +13,5 @@
 bin/
 obj/
 Svgs.Impl.cs
+
+*.Impl.cs

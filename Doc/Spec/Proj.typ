@@ -115,27 +115,27 @@
 	#H[Ngaq.Server/][
 		Web服務端目錄(不是程序集)
 		其proj/下有多個程序集。
-		#H[Ngaq.Biz][
+		#H[Ngaq.Server][
 			Web服務端 核心程序集
 			
 			引用
 			- Ngaq.Local
 		]
-		#H[Ngaq.Web][
+		#H[Ngaq.Server.Http][
 			Web Api程序集。
 			
-			主要是把Ngaq.Biz的接口 實現成Web Api(http)。
+			主要是把Ngaq.Server的接口 實現成Web Api(http)。
 			
 			引用
-			- Ngaq.Biz
+			- Ngaq.Server
 		]
 		
 		#H[Ngaq.Server.Test][
 			Web 服務端 測試程序集。
 			
 			引用
-			- Ngaq.Biz
-			- Ngaq.Web
+			- Ngaq.Server
+			- Ngaq.Server.Http
 			- Ngaq.Test
 		]
 	]
