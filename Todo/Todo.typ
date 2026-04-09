@@ -139,3 +139,28 @@ WinGlobalKey AOT下啓動後 無法顯程序主界面
 	[2026_0407_222106,]
 ]
 
+
+
+#H[llm 詞典 解析失敗處理][
+	[2026_0408_180000,]
+	SvcDict 拋異常 LlmResponseParseFailed 時、
+	前端丟失 已得之 流式數據
+]
+
+#H[Gtts 請求失敗時應拋出指定異常][
+	[2026_0409_143753,]
+]
+
+#H[從llm詞典保存生詞 點save後無效][
+	[2026_0409_143920,]
+]
+
+#H[PreFilter 分頁表 應顯示詳情][
+	[2026_0409_150231,]
+	如 core filter中只設了一項Field和FilterItem時(如Lang=italian)
+	在外層表格行中顯示 Lang=italian
+]
+
+#H[學習方案管理頁面入口放到 背單詞頁面 settings下][
+	[2026_0409_151340,]
+]
