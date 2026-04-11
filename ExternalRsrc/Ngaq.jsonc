@@ -24,7 +24,7 @@
 		"MaxDisplayedWordCount": 999999
 	},
 	"LlmDictionary":{
-		"ApiUrl": "https://api.siliconflow.cn/v1",
+		"ApiUrl": "https://api.siliconflow.cn/v1/chat/completions",
 		"Model": "Qwen/Qwen2.5-72B-Instruct",
 		"ApiKey": ""
 		

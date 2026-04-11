@@ -60,6 +60,9 @@ If you find the following content is already mis-encoding, switch your command a
 #H[DbMigration.typ][
 	數據庫遷移 (大多數情況你不需要讀此文件)
 ]
+#H[SepDeclEtImpl.typ][
+	分離 聲明 與 實現
+]
 
 #H[該看哪些文件][
 *Common.typ是必看項*
