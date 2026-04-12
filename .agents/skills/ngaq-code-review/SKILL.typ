@@ -74,6 +74,24 @@ description: 審查C\#代碼
 			需要操作內部元素旹盡量使用`.Select`保持懶加載
 			
 			注意 可迭代集合 只允許消費一遍 不允許多次消費
+			
+			#H[調用其他批量函數的規範][
+				- 善用 BatchCollector
+				- 調用支持批量操作的函數的時候 避免在for循序中多次調用且每次調用時只傳一個參數
+					- 調用 接收批量對象的 函數、 你就得批量地傳對象 不能把原本成批量的數據拆成一個 逐個傳!
+				錯誤示例:
+				```cs
+				void fn(IDbUserCtx Ctx, IAsyncEnumerable<MyObj> Itbl, CT Ct){
+					await foreach(var obj in Itbl){
+						//這種情況是 拆散批量 變逐個傳 性能極差
+						BatHandleObj(Ctx, ToolAsyE.ToAsyE([obj]), Ct);
+					}
+				}
+				```
+				
+				正確示例:
+				用`BatchCollector`。
+			]
 		]
 		除上述之外 也要檢查有無其他性能問題。 重點考慮時間複雜度和空間複雜度。
 	]

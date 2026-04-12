@@ -75,7 +75,9 @@ If you find the following content is already mis-encoding, switch your command a
 
 
 
-*遇到任何不確定的地方一定要先問我。建議多問 不要帶着疑問幹活*
+*遇到任何不確定的地方一定要先問我。*
+*遇到任何疑問 立即停下手頭的工作 來找我確認！*
+*建議多問 不要帶着疑問幹活*
 
 再次強調三點:
 - 所有代碼必須兼容AOT

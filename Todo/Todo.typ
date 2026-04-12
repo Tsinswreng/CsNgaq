@@ -169,3 +169,13 @@ WinGlobalKey AOT下啓動後 無法顯程序主界面
 #H[Repo.BatGetAggById 測試關聯的實體也不能有被軟刪的][
 	[2026_0409_203019,]
 ]
+
+
+#H[優化大模型詞典 用戶提示詞處理][
+	[2026_0411_160324,]
+```
+File: e:\_code\CsNgaq\Ngaq.Local\Domains\Dictionary\Svc\SvcDictionary.cs
+150: 		var userPrompt = BuildUserPrompt(Req);
+
+```
+]

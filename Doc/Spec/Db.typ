@@ -210,7 +210,19 @@ public class SvcWord{
 #H[調用其他批量函數的規範][
 	- 善用 BatchCollector
 	- 調用支持批量操作的函數的時候 避免在for循序中多次調用且每次調用時只傳一個參數
-		- 接收批量參數的函數 你就得批量地傳 不能把原本成批量的數據拆成一個 逐個傳
+		- 接收批量參數的函數 你就得批量地傳 不能把原本成批量的數據拆成一個 逐個傳!
+	錯誤示例:
+	```cs
+	void fn(IDbUserCtx Ctx, IAsyncEnumerable<MyObj> Itbl, CT Ct){
+		await foreach(var obj in Itbl){
+			//這種情況是 拆散批量 變逐個傳 性能極差
+			BatHandleObj(Ctx, ToolAsyE.ToAsyE([obj]), Ct);
+		}
+	}
+	```
+	
+	正確示例:
+	用`BatchCollector`。 後文有示例。
 ]
 
 #H[廢棄的閉包模式][
