@@ -1,7 +1,7 @@
 ```yaml
 files:
   paths:
-    - E:\_code\CsNgaq\Ai.typ
+    # skill/write-csharp-code
     - E:\_code\CsNgaq\Doc\Spec\Common.typ
     - E:\_code\CsNgaq\Doc\Spec\Db.typ
     - E:\_code\CsNgaq\Doc\Spec\Entity.typ
@@ -20,3 +20,4 @@ text: *__text
 ```
 
 ```
+
