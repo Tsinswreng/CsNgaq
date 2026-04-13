@@ -95,6 +95,4 @@ public IViewNavi? ViewNavi{get;set;}
 	```
 	
 	多數情況下、View和Vm應該一一對應。少數情況下可以不這樣。(如多個View共同一個Vm)
-	
-
 ]
