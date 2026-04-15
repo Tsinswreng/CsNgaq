@@ -1,6 +1,7 @@
 WindowsDirDebug="./Ngaq.Frontend/proj/Ngaq.Windows/bin/Debug/net10.0/"
 mkdir -p $WindowsDirDebug
 cp -r ./ExternalRsrc/*  $WindowsDirDebug
+cp -r ./ExternalRsrc.__Private/*  $WindowsDirDebug
 
 WebDirDebug=./Ngaq.Server/proj/Ngaq.Server.Http/bin/Debug/net10.0/
 mkdir -p $WebDirDebug

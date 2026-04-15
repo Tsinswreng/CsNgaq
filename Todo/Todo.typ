@@ -96,9 +96,7 @@ System.InvalidOperationException: This SqliteTransaction has completed; it is no
 權重算法報錯旹 無日誌亦未呈于界面、唯斷點調試模式ʸ可知
 ]
 
-#H[2025-12-25T16:42:27.335+08:00_W52-4][
-	底菜單蘭 當前所在標籤 高亮
-]
+
 
 #H[2026_0324_231201][
 WinGlobalKey AOT下啓動後 無法顯程序主界面
@@ -180,3 +178,22 @@ File: e:\_code\CsNgaq\Ngaq.Local\Domains\Dictionary\Svc\SvcDictionary.cs
 	改爲 增DictCfgAccessor 再增 文件讀寫適配 㕥解藕
 ]
 
+
+#H[從詞典頁面進入之 配置語言映射頁 無 菜單][
+	[2026_0413_220334,]
+]
+
+
+#H[統計圖 應顯示年份][
+	[2026_0413_221853,]
+]
+
+
+#H[從llm dict進入語言選擇頁 無法添加][
+	[2026_0414_105711,]
+]
+
+#H[UserLangToNormLang 配置界面 不能選擇NormLang 必須手動輸入][
+	[2026_0414_105753,]
+	在背單詞頁面點朗讀、若未配則現
+]
