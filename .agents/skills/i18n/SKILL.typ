@@ -102,6 +102,8 @@ type Full = {
 	約定 參數的順序和*鍵定義的標識符*的順序一致。
 	
 	例: en: `From__Select__: 'select {1} from {0}'`
+	
+	葉子節點的鍵格式最好接近英文版的譯文。
 	]
 
 	#H[C\# 側的鍵定義][
@@ -161,8 +163,8 @@ public class About{
 	```cs
 	using K = Ngaq.Ui.Infra.I18n.KeysUiI18n.LoginRegister;
 	
-	var userName = I[K.UserName];
-	var exampleWithArg = I.Get(K.__CannotBeEmpty, "User Name");
+	var userName = I[K.UserName]; //不需要傳參數時直接用[]
+	var exampleWithArg = I.Get(K.__CannotBeEmpty, "User Name"); //需要傳參數時纔用Get
 	```
 
 
@@ -178,3 +180,21 @@ public class About{
 	如 `Button.Content = Todo.I18n("登錄");`
 ]
 
+#H[最後再強調幾點要求][
+	#H[鍵格式要接近英文譯文][]
+	#H[在C\#中調用時須盡量使代碼簡短][
+		#H[正確示例][
+			```cs
+			using K = Ngaq.Ui.Infra.I18n.KeysUiI18n.LoginRegister;
+			var userName = I[K.UserName];
+			```
+			
+		]
+		#H[錯誤示例][
+			```cs
+			var userName = I18n[KeysUiI18n.LoginRegister];
+			```
+		]
+		
+	]
+]
