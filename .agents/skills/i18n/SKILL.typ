@@ -161,7 +161,7 @@ public class About{
 	建議爲內部類鍵節點建立別名來縮短代碼
 	如
 	```cs
-	using K = Ngaq.Ui.Infra.I18n.KeysUiI18n.LoginRegister;
+	using K = Ngaq.Ui.Infra.I18n.KeysUiI18n.Common;
 	
 	var userName = I[K.UserName]; //不需要傳參數時直接用[]
 	var exampleWithArg = I.Get(K.__CannotBeEmpty, "User Name"); //需要傳參數時纔用Get
@@ -182,21 +182,24 @@ public class About{
 
 #H[最後再強調幾點要求][
 	#H[鍵格式要接近英文譯文][]
-	#H[View/下的鍵的層級劃分要按實際的View來][
-		不要亂放 也不要全放在一起。
-
+	#H[View/下的鍵的層級劃分][
+		僅對于`View/`:
+		絕大多數情況 你只需要放在 `Common/`下。
+		因爲鍵名相同、代表譯文也應當相同。
+		如果遇到鍵名相同但希望區分不同譯文的情況、那應該避免使用相同的鍵名。
+		
+		但是`Error/`的異常鍵枚舉還是要按領域劃分、不能全放common下。
+		
 		例
 		```ts
 		View{
-			Login{//這裏就放 ViewLogin 和 VmLogin 用到的 。 不要再帶View前綴!!!
-				...
+			Common{
+				//都寫在這裏即可
 			}
-			UserProfile{ //這裏就放 ViewUserProfile 和 VmProfile用到的
-				
-			}
+			//這裏不需要再創建其他節點
 		}
 		Error{
-			//裏面的異常鍵也要按領域劃分
+			//裏面的異常鍵要按領域劃分、不能全放common下
 			User{
 				//...
 			}
@@ -209,7 +212,7 @@ public class About{
 	#H[在C\#中調用時須盡量使代碼簡短][
 		#H[正確示例][
 			```cs
-			using K = Ngaq.Ui.Infra.I18n.KeysUiI18n.LoginRegister;
+			using K = Ngaq.Ui.Infra.I18n.KeysUiI18n.Common;
 			var userName = I[K.UserName];
 			```
 			
