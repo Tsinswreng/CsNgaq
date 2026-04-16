@@ -182,6 +182,30 @@ public class About{
 
 #H[最後再強調幾點要求][
 	#H[鍵格式要接近英文譯文][]
+	#H[View/下的鍵的層級劃分要按實際的View來][
+		不要亂放 也不要全放在一起。
+
+		例
+		```ts
+		View{
+			Login{//這裏就放 ViewLogin 和 VmLogin 用到的 。 不要再帶View前綴!!!
+				...
+			}
+			UserProfile{ //這裏就放 ViewUserProfile 和 VmProfile用到的
+				
+			}
+		}
+		Error{
+			//裏面的異常鍵也要按領域劃分
+			User{
+				//...
+			}
+			Word{
+				...
+			}
+		}
+		```
+	]
 	#H[在C\#中調用時須盡量使代碼簡短][
 		#H[正確示例][
 			```cs
