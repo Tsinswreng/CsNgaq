@@ -7,7 +7,7 @@ Tag=$1
 
 sh ./TagLibs.sh $Tag
 sh ./TagEtPushRepo.sh  Ngaq.Core  $Tag
-sh ./TagEtPushRepo.sh  Ngaq.Local  $Tag
+sh ./TagEtPushRepo.sh  Ngaq.Backend  $Tag
 sh ./TagEtPushRepo.sh  Ngaq.Frontend  $Tag
 sh ./TagEtPushRepo.sh  Ngaq.Server  $Tag
 sh ./TagEtPushRepo.sh  Ngaq.Test  $Tag

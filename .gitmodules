@@ -2,9 +2,9 @@
 	path = Ngaq.Core
 	url = https://github.com/Tsinswreng/Ngaq.Core.git
 
-[submodule "Ngaq.Local"]
-	path = Ngaq.Local
-	url = https://github.com/Tsinswreng/Ngaq.Local.git
+[submodule "Ngaq.Backend"]
+	path = Ngaq.Backend
+	url = https://github.com/Tsinswreng/Ngaq.Backend.git
 
 [submodule "Ngaq.Frontend"]
 	path = Ngaq.Frontend

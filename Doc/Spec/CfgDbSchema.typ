@@ -4,6 +4,6 @@
 配置數據庫實體
 
 看
-/Ngaq.Local/Db/TswG/LocalTblMgrIniter.cs
+/Ngaq.Backend/Db/TswG/LocalTblMgrIniter.cs
 
 

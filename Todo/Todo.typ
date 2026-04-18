@@ -102,7 +102,7 @@ System.InvalidOperationException: This SqliteTransaction has completed; it is no
 WinGlobalKey AOT下啓動後 無法顯程序主界面
 ]
 
-#H[E:\_code\CsNgaq\Ngaq.Test\proj\Ngaq.Local.Test\Domains\Word\SvcWordV2\TestISvcWordV2.BatAddNewWordToLearn.cs][
+#H[E:\_code\CsNgaq\Ngaq.Test\proj\Ngaq.Backend.Test\Domains\Word\SvcWordV2\TestISvcWordV2.BatAddNewWordToLearn.cs][
 	補測試用例。
 	
 ]
@@ -157,7 +157,7 @@ WinGlobalKey AOT下啓動後 無法顯程序主界面
 #H[優化大模型詞典 用戶提示詞處理][
 	[2026_0411_160324,]
 ```
-File: e:\_code\CsNgaq\Ngaq.Local\Domains\Dictionary\Svc\SvcDictionary.cs
+File: e:\_code\CsNgaq\Ngaq.Backend\Domains\Dictionary\Svc\SvcDictionary.cs
 150: 		var userPrompt = BuildUserPrompt(Req);
 
 ```

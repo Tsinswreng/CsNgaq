@@ -72,7 +72,7 @@
 
 #H[本項目的幾個測試程序集][
 	Ngaq.Test/proj/Ngaq.Core.Test/Ngaq.Core.Test.csproj
-	Ngaq.Test/proj/Ngaq.Local.Test/Ngaq.Local.Test.csproj
+	Ngaq.Test/proj/Ngaq.Backend.Test/Ngaq.Backend.Test.csproj
 	Ngaq.Test/proj/Ngaq.Windows.Test/Ngaq.Windows.Test.csproj
 ]
 

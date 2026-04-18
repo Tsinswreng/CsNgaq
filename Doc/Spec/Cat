@@ -390,7 +390,7 @@ public class SvcWord{
 		- 放通用遷移抽象與執行器（`IMigrationMgr`、`MigrationMgr`、`MigrationRunner` 等）。
 		- 不放業務遷移內容。
 
-	- `Ngaq.Local`
+	- `Ngaq.Backend`
 		- 放客戶端遷移清單（`UseLocalMigrations()`）與本地遷移類。
 
 	- `Ngaq.Server`
@@ -799,7 +799,7 @@ public IViewNavi? ViewNavi{get;set;}
 		]
 	]
 
-	#H[Ngaq.Local][
+	#H[Ngaq.Backend][
 		後端基礎程序集。 主要負責數據庫IO 等
 
 		本地服務端 與 Web服務端 通用的代碼都被這裏。
@@ -827,14 +827,14 @@ public IViewNavi? ViewNavi{get;set;}
 		#H[Ngaq.Windows][
 			引用以下程序集:
 			- Ngaq.UI
-			- Ngaq.Local
+			- Ngaq.Backend
 			Windows入口。
 
 		]
 		#H[Ngaq.Android][
 			引用以下程序集:
 			- Ngaq.UI
-			- Ngaq.Local
+			- Ngaq.Backend
 			Android入口。
 		]
 		後續還有其他平臺特定入口程序集、就不一一列舉了。
@@ -860,7 +860,7 @@ public IViewNavi? ViewNavi{get;set;}
 			
 		]
 		
-		#H[Ngaq.Local.Test][
+		#H[Ngaq.Backend.Test][
 			
 		]
 		
@@ -878,7 +878,7 @@ public IViewNavi? ViewNavi{get;set;}
 			Web服務端 核心程序集
 			
 			引用
-			- Ngaq.Local
+			- Ngaq.Backend
 		]
 		#H[Ngaq.Server.Http][
 			Web Api程序集。

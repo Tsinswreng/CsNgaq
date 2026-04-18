@@ -40,7 +40,7 @@
 		]
 	]
 
-	#H[Ngaq.Local][
+	#H[Ngaq.Backend][
 		後端基礎程序集。 主要負責數據庫IO 等
 
 		本地服務端 與 Web服務端 通用的代碼都被這裏。
@@ -68,14 +68,14 @@
 		#H[Ngaq.Windows][
 			引用以下程序集:
 			- Ngaq.UI
-			- Ngaq.Local
+			- Ngaq.Backend
 			Windows入口。
 
 		]
 		#H[Ngaq.Android][
 			引用以下程序集:
 			- Ngaq.UI
-			- Ngaq.Local
+			- Ngaq.Backend
 			Android入口。
 		]
 		後續還有其他平臺特定入口程序集、就不一一列舉了。
@@ -106,7 +106,7 @@
 			
 		]
 		
-		#H[Ngaq.Local.Test][
+		#H[Ngaq.Backend.Test][
 			
 		]
 		
@@ -124,7 +124,7 @@
 			Web服務端 核心程序集
 			
 			引用
-			- Ngaq.Local
+			- Ngaq.Backend
 		]
 		#H[Ngaq.Server.Http][
 			Web Api程序集。

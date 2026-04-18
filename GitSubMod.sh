@@ -1,5 +1,5 @@
 git submodule add  https://github.com/Tsinswreng/Ngaq.Core.git  Ngaq.Core
-git submodule add  https://github.com/Tsinswreng/Ngaq.Local.git  Ngaq.Local
+git submodule add  https://github.com/Tsinswreng/Ngaq.Backend.git  Ngaq.Backend
 git submodule add  https://github.com/Tsinswreng/Ngaq.Frontend.git  Ngaq.Frontend
 git submodule add  https://github.com/Tsinswreng/Ngaq.Server.git  Ngaq.Server
 git submodule add  https://github.com/Tsinswreng/Ngaq.Test.git  Ngaq.Test

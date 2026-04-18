@@ -13,7 +13,7 @@ Languages/
 ls
 Ngaq.Core/
 Ngaq.Frontend/
-Ngaq.Local/
+Ngaq.Backend/
 Ngaq.Server/
 Ngaq.sln
 Ngaq.Test/
