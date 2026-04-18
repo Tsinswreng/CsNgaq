@@ -45,6 +45,9 @@ If you find the following content is already mis-encoding, switch your command a
 #H[Proj.typ][
 	項目結構介紹 (按需閱讀、如果你要做的任務只是一個小功能就可以先不看整個項目結構的介紹)
 ]
+#H[EntryStartup.typ][
+	三個入口程序集啓動流程說明 (`Ngaq.Windows` / `Ngaq.Windows.Test` / `Ngaq.Server.Http`)
+]
 #H[Err.typ][
 	自研異常處理框架 (寫業務邏輯可能會涉及到)
 ]
