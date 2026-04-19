@@ -43,3 +43,52 @@
 	
 	
 ]
+
+#H[json序列化映射規則][
+	#H[枚舉][
+		枚舉 序列化後 爲 枚舉名字符串(魔法數字可維護性差)
+	]
+	#H[強類型][
+		強類型包裝的 值類型 結構體 序列化 後 即其值字段、不再嵌套
+		常見的這種結構體 包含:
+		- 強類型Id 如 IdUser, IdWord 等
+		- Tempus
+	]
+	
+	例:
+	```cs
+	var learn = new PoWordLearn{
+		IdWord = IdWord.FromLow64Base("1ccGi78qV8SYrXJbcbtba"),
+		LearnResult = ELearn.Add,
+		BizCreatedAt = new Tempus(){Value = 1776575044094},
+	};
+	var json = toJson(learn);
+	```
+	
+	此json節選 正確時應爲
+	```json
+	{
+		//...
+		"IdWord": "1ccGi78qV8SYrXJbcbtba",
+		"LearnResult": "Add",
+		"BizCreatedAt": "1776575044094",
+		//...
+	}
+	```
+	
+	錯誤示例:
+	```json
+	{
+		//...
+		"IdWord": {
+			"Value": "1ccGi78qV8SYrXJbcbtba"
+		},
+		"LearnResult": 1,
+		"BizCreatedAt": {
+			"Value": "1776575044094"
+		},
+		//...
+	}
+	```
+]
+
