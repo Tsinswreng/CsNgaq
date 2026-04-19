@@ -68,6 +68,10 @@ typst文檔(.typ) 撰寫規範 (大多數情況你不需要讀此文件)
 
 分離 聲明 與 實現
 
+## Ctrlr.typ
+
+WebApi 端點層(Controller) 規範
+
 ## 該看哪些文件
 
 **Common.typ是必看項**

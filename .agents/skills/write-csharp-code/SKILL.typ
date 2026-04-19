@@ -59,6 +59,9 @@ description: 編寫C\#代碼
 #H[SepDeclEtImpl.typ][
 	分離 聲明 與 實現
 ]
+#H[Ctrlr.typ][
+	WebApi 端點層(Controller) 規範
+]
 
 #H[該看哪些文件][
 *Common.typ是必看項*
