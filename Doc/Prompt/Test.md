@@ -1,7 +1,7 @@
 ```yaml
 files:
   paths:
-    - E:\_code\CsNgaq\Ai.typ
+    # skill/write-csharp-code
     - E:\_code\CsNgaq\Doc\Spec\Test.typ
     - E:\_code\CsNgaq\Doc\Spec\TestSample.typ
   regex:

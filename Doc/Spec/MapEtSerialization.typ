@@ -71,7 +71,7 @@
 		//...
 		"IdWord": "1ccGi78qV8SYrXJbcbtba",
 		"LearnResult": "Add",
-		"BizCreatedAt": "1776575044094",
+		"BizCreatedAt": 1776575044094,
 		//...
 	}
 	```
@@ -85,7 +85,7 @@
 		},
 		"LearnResult": 1,
 		"BizCreatedAt": {
-			"Value": "1776575044094"
+			"Value": 1776575044094
 		},
 		//...
 	}
