@@ -96,3 +96,12 @@ public IViewNavi? ViewNavi{get;set;}
 	
 	多數情況下、View和Vm應該一一對應。少數情況下可以不這樣。(如多個View共同一個Vm)
 ]
+
+#H[跨平臺要求][
+	確保`Ngaq.Core`和`Ngaq.Ui`兩個程序集 是 平臺無關的(即跨平臺的、包括Web平臺)
+	禁止直接在 Ngaq.Ui 裏面使用任何 非跨平臺的API 如
+	- 讀寫文件(Web端不支持)
+	- 硬耦合特定操作系統特定API(如剪貼板等)
+
+要讀文件就用 System.IO.Abstractions
+]
