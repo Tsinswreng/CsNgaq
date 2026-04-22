@@ -1,6 +1,6 @@
 ---
 
-name: write-cshrap-code
+name: write-csharp-code
 
 description: 編寫C#代碼
 

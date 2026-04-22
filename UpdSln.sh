@@ -2,6 +2,7 @@ rm Ngaq.sln
 dotnet new sln -n Ngaq
 dotnet sln add Ngaq.Core/Ngaq.Core.csproj
 dotnet sln add Ngaq.Backend/Ngaq.Backend.csproj
+dotnet sln add Ngaq.Doc/proj/**/*.csproj
 dotnet sln add Ngaq.Test/proj/**/*.csproj
 dotnet sln add Ngaq.Frontend/proj/**/*.csproj
 dotnet sln add Ngaq.Server/proj/**/*.csproj
