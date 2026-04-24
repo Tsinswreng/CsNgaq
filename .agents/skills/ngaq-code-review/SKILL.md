@@ -148,7 +148,8 @@ void fn(IDbUserCtx Ctx, IAsyncEnumerable<MyObj> Itbl, CT Ct){
 ### 依賴注入規範
 
 - 需要在一個模型中引用其他模塊時、使用構造函數依賴注入
-- 除非特殊情況(如程序入口初始化等)、不允許調用程序全局的 `GetService<MyService>()`來獲取依賴！你應該使用構造函數依賴注入
+- 不允許調用程序全局的 `GetService<MyService>()`來獲取依賴！你應該使用構造函數依賴注入
+  - 除非特殊情況如 程序入口初始化, View層的 `App.DiOrMk<Ctx>()` 等
 
 ### 業務異常處理
 

@@ -58,13 +58,23 @@
 		#H[Ngaq.UI][
 			此程序集同樣要求平臺無關。使用MVVM模式。
 			- 包含UI, 交互邏輯 等
-			- 此程序集引用 Ngaq.Core 程序集。
+			- 此程序集引用程序集:
+				- Ngaq.Core 
+				- Ngaq.Client
 		]
 		後續提到的特定平臺的程序集僅有以下職責:
 			- 程序入口(有Main方法或頂層語句)
 			- 依賴注入 ServiceCollection裝配
 			- 平臺特定功能的方法實現
 		一般不會有UI、交互邏輯等。
+		
+		#H[Ngaq.Client][
+			Http Client。
+			專門用來發網絡請求。
+			不能讀寫文件。
+			要跨平臺 包括Web平臺
+		]
+		
 		#H[Ngaq.Windows][
 			引用以下程序集:
 			- Ngaq.UI
@@ -77,6 +87,17 @@
 			- Ngaq.UI
 			- Ngaq.Backend
 			Android入口。
+		]
+		#H[Ngaq.Browser][
+			瀏覽器入口程序集。
+			引用Ngaq.UI但不引用Ngaq.Backend。
+			該程序集用wasm跑在瀏覽器上 不能讀寫文件。
+			調用後端接口時 全部通過http請求調用。
+			
+			故Ngaq.Core中定義的接口 ISvcXxx 一般都有兩種以上實現
+			一種實現 在 Ngaq.Backend中、作爲非web的客戶端軟件直接讀數據庫;
+			另一種實現 在 Ngaq.Client中、作爲瀏覽器入口的Http Client通過http請求調用Server.Http接口。
+			其中Server.Http又調用Ngaq.Backend的代碼、只是 數據庫從客戶端的sqlite換成了服務器端的pg。
 		]
 		後續還有其他平臺特定入口程序集、就不一一列舉了。
 		#H[配置文件][
