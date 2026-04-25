@@ -61,7 +61,8 @@ global using CT = CancellationToken;
 ]
 
 
-#H[可迭代集合][
+#H[流式懶加載][
+	#H[可迭代聚合][
 如果代碼中有 `IEnumerable<>`或`IAsyncEnumerable<>`
 則默認是需要懶加載的。
 
@@ -73,6 +74,11 @@ global using CT = CancellationToken;
 需要操作內部元素旹盡量使用`.Select`保持懶加載
 
 可迭代集合 只允許消費一遍!! 不允許多次消費！
+	]
+	#H[流][
+		流亦同理、 `Stream` 默認需要懶加載、不能把全部數據都一次性載入內存、不能用MemoryStream接收
+	]
+
 ]
 
 

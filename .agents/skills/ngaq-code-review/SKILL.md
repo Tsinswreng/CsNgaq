@@ -78,6 +78,8 @@ DoSomething() {
 
 注意 可迭代集合 只允許消費一遍 不允許多次消費
 
+`Stream`亦同理、默認需要懶加載、不能把全部數據都一次性載入內存、不能用MemoryStream接收
+
 ##### 調用其他批量函數的規範
 
 - 善用 BatchCollector
