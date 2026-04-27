@@ -94,7 +94,7 @@ dismay	✅4:5:0	20d	3.53e+11
 // #let WordList = read("./WordList-zh_tw.typ")
 // #WordList
 
-#include "./WordList-zh-TW.typ"
+#include "../Prod/zh-TW/WordList-zh-TW.typ"
 
 == 關于詞頭的選取
 如前文所述、程序會根據(詞頭, 語言)來作爲單詞的標識。如果您記錄的語言的單詞詞頭寫法相對不固定、建議您自定標準來統一、避免相同單詞因記錄的詞頭寫法不同而被程序識別爲不同詞。
