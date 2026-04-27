@@ -19,6 +19,14 @@
 	實現了 `Ngaq.Core.Infra.IF.IAppSerializable` 接口的 class
 	纔能序列化和反序列化。
 	
+	實現此接口後 會自動註冊
+	```cs
+	[JsonSerializable(typeof(TheClass))]
+	[JsonSerializable(typeof(IList<TheClass>))]
+	```
+	兩種類型。
+	涉及序列化與反序列化時 必須使用 `IList<TheClass>` 不能用 `List<>`、因後者未註冊 會導致失敗
+	
 	json序列化使用標準庫內置、依賴源生成器。
 	但是此項目中 實現了 `IAppSerializable` 接口的類 不會使源生成器自動生成代碼、
 	需要cd到 `Ngaq.Core`下 執行 `sh GenAppJsonCtx.sh`
