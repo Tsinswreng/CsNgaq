@@ -1,36 +1,34 @@
-= 自定义 js 权重算法插件格式
+= Custom JS Weight Algorithm Plugin Format
 
-本文面向插件开发者，说明如何编写可被
-`Ngaq.Core.Shared.Word.Svc.JsWeightCalctr`
-执行的 js 算法脚本。
+This document is intended for plugin developers. It describes how to write a js algorithm script that can be executed by `Ngaq.Core.Shared.Word.Svc.JsWeightCalctr`.
 
-== 挂载方式
+== Mounting Method
 
-- 在 `Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.PoWeightCalculator` 中：
-  - `Type` 设为 `EWeightCalculatorType.JsV1`。
-  - `Text` 填入完整 js 脚本。
-- 运行时由 `Ngaq.Backend.Domains.StudyPlan.Svc.SvcStudyPlan` 构造算法实例。
+- In `Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.PoWeightCalculator`:
+  - Set `Type` to `EWeightCalculatorType.JsV1`.
+  - Set `Text` to the complete js script.
+- At runtime, an instance of the algorithm is constructed by `Ngaq.Backend.Domains.StudyPlan.Svc.SvcStudyPlan`.
 
-== 运行时上下文
+== Runtime Context
 
-脚本在 Jint 引擎中执行，可直接使用以下全局变量：
+The script is executed in the Jint engine and can directly use the following global variables:
 
 - `Ngaq.WordsJson`:
-  - 字符串，内容是单词列表 JSON。
-  - 建议使用 `const words = JSON.parse(Ngaq.WordsJson ?? "[]")` 解析。
+  - A string containing the JSON of the word list.
+  - Recommended usage: `const words = JSON.parse(Ngaq.WordsJson ?? "[]")`.
 - `Ngaq.CalcArgJson`:
-  - 字符串，内容是权重参数 JSON，可能为 `"null"`。
-  - 建议使用 `const arg = JSON.parse(Ngaq.CalcArgJson ?? "{}")` 解析。
+  - A string containing the JSON of weight parameters, may be `"null"`.
+  - Recommended usage: `const arg = JSON.parse(Ngaq.CalcArgJson ?? "{}")`.
 - `console.log(...args)`:
-  - 可输出运行日志到后端 logger。
+  - Can output runtime logs to the backend logger.
 
-== 返回值契约
+== Return Value Contract
 
-- 脚本必须 `return` 一个 JSON 字符串。
-- 返回空字符串会触发业务错误。
-- 返回内容可被反序列化到 `Ngaq.Core.Shared.Word.Svc.JsWeightResult`。
+- The script **must** `return` a JSON string.
+- Returning an empty string triggers a business error.
+- The returned content must be deserializable into `Ngaq.Core.Shared.Word.Svc.JsWeightResult`.
 
-推荐返回结构：
+Recommended return structure:
 
 ```json
 {
@@ -51,20 +49,20 @@
 }
 ```
 
-字段说明：
+Field descriptions:
 
 - `Opt.SortBy`:
-  - 支持 `Weight` 或 `Index`。
-  - 对应 `Ngaq.Core.Shared.Word.Models.Weight.ESortBy`。
+  - Supports `Weight` or `Index`.
+  - Corresponds to `Ngaq.Core.Shared.Word.Models.Weight.ESortBy`.
 - `Opt.ResultType`:
-  - 建议固定填 `AsyEIWordWeightResult`。
+  - It is recommended to always fill in `AsyEIWordWeightResult`.
 - `Results`:
-  - 每项对应 `Ngaq.Core.Word.Models.Weight.WordWeightResult`。
-  - `StrId` 必填；`Weight` 建议为有限数字；`Index` 可用于稳定排序。
+  - Each item corresponds to `Ngaq.Core.Word.Models.Weight.WordWeightResult`.
+  - `StrId` is required; `Weight` should be a finite number; `Index` can be used for stable sorting.
 - `Props`:
-  - 可选。用于回传插件自定义诊断信息。
+  - Optional. Used to return plugin-specific diagnostic information.
 
-== 最小可用示例
+== Minimal Working Example
 
 ```js
 const words = JSON.parse(Ngaq.WordsJson ?? "[]");
@@ -91,20 +89,20 @@ return JSON.stringify({
 });
 ```
 
-== 常见错误
+== Common Errors
 
-- 脚本为空或全空白：
-  - 会触发 `JsWeightCalcCodeEmpty`。
-- 脚本返回空字符串：
-  - 会触发 `JsWeightCalcReturnedEmpty`。
-- 返回内容不是合法 JSON 或结构不匹配：
-  - 会触发 `JsWeightCalcReturnedInvalidJson`。
-- 脚本内抛异常：
-  - 会被包装为 `JsWeightCalcExecFailed`。
+- Empty or completely blank script:
+  - Triggers `JsWeightCalcCodeEmpty`.
+- Script returns an empty string:
+  - Triggers `JsWeightCalcReturnedEmpty`.
+- Returned content is not valid JSON or has mismatched structure:
+  - Triggers `JsWeightCalcReturnedInvalidJson`.
+- Exception thrown inside the script:
+  - Wrapped as `JsWeightCalcExecFailed`.
 
-== 开发建议
+== Development Recommendations
 
-- 对 `Ngaq.CalcArgJson` 的每个字段做兜底处理，避免 `NaN`。
-- 对输入单词数组做空值与字段缺失防御。
-- 先保证 `Results` 中每项都有 `StrId`，再逐步增加复杂策略。
-- 在算法迭代时保留 `Props` 版本字段，便于排查线上问题。
+- Provide fallback handling for every field in `Ngaq.CalcArgJson` to avoid `NaN`.
+- Defensively handle empty values and missing fields in the input word array.
+- First ensure every item in `Results` has a `StrId`, then gradually add more complex strategies.
+- Keep a version field in `Props` when iterating on the algorithm to facilitate troubleshooting in production.
