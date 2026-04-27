@@ -160,51 +160,6 @@ File: e:\_code\CsNgaq\Ngaq.Backend\Domains\Dictionary\Svc\SvcDictionary.cs
 	[2026_0413_220334,]
 ]
 
-#H[ViewNormLangToUserLangPage][
-	[2026_0425_113205,]
-	`E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\NormLangToUserLang\NormLangToUserLangPage\ViewNormLangToUserLangPage.cs`
-	
-	這裏的表格 不用顯示 標準語言類型 和 描述。
-	
-	`E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\NormLangToUserLang\NormLangToUserLangEdit\VmNormLangToUserLangEdit.cs`
-	這裏纔要顯示 標準語言類型。
-	然後 VmNormLangToUserLangEdit 的 選擇按鈕 的 圖標 改成 `E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Icons\Svgs.Decl.cs` 的 ListSelect
-	
-]
-
-#H[統計圖 應顯示年份][
-	[2026_0413_221853,]
-	`E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\Statistics\ViewStatistics.cs`
-	下方橫坐標軸  顯示的格式是 `04-26`這樣的、豎着的
-	假如我統計的時間跨度超過一年 看座標軸就不知道是哪一年的。
-	且 橫坐標軸 標籤 和 橫坐標軸線 相交了、容易看不清楚。
-	
-	再把這裏的默認分頁大小改成10。原先20太大了。只改這裏的。
-]
-
-
-#H[從llm dict進入語言選擇頁 無法添加][
-	[2026_0414_105711,]
-	`E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Dictionary\ViewDictionary.cs`
-	進入
-	
-	`E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\NormLang\NormLangPage\ViewNormLangPage.cs`
-	本來 ViewNormLangPage是有添加按鈕的。 如果是從 ViewDictionary 進入 ViewNormLangPage的話、 ViewNormLangPage 的添加按鈕就不見了。應該要有。
-	
-	此外、 
-	`E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\NormLang\NormLangEdit\ViewNormLangEdit.cs` 要顯示 語言類型 如 Bcp47
-]
-
-#H[UserLangToNormLang 配置界面 不能選擇NormLang 必須手動輸入][
-	[2026_0414_105753,]
-	`E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\UserLang\UserLangEdit\ViewUserLangEdit.cs`
-	
-	關聯語言 輸入框 後面加一個選擇按鈕、點擊之後 轉到 
-	`E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\NormLang\NormLangPage\ViewNormLangPage.cs`
-	的頁面、點擊其中一項就能選擇
-	
-	然後這個 ViewUserLangEdit 頁面 還要顯示 關聯語言類型。
-]
 
 
 #H[View/NormLangToUserLangPage/ModifiedTime
@@ -213,30 +168,12 @@ not found][
 ]
 
 
-#H[詞典 大模型 提示詞 強調 用戶輸入拼寫不正確時要在Head糾正][
-	[2026_0420_101710,]
-	`E:\_code\CsNgaq\Ngaq.Backend\Domains\Dictionary\Prompt\Prompt.typ`
-	強調 Head字段 是 規範化後的詞頭
-	假如用戶輸入了 dictioary、那返回的Head字段應該是 dictionary
-]
-
 
 #H[統計頁面 學習結果 要I18n][
 	[2026_0421_111530,]
 	E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\Statistics\ViewStatistics.cs
 	Add/Fgt/Rmb 這幾樣 在下拉框裏。
 	先標上Todo.I18n先
-]
-
-
-#H[備份同步頁 操作成功後要有Toast提示][
-	[2026_0421_200917]
-]
-
-#H[優化 GlobalErrHandler 異常處理][
-	[2026_0421_201226,]
-	`E:\_code\CsNgaq\Ngaq.Server\proj\Ngaq.Server.Http\GlobalErrHandler.cs`
-	- 要注入Logger輸入異常信息
 ]
 
 
@@ -253,15 +190,6 @@ not found][
 ]
 
 
-#H[單詞添加頁][
-	[2026_0423_222156,]
-	- 增 格式說明
-	- 用 文本編輯器控件
-	- 刪 他ʹ 功能、只留 文本添加
-
-E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\AddWord\ViewAddWord.cs
-]
-
 #H[js 權重算法自定義 增 文檔][
 	[2026_0423_222328,]
 	或統一作進階文檔
@@ -271,21 +199,7 @@ E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\AddWord\ViewAdd
 	[2026_0423_222256,]
 ]
 
-#H[NormLangPage 本土名稱列 放後面][
-	[2026_0423_222433,]
-	
-	E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\NormLang\NormLangPage\ViewNormLangPage.cs
-]
 
-
-#H[單詞編輯頁 之 刪除時間 宜譯爲 軟刪除時間][
-	[2026_0425_111148,]
-	控件用 TempusBox 勿直ᵈ顯 unixMs
-	
-	E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordEditV2\ViewWordEditV2.cs
-]
-
-#H[ItblToStream 不應用 MemoryStream][
-	[2026_0425_114358,]
-	`E:\_code\CsNgaq\Tsinswreng.CsTools\proj\Tsinswreng.CsTools\ItblToStream.cs`
+#H[WordEditV2 無法修改 DelAt字段、改了 點保存則不效][
+	[2026_0425_201514,]
 ]

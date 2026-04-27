@@ -3,7 +3,11 @@ set -eu
 
 ROOT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 BROWSER_PROJ_DIR="$ROOT_DIR/Ngaq.Frontend/proj/Ngaq.Browser"
-SERVER_WWWROOT_DIR="$ROOT_DIR/Ngaq.Server/proj/Ngaq.Server.Http/wwwroot"
+SERVER_HTTP_PROJ_DIR="$ROOT_DIR/Ngaq.Server/proj/Ngaq.Server.Http"
+SERVER_WWWROOT_PROJ="$SERVER_HTTP_PROJ_DIR/wwwroot"
+SERVER_WWWROOT_BIN_RELEASE="$SERVER_HTTP_PROJ_DIR/bin/Release/net10.0/wwwroot"
+SERVER_WWWROOT_BIN_DEBUG="$SERVER_HTTP_PROJ_DIR/bin/Debug/net10.0/wwwroot"
+SERVER_WWWROOT_PUBLISH="$SERVER_HTTP_PROJ_DIR/bin/Release/net10.0/publish/wwwroot"
 
 SRC_DEFAULT="$BROWSER_PROJ_DIR/bin/Release/net10.0-browser/publish/wwwroot"
 
@@ -19,15 +23,21 @@ if [ -z "${SRC_DIR:-}" ] || [ ! -d "$SRC_DIR" ]; then
   exit 1
 fi
 
-mkdir -p "$SERVER_WWWROOT_DIR"
-
-if command -v rsync >/dev/null 2>&1; then
-  rsync -a --delete "$SRC_DIR"/ "$SERVER_WWWROOT_DIR"/
-else
-  rm -rf "$SERVER_WWWROOT_DIR"/*
-  cp -a "$SRC_DIR"/. "$SERVER_WWWROOT_DIR"/
-fi
+sync_one() {
+  target="$1"
+  mkdir -p "$target"
+  if command -v rsync >/dev/null 2>&1; then
+    rsync -a --delete "$SRC_DIR"/ "$target"/
+  else
+    rm -rf "$target"/*
+    cp -a "$SRC_DIR"/. "$target"/
+  fi
+  echo "  -> $target"
+}
 
 echo "synced:"
 echo "  from: $SRC_DIR"
-echo "    to: $SERVER_WWWROOT_DIR"
+sync_one "$SERVER_WWWROOT_PROJ"
+sync_one "$SERVER_WWWROOT_BIN_RELEASE"
+sync_one "$SERVER_WWWROOT_BIN_DEBUG"
+sync_one "$SERVER_WWWROOT_PUBLISH"

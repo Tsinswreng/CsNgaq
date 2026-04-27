@@ -67,8 +67,8 @@ public IViewNavi? ViewNavi{get;set;}
 ]
 
 #H[項目使用到的圖標][
-	`Ngaq.Frontend/proj/Ngaq.Ui/Icons/Svgs.Decl.cs`
-	禁止讀 Svgs.Impl.cs 文件! 否則會消耗大量token
+	`Ngaq.Frontend/proj/Ngaq.Ui/Icons/Icons.Decl.cs`
+	禁止讀 Icons.Impl.cs 文件! 否則會消耗大量token
 ]
 
 #H[文件(命名空間)位置][

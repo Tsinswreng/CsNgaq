@@ -12,6 +12,6 @@
 
 bin/
 obj/
-Svgs.Impl.cs
+Icons.Impl.cs
 
 *.Impl.cs
