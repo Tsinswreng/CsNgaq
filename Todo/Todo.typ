@@ -203,3 +203,12 @@ not found][
 #H[WordEditV2 無法修改 DelAt字段、改了 點保存則不效][
 	[2026_0425_201514,]
 ]
+
+
+#H[android 綁定 回退鍵][
+	[2026_0427_214253]
+	E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Android\MainActivity.cs
+	File: e:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\MainView.cs
+327: 						MgrViewNavi.Inst.GetViewNavi().Back();
+
+]
