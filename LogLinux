@@ -1,0 +1,56 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Tsinswreng.CsFactoryMkr -> /mnt/e/_code/CsNgaq/Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr/bin/Debug/netstandard2.0/Tsinswreng.CsFactoryMkr.dll
+  Tsinswreng.CsIfaceGen -> /mnt/e/_code/CsNgaq/Tsinswreng.CsIfaceGen/proj/Tsinswreng.CsIfaceGen/bin/Debug/netstandard2.0/Tsinswreng.CsIfaceGen.dll
+  Tsinswreng.CsTempus -> /mnt/e/_code/CsNgaq/Tsinswreng.CsTempus/proj/Tsinswreng.CsTempus/bin/Debug/net10.0/Tsinswreng.CsTempus.dll
+  Tsinswreng.CsCore -> /mnt/e/_code/CsNgaq/Tsinswreng.CsCore/proj/Tsinswreng.CsCore/bin/Debug/net10.0/Tsinswreng.CsCore.dll
+  Tsinswreng.CsCore -> /mnt/e/_code/CsNgaq/Tsinswreng.CsCore/proj/Tsinswreng.CsCore/bin/Debug/netstandard2.0/Tsinswreng.CsCore.dll
+  Tsinswreng.CsTextWithBlob -> /mnt/e/_code/CsNgaq/Tsinswreng.CsTextWithBlob/proj/Tsinswreng.CsTextWithBlob/bin/Debug/net10.0/Tsinswreng.CsTextWithBlob.dll
+  Tsinswreng.CsYamlMd -> /mnt/e/_code/CsNgaq/Tsinswreng.CsYamlMd/proj/Tsinswreng.CsYamlMd/bin/Debug/net10.0/Tsinswreng.CsYamlMd.dll
+  Tsinswreng.CsTools -> /mnt/e/_code/CsNgaq/Tsinswreng.CsTools/proj/Tsinswreng.CsTools/bin/Debug/net10.0/Tsinswreng.CsTools.dll
+  Tsinswreng.CsPage -> /mnt/e/_code/CsNgaq/Tsinswreng.CsPage/proj/Tsinswreng.CsPage/bin/Debug/net10.0/Tsinswreng.CsPage.dll
+  Tsinswreng.Srefl -> /mnt/e/_code/CsNgaq/Tsinswreng.Srefl/proj/Tsinswreng.Srefl/bin/Debug/netstandard2.0/Tsinswreng.Srefl.dll
+  Tsinswreng.CsCfg -> /mnt/e/_code/CsNgaq/Tsinswreng.CsCfg/proj/Tsinswreng.CsCfg/bin/Debug/net10.0/Tsinswreng.CsCfg.dll
+  Tsinswreng.AvlnTools -> /mnt/e/_code/CsNgaq/Tsinswreng.AvlnTools/proj/Tsinswreng.AvlnTools/bin/Debug/net10.0/Tsinswreng.AvlnTools.dll
+  Tsinswreng.CsErr -> /mnt/e/_code/CsNgaq/Tsinswreng.CsErr/proj/Tsinswreng.CsErr/bin/Debug/net10.0/Tsinswreng.CsErr.dll
+  Tsinswreng.CsI18n -> /mnt/e/_code/CsNgaq/Tsinswreng.CsI18n/proj/Tsinswreng.CsI18n/bin/Debug/net10.0/Tsinswreng.CsI18n.dll
+  Tsinswreng.Srefl.SrcGen -> /mnt/e/_code/CsNgaq/Tsinswreng.Srefl/proj/Tsinswreng.Srefl.SrcGen/bin/Debug/netstandard2.0/Tsinswreng.Srefl.SrcGen.dll
+  Tsinswreng.CsSql -> /mnt/e/_code/CsNgaq/Tsinswreng.CsSql/proj/Tsinswreng.CsSql/bin/Debug/net10.0/Tsinswreng.CsSql.dll
+  Tsinswreng.CsFactoryMkr.SrcGen -> /mnt/e/_code/CsNgaq/Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr.SrcGen/bin/Debug/netstandard2.0/Tsinswreng.CsFactoryMkr.SrcGen.dll
+  Tsinswreng.CsSql.BaseImpl -> /mnt/e/_code/CsNgaq/Tsinswreng.CsSql/proj/Tsinswreng.CsSql.BaseImpl/bin/Debug/net10.0/Tsinswreng.CsSql.BaseImpl.dll
+  Tsinswreng.CsSql.Sqlite -> /mnt/e/_code/CsNgaq/Tsinswreng.CsSql/proj/Tsinswreng.CsSql.Sqlite/bin/Debug/net10.0/Tsinswreng.CsSql.Sqlite.dll
+  Ngaq.Core -> /mnt/e/_code/CsNgaq/Ngaq.Core/bin/Debug/net10.0/Ngaq.Core.dll
+  Ngaq.Client -> /mnt/e/_code/CsNgaq/Ngaq.Frontend/proj/Ngaq.Client/bin/Debug/net10.0/Ngaq.Client.dll
+  Tsinswreng.Avln.StrokeText -> /mnt/e/_code/CsNgaq/Tsinswreng.Avln.StrokeText/proj/Tsinswreng.Avln.StrokeText/bin/Debug/net10.0/Tsinswreng.Avln.StrokeText.dll
+  Ngaq.Backend -> /mnt/e/_code/CsNgaq/Ngaq.Backend/bin/Debug/net10.0/Ngaq.Backend.dll
+  Ngaq.Ui -> /mnt/e/_code/CsNgaq/Ngaq.Frontend/proj/Ngaq.Ui/bin/Debug/net10.0/Ngaq.Ui.dll
+  Ngaq.Linux -> /mnt/e/_code/CsNgaq/Ngaq.Frontend/proj/Ngaq.Linux/bin/Debug/net10.0/Ngaq.Linux.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:10.70
+pwd: /mnt/e/_code/CsNgaq/Ngaq.Frontend/proj/Ngaq.Linux/bin/Debug/net10.0
+Unhandled exception. System.TypeInitializationException: The type initializer for 'SkiaSharp.SKFontManager' threw an exception.
+ ---> System.TypeInitializationException: The type initializer for 'SkiaSharp.SKObject' threw an exception.
+ ---> System.InvalidOperationException: The version of the native libSkiaSharp library (88.1) is incompatible with this version of SkiaSharp. Supported versions of the native libSkiaSharp library are in the range [119.0, 120.0).
+   at SkiaSharp.SkiaSharpVersion.CheckNativeLibraryCompatible(Version minSupported, Version current, Boolean throwIfIncompatible)
+   at SkiaSharp.SkiaSharpVersion.CheckNativeLibraryCompatible(Boolean throwIfIncompatible)
+   at SkiaSharp.SKObject..cctor()
+   --- End of inner exception stack trace ---
+   at SkiaSharp.SKObject..ctor(IntPtr handle, Boolean owns)
+   at SkiaSharp.SKFontManager..ctor(IntPtr handle, Boolean owns)
+   at SkiaSharp.SKFontManager.SKFontManagerStatic..ctor(IntPtr x)
+   at SkiaSharp.SKFontManager..cctor()
+   --- End of inner exception stack trace ---
+   at SkiaSharp.SKFontManager.get_Default()
+   at Avalonia.Skia.FontManagerImpl..ctor()
+   at Avalonia.Skia.SkiaPlatform.Initialize(SkiaOptions options)
+   at Avalonia.SkiaApplicationExtensions.<>c.<UseSkia>b__0_0()
+   at Avalonia.AppBuilder.SetupUnsafe()
+   at Avalonia.AppBuilder.Setup()
+   at Avalonia.AppBuilder.SetupWithLifetime(IApplicationLifetime lifetime)
+   at Avalonia.ClassicDesktopStyleApplicationLifetimeExtensions.StartWithClassicDesktopLifetime(AppBuilder builder, String[] args, Action`1 lifetimeBuilder)
+   at Ngaq.Linux.Program.Main(String[] args) in /mnt/e/_code/CsNgaq/Ngaq.Frontend/proj/Ngaq.Linux/Ngaq.Linux.cs:line 108
+Aborted (core dumped)
