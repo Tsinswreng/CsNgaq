@@ -136,8 +136,8 @@
       "Head": "Intestazione",
       "Lang": "Lingua",
       "StoredAt": "Memorizzato il",
-      "BizCreatedAt": "Creato (business) il",
-      "BizUpdatedAt": "Aggiornato (business) il",
+      "Biz_CreatedAt": "Creato (business) il",
+      "Biz_UpdatedAt": "Aggiornato (business) il",
       "DelAtUnixMs": "Eliminato il (Unix ms)",
       "AddProp": "Aggiungi proprietà",
       "AddLearn": "Aggiungi record apprendimento",
@@ -154,9 +154,9 @@
       "Remove": "Rimuovi",
       "KvTypeStr": "Stringa",
       "KvTypeI64": "Intero",
-      "LearnAdd": "Aggiungi record apprendimento",
-      "LearnRmb": "Ricorda",
-      "LearnFgt": "Dimentica",
+      "Learn_Add": "Aggiungi record apprendimento",
+      "Learn_Rmb": "Ricorda",
+      "Learn_Fgt": "Dimentica",
       "WordTxtFile": "File testo parole",
       "JsonsFile": "File JSON",
       "Text": "Testo",
@@ -290,7 +290,8 @@
       "WordEditorOpenerNotReady": "Apribile editor parole non pronto",
       "NgaqDictionaryLookup": "Ricerca dizionario",
       "TapReadClipboardAndAutoLookup": "Tocca per leggere gli appunti e cercare automaticamente",
-      "WeightAlgorithmPluginDoc": "Documentazione plugin algoritmo peso"
+      "WeightAlgorithmPluginDoc": "Documentazione plugin algoritmo peso",
+      "TakeEffectAfterTheProgramIsRestarted": "Prende effetto dopo il riavvio del programma"
     }
   },
   "Error": {

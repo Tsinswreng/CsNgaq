@@ -136,8 +136,8 @@
       "Head": "Head",
       "Lang": "Language",
       "StoredAt": "Stored At",
-      "BizCreatedAt": "Business Created At",
-      "BizUpdatedAt": "Business Updated At",
+      "Biz_CreatedAt": "Business Created At",
+      "Biz_UpdatedAt": "Business Updated At",
       "DelAtUnixMs": "Deleted At (Unix ms)",
       "AddProp": "Add Property",
       "AddLearn": "Add Learn",
@@ -154,9 +154,9 @@
       "Remove": "Remove",
       "KvTypeStr": "String",
       "KvTypeI64": "Integer",
-      "LearnAdd": "Add",
-      "LearnRmb": "Remember",
-      "LearnFgt": "Forgot",
+      "Learn_Add": "Add",
+      "Learn_Rmb": "Remember",
+      "Learn_Fgt": "Forgot",
       "WordTxtFile": "Word Text File",
       "JsonsFile": "JSONs File",
       "Text": "Text",
@@ -290,7 +290,8 @@
       "WordEditorOpenerNotReady": "Word Editor Opener not ready",
       "NgaqDictionaryLookup": "Dictionary Lookup",
       "TapReadClipboardAndAutoLookup": "Tap to read clipboard and auto lookup",
-      "WeightAlgorithmPluginDoc": "Weight Algorithm Plugin Documentation"
+      "WeightAlgorithmPluginDoc": "Weight Algorithm Plugin Documentation",
+      "TakeEffectAfterTheProgramIsRestarted": "Take effect after the program is restarted"
     }
   },
   "Error": {

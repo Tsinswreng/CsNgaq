@@ -95,7 +95,7 @@
       "Saved": "已储存",
       "Deleted": "已删除",
       "PoNormLang": "标准语言持久化物件",
-      "Id": "识别码",
+      "Id": "ID",
       "NativeName": "本土名称",
       "Type": "类型",
       "Delete": "删除",
@@ -132,12 +132,12 @@
       "Basic": "基本",
       "Props": "属性",
       "Learns": "学习记录",
-      "WordId": "单词识别码",
+      "WordId": "单词ID",
       "Head": "标头",
       "Lang": "语言",
       "StoredAt": "储存时间",
-      "BizCreatedAt": "业务建立时间",
-      "BizUpdatedAt": "业务更新时间",
+      "Biz_CreatedAt": "创建时间",
+      "Biz_UpdatedAt": "修改时间",
       "DelAtUnixMs": "删除时间（Unix 毫秒）",
       "AddProp": "新增属性",
       "AddLearn": "新增学习记录",
@@ -154,9 +154,9 @@
       "Remove": "移除",
       "KvTypeStr": "字串",
       "KvTypeI64": "整数",
-      "LearnAdd": "新增学习记录",
-      "LearnRmb": "记住",
-      "LearnFgt": "忘记",
+      "Learn_Add": "添加",
+      "Learn_Rmb": "记住",
+      "Learn_Fgt": "忘记",
       "WordTxtFile": "单词纯文本",
       "JsonsFile": "JSON 文件",
       "Text": "文字",
@@ -199,7 +199,7 @@
       "AddGroup": "新增群组",
       "Back": "返回",
       "SaveDraft": "储存草稿",
-      "NoPersistedIdToDelete": "没有可删除的持久化识别码",
+      "NoPersistedIdToDelete": "没有可删除的持久化ID",
       "PoPreFilterJsonParseFailed": "前置筛选器 JSON 持久化物件解析失败",
       "EditorNotReady": "编辑器尚未就绪",
       "Core": "核心",
@@ -290,7 +290,8 @@
       "WordEditorOpenerNotReady": "单词编辑器开启器尚未就绪",
       "NgaqDictionaryLookup": "词典查询",
       "TapReadClipboardAndAutoLookup": "点击以读取剪贴板并自动查询",
-      "WeightAlgorithmPluginDoc": "权重算法插件开发文档"
+      "WeightAlgorithmPluginDoc": "权重算法插件开发文档",
+      "TakeEffectAfterTheProgramIsRestarted": "在程序重启后生效"
     }
   },
   "Error": {
@@ -311,7 +312,7 @@
       "AuthenticationFailed": "验证失败"
     },
     "Word": {
-      "WordOfId__NotFound": "识别码 {0} 的单词不存在",
+      "WordOfId__NotFound": "ID为 {0} 的单词不存在",
       "LoadWordListFailed": "载入单词清单失败",
       "SaveWordListFailed": "储存单词清单失败",
       "LoadWordCalcWeightFailed": "载入单词权重计算失败",
@@ -321,7 +322,7 @@
       "WeightCalcRunFailed": "权重计算执行失败",
       "WeightCalcResultHandleFailed": "权重计算结果处理失败",
       "WeightCalcResultStreamNull": "权重计算结果串流为空",
-      "WeightCalcResultWordIdInvalid__": "权重计算结果中的单词识别码 {0} 无效",
+      "WeightCalcResultWordIdInvalid__": "权重计算结果中的单词ID {0} 无效",
       "JsWeightCalcCodeEmpty": "JavaScript 权重计算程式码为空",
       "JsWeightCalcExecFailed": "JavaScript 权重计算执行失败",
       "JsWeightCalcReturnedEmpty": "JavaScript 权重计算回传空值",
@@ -347,8 +348,8 @@
       "LlmResponseParseFailed": "LLM 回应解析失败"
     },
     "Sync": {
-      "BatchGetByIdCountMismatch": "批次依识别码取得数量不符",
-      "SyncShouldUseSameId": "同步应使用相同的识别码"
+      "BatchGetByIdCountMismatch": "批次依ID取得数量不符",
+      "SyncShouldUseSameId": "同步应使用相同的ID"
     },
     "Audio": {
       "AudioPlayFailed": "音频播放失败"

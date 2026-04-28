@@ -136,8 +136,8 @@
       "Head": "Encabezado",
       "Lang": "Idioma",
       "StoredAt": "Almacenado el",
-      "BizCreatedAt": "Creado (negocio)",
-      "BizUpdatedAt": "Actualizado (negocio)",
+      "Biz_CreatedAt": "Creado (negocio)",
+      "Biz_UpdatedAt": "Actualizado (negocio)",
       "DelAtUnixMs": "Eliminado el (Unix ms)",
       "AddProp": "Añadir propiedad",
       "AddLearn": "Añadir registro de aprendizaje",
@@ -154,9 +154,9 @@
       "Remove": "Eliminar",
       "KvTypeStr": "Cadena",
       "KvTypeI64": "Entero",
-      "LearnAdd": "Añadir registro de aprendizaje",
-      "LearnRmb": "Recordado",
-      "LearnFgt": "Olvidado",
+      "Learn_Add": "Añadir registro de aprendizaje",
+      "Learn_Rmb": "Recordado",
+      "Learn_Fgt": "Olvidado",
       "WordTxtFile": "Archivo de texto de palabras",
       "JsonsFile": "Archivo JSON",
       "Text": "Texto",
@@ -290,7 +290,8 @@
       "WordEditorOpenerNotReady": "El abridor del editor de palabras no está listo",
       "NgaqDictionaryLookup": "Consulta en diccionario",
       "TapReadClipboardAndAutoLookup": "Pulse para leer el portapapeles y consultar automáticamente",
-      "WeightAlgorithmPluginDoc": "Documentación del plugin de algoritmo de peso"
+      "WeightAlgorithmPluginDoc": "Documentación del plugin de algoritmo de peso",
+      "TakeEffectAfterTheProgramIsRestarted": "Toma efecto después de que el programa se reinicie"
     }
   },
   "Error": {

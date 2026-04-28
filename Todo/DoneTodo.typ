@@ -280,3 +280,36 @@ E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\AddWord\ViewAdd
 	
 ]
 
+#H[快捷鍵查詞][
+	[2026_0421_212925,2026_0428_205107]
+	目前差linux版
+]
+
+
+#H[跨平臺 音頻播放][
+	[2026_0422_094904,2026_0428_205114]
+	目前差linux版
+]
+
+#H[統計頁面 學習結果 要I18n][
+	[2026_0421_111530,2026_0428_205140]
+	E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\Statistics\ViewStatistics.cs
+	Add/Fgt/Rmb 這幾樣 在下拉框裏。
+	先標上Todo.I18n先
+]
+
+
+#H[js 權重算法自定義 增 文檔][
+	[2026_0423_222328,2026_0428_205150]
+	或統一作進階文檔
+]
+
+
+#H[View/NormLangToUserLangPage/ModifiedTime
+not found][
+	[2026_0416_224448,2026_0428_205202]
+]
+
+#H[下拉框選項也要i18n][
+	[2026_0407_212317,2026_0428_205225]
+]

@@ -136,8 +136,8 @@
       "Head": "見出し",
       "Lang": "言語",
       "StoredAt": "保存日時",
-      "BizCreatedAt": "ビジネス作成日時",
-      "BizUpdatedAt": "ビジネス更新日時",
+      "Biz_CreatedAt": "ビジネス作成日時",
+      "Biz_UpdatedAt": "ビジネス更新日時",
       "DelAtUnixMs": "削除日時（Unixミリ秒）",
       "AddProp": "プロパティを追加",
       "AddLearn": "学習記録を追加",
@@ -154,9 +154,9 @@
       "Remove": "削除",
       "KvTypeStr": "文字列",
       "KvTypeI64": "整数",
-      "LearnAdd": "追加",
-      "LearnRmb": "覚えた",
-      "LearnFgt": "忘れた",
+      "Learn_Add": "追加",
+      "Learn_Rmb": "覚えた",
+      "Learn_Fgt": "忘れた",
       "WordTxtFile": "単語テキストファイル",
       "JsonsFile": "JSONファイル",
       "Text": "テキスト",
@@ -290,7 +290,8 @@
       "WordEditorOpenerNotReady": "単語エディタオープナーが準備できていません",
       "NgaqDictionaryLookup": "辞書引き",
       "TapReadClipboardAndAutoLookup": "タップしてクリップボードを読み取り自動検索",
-      "WeightAlgorithmPluginDoc": "重みアルゴリズムプラグイン開発ドキュメント"
+      "WeightAlgorithmPluginDoc": "重みアルゴリズムプラグイン開発ドキュメント",
+      "TakeEffectAfterTheProgramIsRestarted": "プログラムの再起動後に有効になります"
     }
   },
   "Error": {

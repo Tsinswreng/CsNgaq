@@ -110,9 +110,7 @@ WinGlobalKey AOT下啓動後 無法顯程序主界面
 	
 ]
 
-#H[下拉框選項也要i18n][
-	[2026_0407_212317,]
-]
+
 
 #H[llm 詞典 解析失敗處理][
 	[2026_0408_180000,]
@@ -123,8 +121,6 @@ WinGlobalKey AOT下啓動後 無法顯程序主界面
 #H[Gtts 請求失敗時應拋出指定異常][
 	[2026_0409_143753,]
 ]
-
-
 
 #H[Repo.BatGetAggById 測試關聯的實體也不能有被軟刪的][
 	[2026_0409_203019,]
@@ -161,40 +157,6 @@ File: e:\_code\CsNgaq\Ngaq.Backend\Domains\Dictionary\Svc\SvcDictionary.cs
 ]
 
 
-
-#H[View/NormLangToUserLangPage/ModifiedTime
-not found][
-	[2026_0416_224448,]
-]
-
-
-
-#H[統計頁面 學習結果 要I18n][
-	[2026_0421_111530,]
-	E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Ui\Views\Word\WordManage\Statistics\ViewStatistics.cs
-	Add/Fgt/Rmb 這幾樣 在下拉框裏。
-	先標上Todo.I18n先
-]
-
-
-#H[快捷鍵查詞][
-	[2026_0421_212925,]
-	目前差linux版
-]
-
-
-
-#H[跨平臺 音頻播放][
-	[2026_0422_094904,]
-	目前差linux版
-]
-
-
-#H[js 權重算法自定義 增 文檔][
-	[2026_0423_222328,]
-	或統一作進階文檔
-]
-
 #H[多增內置js權重算法與參數][
 	[2026_0423_222256,]
 ]
@@ -212,3 +174,4 @@ not found][
 327: 						MgrViewNavi.Inst.GetViewNavi().Back();
 
 ]
+
