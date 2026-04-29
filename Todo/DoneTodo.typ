@@ -313,3 +313,25 @@ not found][
 #H[下拉框選項也要i18n][
 	[2026_0407_212317,2026_0428_205225]
 ]
+
+#H[多增內置js權重算法與參數][
+	[2026_0423_222256,2026_0429_095707]
+]
+
+
+#H[WordEditV2 無法修改 DelAt字段、改了 點保存則不效][
+	[2026_0425_201514,2026_0429_095708]
+]
+
+
+#H[標準語言 支持編輯 EnglishName與權重][
+	[2026_0429_095729,2026_0429_105814]
+]
+
+#H[安卓入口 配 i18n][
+	[2026_0429_101113,2026_0429_105814]
+	參照 `E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Windows\Ngaq.Windows.cs`
+	
+	改`E:\_code\CsNgaq\Ngaq.Frontend\proj\Ngaq.Android\MainActivity.cs`
+	
+]

@@ -8,12 +8,19 @@ git submodule add  https://github.com/Tsinswreng/CsTypeAlias.git  Tsinswreng.CsT
 git submodule add  https://github.com/Tsinswreng/CsTools.git  Tsinswreng.CsTools
 git submodule add  https://github.com/Tsinswreng/CsCore.git  Tsinswreng.CsCore
 git submodule add  https://github.com/Tsinswreng/CsErr.git  Tsinswreng.CsErr
-git submodule add  https://github.com/Tsinswreng/CsDictMapper.git  Tsinswreng.CsDictMapper
 git submodule add  https://github.com/Tsinswreng/CsSql.git  Tsinswreng.CsSql
 git submodule add  https://github.com/Tsinswreng/CsPage.git  Tsinswreng.CsPage
+git submodule add  https://github.com/Tsinswreng/CsJson.git  Tsinswreng.CsJson
 git submodule add  https://github.com/Tsinswreng/CsCfg.git  Tsinswreng.CsCfg
+git submodule add  https://github.com/Tsinswreng/CsI18n.git  Tsinswreng.CsI18n
+git submodule add  https://github.com/Tsinswreng/CsTempus.git  Tsinswreng.CsTempus
+git submodule add  https://github.com/Tsinswreng/CsTextWithBlob.git  Tsinswreng.CsTextWithBlob
+git submodule add  https://github.com/Tsinswreng/CsU128Id.git  Tsinswreng.CsU128Id
+git submodule add  https://github.com/Tsinswreng/CsYamlMd.git  Tsinswreng.CsYamlMd
+git submodule add  https://github.com/Tsinswreng/CsSrefl.git  Tsinswreng.CsSrefl
+git submodule add  https://github.com/Tsinswreng/CsTreeTest.git  Tsinswreng.CsTreeTest
 git submodule add  https://github.com/Tsinswreng/CsSrcGenTools.git  Tsinswreng.CsSrcGenTools
 git submodule add  https://github.com/Tsinswreng/CsIfacegen.git  Tsinswreng.CsIfacegen
-git submodule add  https://github.com/Tsinswreng/AvaloniaTools.git  Tsinswreng.AvlnTools
-
+git submodule add  https://github.com/Tsinswreng/AvlnTools.git  Tsinswreng.AvlnTools
+git submodule add  https://github.com/Tsinswreng/Avln.StrokeText.git  Tsinswreng.Avln.StrokeText
 

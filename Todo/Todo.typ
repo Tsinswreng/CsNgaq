@@ -157,14 +157,7 @@ File: e:\_code\CsNgaq\Ngaq.Backend\Domains\Dictionary\Svc\SvcDictionary.cs
 ]
 
 
-#H[多增內置js權重算法與參數][
-	[2026_0423_222256,]
-]
 
-
-#H[WordEditV2 無法修改 DelAt字段、改了 點保存則不效][
-	[2026_0425_201514,]
-]
 
 
 #H[android 綁定 回退鍵][
@@ -175,3 +168,7 @@ File: e:\_code\CsNgaq\Ngaq.Backend\Domains\Dictionary\Svc\SvcDictionary.cs
 
 ]
 
+
+#H[NormLang分頁搜索 以code字段優先][
+	[2026_0429_105832,]
+]
