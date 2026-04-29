@@ -17,7 +17,7 @@ git submodule add  https://github.com/Tsinswreng/CsTempus.git  Tsinswreng.CsTemp
 git submodule add  https://github.com/Tsinswreng/CsTextWithBlob.git  Tsinswreng.CsTextWithBlob
 git submodule add  https://github.com/Tsinswreng/CsU128Id.git  Tsinswreng.CsU128Id
 git submodule add  https://github.com/Tsinswreng/CsYamlMd.git  Tsinswreng.CsYamlMd
-git submodule add  https://github.com/Tsinswreng/CsSrefl.git  Tsinswreng.CsSrefl
+git submodule add  https://github.com/Tsinswreng/Srefl.git  Tsinswreng.Srefl
 git submodule add  https://github.com/Tsinswreng/CsTreeTest.git  Tsinswreng.CsTreeTest
 git submodule add  https://github.com/Tsinswreng/CsSrcGenTools.git  Tsinswreng.CsSrcGenTools
 git submodule add  https://github.com/Tsinswreng/CsIfacegen.git  Tsinswreng.CsIfacegen

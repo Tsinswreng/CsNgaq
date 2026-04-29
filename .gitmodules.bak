@@ -1,0 +1,62 @@
+[submodule "Ngaq.Core"]
+	path = Ngaq.Core
+	url = https://github.com/Tsinswreng/Ngaq.Core.git
+
+[submodule "Ngaq.Backend"]
+	path = Ngaq.Backend
+	url = https://github.com/Tsinswreng/Ngaq.Backend.git
+
+[submodule "Ngaq.Frontend"]
+	path = Ngaq.Frontend
+	url = https://github.com/Tsinswreng/Ngaq.Frontend.git
+
+[submodule "Ngaq.Server"]
+	path = Ngaq.Server
+	url = https://github.com/Tsinswreng/Ngaq.Server.git
+
+[submodule "Ngaq.Test"]
+	path = Ngaq.Test
+	url = https://github.com/Tsinswreng/Ngaq.Test.git
+
+
+[submodule "Tsinswreng.CsTypeAlias"]
+	path = Tsinswreng.CsTypeAlias
+	url = https://github.com/Tsinswreng/CsTypeAlias.git
+
+[submodule "Tsinswreng.CsTools"]
+	path = Tsinswreng.CsTools
+	url = https://github.com/Tsinswreng/CsTools.git
+
+[submodule "Tsinswreng.CsDictMapper"]
+	path = Tsinswreng.CsDictMapper
+	url = https://github.com/Tsinswreng/CsDictMapper.git
+
+[submodule "Tsinswreng.CsSql"]
+	path = Tsinswreng.CsSql
+	url = https://github.com/Tsinswreng/CsSql.git
+
+
+[submodule "Tsinswreng.CsPage"]
+	path = Tsinswreng.CsPage
+	url = https://github.com/Tsinswreng/CsPage.git
+[submodule "Tsinswreng.AvlnTools"]
+	path = Tsinswreng.AvlnTools
+	url = https://github.com/Tsinswreng/AvaloniaTools.git
+[submodule "Tsinswreng.CsCore"]
+	path = Tsinswreng.CsCore
+	url = https://github.com/Tsinswreng/CsCore.git
+[submodule "Tsinswreng.CsCfg"]
+	path = Tsinswreng.CsCfg
+	url = https://github.com/Tsinswreng/CsCfg.git
+[submodule "Tsinswreng.CsIfacegen"]
+	path = Tsinswreng.CsIfacegen
+	url = https://github.com/Tsinswreng/CsIfacegen.git
+[submodule "Tsinswreng.CsSrcGenTools"]
+	path = Tsinswreng.CsSrcGenTools
+	url = https://github.com/Tsinswreng/CsSrcGenTools.git
+[submodule "Tsinswreng.CsErr"]
+	path = Tsinswreng.CsErr
+	url = https://github.com/Tsinswreng/CsErr.git
+[submodule "Tsinswreng.CsSrefl"]
+	path = Tsinswreng.CsSrefl
+	url = https://github.com/Tsinswreng/CsSrefl.git
