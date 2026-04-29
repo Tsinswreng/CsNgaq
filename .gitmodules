@@ -16,9 +16,6 @@
 [submodule "Ngaq.Test"]
 	path = Ngaq.Test
 	url = https://github.com/Tsinswreng/Ngaq.Test.git
-[submodule "Thesis"]
-	path = Thesis
-	url = https://github.com/Tsinswreng/PvnqKhjoojPikLhet.git
 [submodule "Tsinswreng.Avln.StrokeText"]
 	path = Tsinswreng.Avln.StrokeText
 	url = https://github.com/Tsinswreng/Avln.StrokeText.git
@@ -31,24 +28,15 @@
 [submodule "Tsinswreng.CsCore"]
 	path = Tsinswreng.CsCore
 	url = https://github.com/Tsinswreng/CsCore.git
-[submodule "Tsinswreng.CsDecl"]
-	path = Tsinswreng.CsDecl
-	url = https://github.com/Tsinswreng/Tsinswreng.CsDecl.git
-[submodule "Tsinswreng.CsDictMapper"]
-	path = Tsinswreng.CsDictMapper
-	url = https://github.com/Tsinswreng/Tsinswreng.SrcGen.git
 [submodule "Tsinswreng.CsErr"]
 	path = Tsinswreng.CsErr
 	url = https://github.com/Tsinswreng/CsErr.git
-[submodule "Tsinswreng.CsFactoryMkr"]
-	path = Tsinswreng.CsFactoryMkr
-	url = https://github.com/Tsinswreng/Tsinswreng.CsFactoryMkr.git
 [submodule "Tsinswreng.CsI18n"]
 	path = Tsinswreng.CsI18n
 	url = https://github.com/Tsinswreng/Tsinswreng.CsI18n.git
-[submodule "Tsinswreng.CsIfaceGen"]
-	path = Tsinswreng.CsIfaceGen
-	url = https://github.com/Tsinswreng/CsIfaceGen.git
+[submodule "Tsinswreng.CsIfacegen"]
+	path = Tsinswreng.CsIfacegen
+	url = https://github.com/Tsinswreng/CsIfacegen.git
 [submodule "Tsinswreng.CsJson"]
 	path = Tsinswreng.CsJson
 	url = https://github.com/Tsinswreng/CsJson.git
@@ -61,9 +49,6 @@
 [submodule "Tsinswreng.CsSrcGenTools"]
 	path = Tsinswreng.CsSrcGenTools
 	url = https://github.com/Tsinswreng/CsSrcGenTools.git
-[submodule "Tsinswreng.CsSrefl"]
-	path = Tsinswreng.CsSrefl
-	url = https://github.com/Tsinswreng/CsSrefl.git
 [submodule "Tsinswreng.CsTempus"]
 	path = Tsinswreng.CsTempus
 	url = https://github.com/Tsinswreng/Tsinswreng.CsTempus.git
@@ -85,12 +70,6 @@
 [submodule "Tsinswreng.CsYamlMd"]
 	path = Tsinswreng.CsYamlMd
 	url = https://github.com/Tsinswreng/Tsinswreng.CsYamlMd.git
-[submodule "Tsinswreng.OpenXmlTools"]
-	path = Tsinswreng.OpenXmlTools
-	url = https://github.com/Tsinswreng/OpenXmlTools.git
 [submodule "Tsinswreng.Srefl"]
 	path = Tsinswreng.Srefl
 	url = https://github.com/Tsinswreng/Tsinswreng.CsStrAcc.git
-[submodule "Tsinswreng.TypstTools"]
-	path = Tsinswreng.TypstTools
-	url = https://github.com/Tsinswreng/TypstTools.git
