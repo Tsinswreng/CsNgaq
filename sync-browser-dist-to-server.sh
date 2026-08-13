@@ -2,8 +2,8 @@
 set -eu
 
 ROOT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
-BROWSER_PROJ_DIR="$ROOT_DIR/Ngan.Dict.Frontend/proj/Ngan.Dict.Browser"
-SERVER_HTTP_PROJ_DIR="$ROOT_DIR/Ngan.Dict.Server/proj/Ngan.Dict.Server.Http"
+BROWSER_PROJ_DIR="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Browser"
+SERVER_HTTP_PROJ_DIR="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Server/proj/Ngan.Dict.Server.Http"
 SERVER_WWWROOT_PROJ="$SERVER_HTTP_PROJ_DIR/wwwroot"
 SERVER_WWWROOT_BIN_RELEASE="$SERVER_HTTP_PROJ_DIR/bin/Release/net10.0/wwwroot"
 SERVER_WWWROOT_BIN_DEBUG="$SERVER_HTTP_PROJ_DIR/bin/Debug/net10.0/wwwroot"

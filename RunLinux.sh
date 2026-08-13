@@ -1,6 +1,6 @@
 # 始終以腳本所在目錄作爲根目錄，避免從其他目錄調用時相對路徑失效。
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-DIR_LINUX="$SCRIPT_DIR/Ngan.Dict.Frontend/proj/Ngan.Dict.Linux"
+DIR_LINUX="$SCRIPT_DIR/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Linux"
 DIR_DEBUG="$DIR_LINUX/bin/Debug/net10.0"
 
 # 配置文件中有 LLM Key，不宜置於版本控制文件中，故不自動複製資產。
@@ -16,4 +16,3 @@ dotnet build "./Ngan.Dict.Linux.csproj" # --verbosity detailed -p:AllowMissingPr
 cd "$DIR_DEBUG"
 dotnet ./Ngan.Dict.Linux.dll
 # dotnet watch --project ../../../
-

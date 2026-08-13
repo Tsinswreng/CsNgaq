@@ -135,6 +135,144 @@
 	][
 		
 	]
+	
+	-T[2026_0801_235050][
+		我想把
+		`Ngan.Dict.*`
+		開頭的程序集都放到一起、
+		保留歷史合併到同一個git倉庫裏。
+		就是
+		```
+Ngan/
+	Ngan.Dict/
+		.git/
+			Ngan.Dict.Backend/
+			Ngan.Dict.Core/
+			Ngan.Dict.Frontend/
+			Ngan.Dict.Server/
+			Ngan.Dict.Doc/
+		```
+		
+		現在先不動、想想應該怎麼做?
+		是不是我在github新建一個Ngan.Dict的倉庫
+		再把原來的歷史複製進去、
+		原先各自的github倉庫不動 這樣比較好?
+	][
+````md
+是的，你的方案是比較穩妥的：
+
+```text
+Ngan/
+  Ngan.Dict/          # Git submodule
+    .git/
+    Ngan.Dict.Backend/
+    Ngan.Dict.Core/
+    Ngan.Dict.Frontend/
+    Ngan.Dict.Server/
+    Ngan.Dict.Doc/
+```
+
+建議流程：
+
+1. 在 GitHub 新建空倉庫 `Ngan.Dict`。
+2. 從各原始倉庫複製 Git 歷史。
+3. 使用 `git filter-repo --to-subdirectory-filter`，把每個項目的歷史放入對應目錄。
+4. 合併多個歷史到新的 `Ngan.Dict` 倉庫。
+5. 原有 GitHub 倉庫完全不動，作為備份/歷史來源。
+6. 在 `Ngan` 倉庫中把 `Ngan.Dict` 加為 submodule：
+
+```powershell
+git submodule add <Ngan.Dict倉庫地址> Ngan.Dict
+git add .gitmodules Ngan.Dict
+git commit -m "Add Ngan.Dict monorepo"
+```
+
+注意：
+
+- 不能直接把多個 `.git` 文件夾複製到一起。
+- 合併歷史後，提交 SHA 通常會改變，但作者、時間、提交訊息和完整歷史可以保留。
+- 原項目倉庫不會被修改。
+- 之後最好以新的 `Ngan.Dict` 倉庫為唯一主倉庫，原倉庫只作為封存/查歷史用途。
+````
+	]
+	
+	-T[2026_0802_000041][
+		去做
+	][
+````md
+有兩點需要你確認，我先不動：
+
+1. `Ngan.Dict` 裏是否也要包含 `Ngan.Dict.Test`？
+   - 你示意樹裏沒列它，但目前它是 `Ngan.Dict.*` 項目。
+
+2. 新倉庫是否要包含目前已完成的改名/命名空間修改？
+   - 我建議包含，作為新倉庫的最新提交；各原 GitHub 倉庫保持不動。 
+````
+	]
+	
+	-T[2026_0802_000056][
+		對對也要包含 忘列了。最新修改也要。
+	][
+		
+	]
+	
+	
+	-T[2026_0803_205627][
+		很多.sh腳本、task.json, launch.json
+		路徑還是不對的。幫同步一下。
+		只改文件不用commit不用push
+	][
+````md
+我发现两处需要你确认，先暂停修改：
+
+1. `TagAll.sh`、`GitSubMod.sh` 仍按旧的五个独立 `Ngan.Dict.*` 仓库工作。现在已经合并成一个 `Ngan.Dict` 仓库，是否改成只操作：
+
+```text
+Ngan.Dict
+```
+
+2. `Ngan.Ime/UpdSln.sh` 中：
+
+```text
+CsRimeApi/proj/**/*.csproj
+CsInterop/proj/**/*.csproj
+```
+
+实际目录是父目录下的：
+
+```text
+../CsRimeApi/proj/**/*.csproj
+../Tsinswreng.CsInterop/proj/**/*.csproj
+```
+
+我建议按以上方式修改。其余明确错误的路径我可以直接同步，包括根目录脚本、`.vscode/tasks.json`、`.vscode/launch.json`、`Ngan.Dict.sln`，以及 `Ngan.Dict` 内旧的 `/mnt/e/_code/CsNgan.Dict` 路径。
+````
+	]
+	
+	-T[2026_0803_210506][
+		TagAll那兩個不動。  你重寫一個新的updsln 寫在整個項目根目錄。
+	][
+		
+	]
+	
+	-T[2026_0804_123613][
+		統一一下目錄結構。
+````
+		Ngan.Dict/
+			Ngan.Dict.Xxx/
+				proj/
+					Directory.Build.props
+					TypeAlias.cs
+					Ngan.Dict.Yyy/
+						Ngan.Dict.Yyy.csproj
+					Ngan.Dict.Zzz/
+						Ngan.Dict.Zzz.csproj
+````
+理解我的意思吧?
+
+	][
+		
+	]
 ]
 
 

@@ -1,2 +1,2 @@
-cd Ngan.Dict.Frontend/proj/Ngan.Dict.Browser
+cd Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Browser
 dotnet publish -c Release

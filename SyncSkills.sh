@@ -1,69 +1,8 @@
 #!/bin/bash
-
-: << 'EOF_2026_0701_174908'
-
-#H[skill管理][
-	#H[主目錄][
-		`.agents/skills/`
-	]
-	#H[從github Tsinswreng/ 下clone新skill 到 `TsinswrengSkills/`][
-		以 `tsinswreng-stop-on-doubt` 爲例
-		```sh
-		cd TsinswrengSkills
-		# 在Github/Tsinswreng中 所有skill倉庫都以 `skill-` 開頭、clone到本地上要把`skill-`替換成 `tsinswreng-`
-		git clone https://github.com/Tsinswreng/skill-stop-on-doubt.git  tsinswreng-stop-on-doubt
-		```
-	]
-
-	#H[將`TsinswrengSkills`中的skill同步到主目錄][
-以 `tsinswreng-stop-on-doubt` 爲例
-```sh
-#pwd在項目根目錄
-mkdir -p .agents/skills
-cp -r TsinswrengSkills/tsinswreng-csharp-code-doc/tsinswreng-csharp-code-doc .agents/skills/tsinswreng-csharp-code-doc
-```
-	]
-
-	#H[雲端同步skill內容][
-以 `tsinswreng-stop-on-doubt` 爲例
-```sh
-cd TsinswrengSkills/tsinswreng-stop-on-doubt
-git pull
-```
-
-然後再執行一遍上面將`TsinswrengSkills`中的skill同步到主目錄的步驟
-	]
-
-	#H[將主目錄中的skill同步到claude路徑的skill][
-		見 `SyncLocalSkills.sh`
-		```sh
-mkdir -p .claude/skills
-cp -r .agents/skills/* .claude/skills/
-		```
-	]
-
-
-	#H[自動化sh腳本][
-		寫個sh腳本
-		格式`sh <腳本名> <skill名>`
-		其中的skill名不需要`tsinswreng-`或`skill-`前綴
-		之後、
-		在TsinswrengSkills下面看有沒有這個skill的git倉庫。
-		如果沒有就去clone 如果有了就git pull同步。
-		然後把TsinswrengSkills下面的skill同步到.agent/skills/主目錄。
-
-		如果傳入的參數沒給skill名 那就把 `TsinswrengSkills/`下的所有git倉庫都pull再同步到主目錄。
-	]
-
-]
-
-
-EOF_2026_0701_174908
-
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-SKILLS_REPO_DIR="$SCRIPT_DIR/TsinswrengSkills"
+SKILLS_REPO_DIR="$SCRIPT_DIR/.Tsinswreng/Skills"
 AGENTS_SKILLS_DIR="$SCRIPT_DIR/.agents/skills"
 GITHUB_BASE_URL="https://github.com/Tsinswreng"
 
@@ -101,7 +40,7 @@ if [ $# -ge 1 ]; then
     # Single skill mode
     sync_one_skill "$1"
 else
-    # All skills mode: pull and sync every repo under TsinswrengSkills/
+    # All skills mode: pull and sync every repo under .Tsinswreng/Skills/
     echo "[sync-all] pulling and syncing all skills in $SKILLS_REPO_DIR"
 
     found_any=false

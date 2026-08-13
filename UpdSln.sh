@@ -1,11 +1,27 @@
-rm Ngan.Dict.sln
-dotnet new sln -n Ngan.Dict
-dotnet sln add Ngan.Dict.Core/Ngan.Dict.Core.csproj
-dotnet sln add Ngan.Dict.Backend/Ngan.Dict.Backend.csproj
-dotnet sln add Ngan.Dict.Doc/proj/**/*.csproj
-dotnet sln add Ngan.Dict.Test/proj/**/*.csproj
-dotnet sln add Ngan.Dict.Frontend/proj/**/*.csproj
-dotnet sln add Ngan.Dict.Server/proj/**/*.csproj
+dotnet sln add Ngan.Dict/Ngan.Dict.Core/proj/**/*.csproj
+dotnet sln add Ngan.Dict/Ngan.Dict.Backend/proj/**/*.csproj
+dotnet sln add Ngan.Dict/Ngan.Dict.Doc/proj/**/*.csproj
+dotnet sln add Ngan.Dict/Ngan.Dict.Test/proj/**/*.csproj
+dotnet sln add Ngan.Dict/Ngan.Dict.Frontend/proj/**/*.csproj
+dotnet sln add Ngan.Dict/Ngan.Dict.Server/proj/**/*.csproj
+
+dotnet sln add Ngan.Ime/Ngan.Ime.Core/proj/**/*.csproj
+dotnet sln add Ngan.Ime/Ngan.Ime.Doc/proj/**/*.csproj
+dotnet sln add Ngan.Ime/Ngan.Ime.Frontend/proj/**/*.csproj
+dotnet sln add Ngan.Ime/Ngan.Ime.Rime/proj/**/*.csproj
+
+dotnet sln add AvlnImeDemo/**/*.csproj
+dotnet sln add CsRimeApi/proj/**/*.csproj
+dotnet sln add CsRimeLua/proj/**/*.csproj
+dotnet sln add CsRimeLua/proj/TestLuaLib/proj/**/*.csproj
+dotnet sln add RimeTools/proj/**/*.csproj
+dotnet sln add RimeTts/proj/**/*.csproj
+
+dotnet sln add Tsinswreng.CsInterop/proj/**/*.csproj
+dotnet sln add Tsinswreng.CsLua/proj/**/*.csproj
+dotnet sln add Tsinswreng.CsRingBuffer/proj/**/*.csproj
+dotnet sln add Tsinswreng.CsSqlHelper/proj/**/*.csproj
+dotnet sln add Tsinswreng.CsUlid/proj/**/*.csproj
 
 dotnet sln add Tsinswreng.CsCore/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsCtx/proj/**/*.csproj

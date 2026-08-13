@@ -16,9 +16,9 @@
 			"type": "coreclr",
 			"request": "launch",
 			//"preLaunchTask": "build", // 可根据你的项目配置修改
-			"program": "${workspaceFolder}/Ngan.Dict.Server/proj/Ngan.Dict.Server.Http/bin/Debug/net10.0/Ngan.Dict.Server.Http.exe", // 修改为你的可执行文件路径
+			"program": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Server/proj/Ngan.Dict.Server.Http/bin/Debug/net10.0/Ngan.Dict.Server.Http.exe", // 修改为你的可执行文件路径
 			"args": [], // 可执行文件的参数
-			"cwd": "${workspaceFolder}/Ngan.Dict.Server/proj/Ngan.Dict.Server.Http/bin/Debug/net10.0", // 设置为输出目录
+			"cwd": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Server/proj/Ngan.Dict.Server.Http/bin/Debug/net10.0", // 设置为输出目录
 			"console": "internalConsole", // 或 "integratedTerminal" 或 "externalTerminal"
 			"stopAtEntry": false // 是否在程序入口处停止
 		},
@@ -27,9 +27,9 @@
 			"type": "coreclr",
 			"request": "launch",
 			//"preLaunchTask": "build", // 可根据你的项目配置修改
-			"program": "${workspaceFolder}/Ngan.Dict.Server/proj/Ngan.Dict.Server.Test/bin/Debug/net10.0/Ngan.Dict.Server.Test.exe", // 修改为你的可执行文件路径
+			"program": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Server/proj/Ngan.Dict.Server.Test/bin/Debug/net10.0/Ngan.Dict.Server.Test.exe", // 修改为你的可执行文件路径
 			"args": [], // 可执行文件的参数
-			"cwd": "${workspaceFolder}/Ngan.Dict.Server/proj/Ngan.Dict.Server.Http/bin/Debug/net10.0", // 设置为输出目录
+			"cwd": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Server/proj/Ngan.Dict.Server.Http/bin/Debug/net10.0", // 设置为输出目录
 			"console": "internalConsole", // 或 "integratedTerminal" 或 "externalTerminal"
 			"stopAtEntry": false // 是否在程序入口处停止
 		},
@@ -38,9 +38,9 @@
 			"type": "coreclr",
 			"request": "launch",
 			//"preLaunchTask": "build", // 可根据你的项目配置修改
-			"program": "${workspaceFolder}/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0/Ngan.Dict.Windows.exe", // 修改为你的可执行文件路径
+			"program": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0/Ngan.Dict.Windows.exe", // 修改为你的可执行文件路径
 			"args": [], // 可执行文件的参数
-			"cwd": "${workspaceFolder}/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0", // 设置为输出目录
+			"cwd": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0", // 设置为输出目录
 			"console": "internalConsole", // 或 "integratedTerminal" 或 "externalTerminal"
 			"stopAtEntry": false // 是否在程序入口处停止
 		},
@@ -49,9 +49,9 @@
 			"type": "coreclr",
 			"request": "launch",
 			"preLaunchTask": "MkWin", // 可根据你的项目配置修改
-			"program": "${workspaceFolder}/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0/Ngan.Dict.Windows.exe", // 修改为你的可执行文件路径
+			"program": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0/Ngan.Dict.Windows.exe", // 修改为输出目录
 			"args": [], // 可执行文件的参数
-			"cwd": "${workspaceFolder}/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0", // 设置为输出目录
+			"cwd": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0", // 设置为输出目录
 			"console": "internalConsole", // 或 "integratedTerminal" 或 "externalTerminal"
 			"stopAtEntry": false // 是否在程序入口处停止
 		},
@@ -60,9 +60,9 @@
 			"type": "coreclr",
 			"request": "launch",
 			//"preLaunchTask": "build", // 可根据你的项目配置修改
-			"program": "${workspaceFolder}/Ngan.Dict.Test/proj/Ngan.Dict.Windows.Test/bin/Debug/net10.0/Ngan.Dict.Windows.Test.exe", // 修改为你的可执行文件路径
+			"program": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Test/proj/Ngan.Dict.Windows.Test/bin/Debug/net10.0/Ngan.Dict.Windows.Test.exe", // 修改为你的可执行文件路径
 			"args": [], // 可执行文件的参数
-			"cwd": "${workspaceFolder}/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0", // 設潙win之pwd
+			"cwd": "${workspaceFolder}/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/bin/Debug/net10.0", // 設潙win之pwd
 			"console": "internalConsole", // 或 "integratedTerminal" 或 "externalTerminal"
 			"stopAtEntry": false // 是否在程序入口处停止
 		},

@@ -3,12 +3,12 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-APP_VERSION_FILE="$ROOT_DIR/Ngan.Dict.Core/Infra/AppVersion.cs"
-ANDROID_CSPROJ="$ROOT_DIR/Ngan.Dict.Frontend/proj/Ngan.Dict.Android/Ngan.Dict.Android.csproj"
-WINDOWS_PROJECT="$ROOT_DIR/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/Ngan.Dict.Windows.csproj"
-LINUX_PROJECT="$ROOT_DIR/Ngan.Dict.Frontend/proj/Ngan.Dict.Linux/Ngan.Dict.Linux.csproj"
-ANDROID_PROJECT="$ROOT_DIR/Ngan.Dict.Frontend/proj/Ngan.Dict.Android/Ngan.Dict.Android.csproj"
-TEST_PROJECT="$ROOT_DIR/Ngan.Dict.Test/proj/Ngan.Dict.Windows.Test/Ngan.Dict.Windows.Test.csproj"
+APP_VERSION_FILE="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Core/proj/Ngan.Dict.Core/Infra/AppVersion.cs"
+ANDROID_CSPROJ="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Android/Ngan.Dict.Android.csproj"
+WINDOWS_PROJECT="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Windows/Ngan.Dict.Windows.csproj"
+LINUX_PROJECT="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Linux/Ngan.Dict.Linux.csproj"
+ANDROID_PROJECT="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Android/Ngan.Dict.Android.csproj"
+TEST_PROJECT="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Test/proj/Ngan.Dict.Windows.Test/Ngan.Dict.Windows.Test.csproj"
 
 VERSION=""
 BUILD_ID=""
@@ -169,7 +169,7 @@ copy_shared_assets() {
 }
 
 prepare_android_assets() {
-	local android_assets_dir="$ROOT_DIR/Ngan.Dict.Frontend/proj/Ngan.Dict.Android/Assets"
+	local android_assets_dir="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Android/Assets"
 	rm -rf "$android_assets_dir"
 	mkdir -p "$android_assets_dir"
 	cp -r "$ROOT_DIR/ExternalRsrc/." "$android_assets_dir/"
@@ -222,7 +222,7 @@ publish_linux() {
 }
 
 publish_android() {
-	local publish_dir="$ROOT_DIR/Ngan.Dict.Frontend/proj/Ngan.Dict.Android/bin/Release/net10.0-android/publish"
+	local publish_dir="$ROOT_DIR/Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Android/bin/Release/net10.0-android/publish"
 	local artifact_dir="$ARTIFACT_ROOT/android"
 	mkdir -p "$artifact_dir"
 

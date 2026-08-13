@@ -1,15 +1,15 @@
 # TODO 打包語言翻譯json文件
 #CpAssets="$PWD/CpAssets.sh"
-cd Ngan.Dict.Frontend/proj/Ngan.Dict.Linux
+cd Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Linux
 mkdir -p publish
 mv publish publishOld
 dotnet publish -c Release -r linux-x64
 rm -r publishOld
 
 #sh $CpAssets
-cd ../../../
+cd ../../../../
 sh ./CpAssets.sh
-cd Ngan.Dict.Frontend/proj/Ngan.Dict.Linux
+cd Ngan.Dict/Ngan.Dict.Frontend/proj/Ngan.Dict.Linux
 
 cd ./bin/Release/net10.0/linux-x64
 mkdir -p publishNoPdb
