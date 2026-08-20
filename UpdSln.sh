@@ -4,6 +4,7 @@ dotnet sln add Ngan.Dict/Ngan.Dict.Doc/proj/**/*.csproj
 dotnet sln add Ngan.Dict/Ngan.Dict.Test/proj/**/*.csproj
 dotnet sln add Ngan.Dict/Ngan.Dict.Frontend/proj/**/*.csproj
 dotnet sln add Ngan.Dict/Ngan.Dict.Server/proj/**/*.csproj
+dotnet sln add Ngan.Dict/Ngan.Dict.Scripts/proj/**/*.csproj
 
 dotnet sln add Ngan.Ime/Ngan.Ime.Core/proj/**/*.csproj
 dotnet sln add Ngan.Ime/Ngan.Ime.Doc/proj/**/*.csproj
@@ -49,6 +50,7 @@ dotnet sln add Tsinswreng.CsYamlMd/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsTextWithBlob/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsTreeTest/proj/**/*.csproj
 dotnet sln add Tsinswreng.CsTreeTest/proj/Samples/**/*.csproj
+dotnet sln add Tsinswreng.Cssh/proj/**/*.csproj
 #dotnet sln add Tsinswreng.AvlnTools/Example/proj/**/*.csproj
 dotnet sln add Tsinswreng.Avln.StrokeText/proj/**/*.csproj
 #dotnet sln add Tsinswreng.Avln.StrokeText/Samples/StrokeText.Sample/**/*.csproj

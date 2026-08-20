@@ -2,9 +2,9 @@
 #let H = auto-heading;
 \-\-\-
 
-name: write-csharp-code
+name: ngan-spec
 
-description: 編寫C\#代碼
+description: Ngan項目的C\#代碼規範
 
 \-\-\-
 
